@@ -1,0 +1,40 @@
+BIRU
+#6777ef
+rgba(103,119,239,255)
+
+
+
+MERAH GRAFIK
+#fe5553
+rgba(254,85,83,179)
+
+BIRU GRAFIK
+#3e52e3
+rgba(62,82,227,204)
+
+
+HIJAU SUCCESS
+#63ed7a
+
+
+https://imagecolorpicker.com/
+
+
+PROGRESS BAR
+https://freefrontend.com/bootstrap-progress-bars/
+
+
+
+https://www.malasngoding.com/cara-membuat-pagination-php-mysqli-dan-boostrap-4/
+
+https://dewankomputer.com/2019/02/10/cara-membuat-menu-filter-search-dengan-ajax-tanpa-loading-pada-php/
+
+-input
+-gamifikasi
+-pbk
+-fmds
+-wlp
+
+
+
+https://codeanddeploy.com/blog/php/how-to-submit-multiple-checkbox-value-to-php-using-jquery-ajax

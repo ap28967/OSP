@@ -1,0 +1,1 @@
+http://10.59.12.51/CAIS/BAIS/dashboard/administrasi/attendance_record.php

@@ -38,8 +38,9 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
     // $filter_tabel ="sect = '$_SESSION[osp_sect]'";
     // $filter_tabel ="dept = '$_SESSION[osp_dept]'";
     // $filter_tabel ="divisi = '1-001'";
-    $filter_tabel = "dept = '$_GET[pilihDept]'";
-
+    if(isset($_GET['pilihDept'])){
+        $filter_tabel = "dept = '$_GET[pilihDept]'";
+    }
 
 
 

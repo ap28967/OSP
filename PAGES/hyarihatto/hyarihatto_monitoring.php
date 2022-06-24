@@ -24,18 +24,21 @@ if (!isset($_SESSION['osp_user'])) {
                                         <div class="form-group col-md-2 ">
                                             <label for="dari_bulan">From</label>
                                             <input type="month" class="form-control" id="startDate" name="startDate" placeholder="month">
+                                            <span class="validity"></span>
                                         </div>
                                        
                                         <!-- Periode HINGGA -->
                                         <div class="form-group col-md-2 ">
                                             <label for="hingga_bulan">Until</label>
-                                            <input type="month" class="form-control" id="endDate" name="endDate" placeholder="month" >                                            
+                                            <input type="month" class="form-control" id="endDate" name="endDate" placeholder="month" >
+                                            <span class="validity"></span>                                            
                                         </div>
                                          <!-- DEPARTEMENT -->
                                          <div class="form-group col-md-2">
                                             <label for="pilihDept">Departement</label>
                                             <select type="text" class="form-control" id="pilihDept" name="pilihDept">
                                                 <option value="">Pilih...</option>
+                                                <option id="all_dept" value="" class="d-none" disabled>All</option>
                                                 <?php 
                                                     $query_dept = mysqli_query($link_osp,"SELECT * FROM bais_dept_account") or die(mysqli_error($link_osp));
                                                     if (mysqli_num_rows( $query_dept)>0){
@@ -44,23 +47,42 @@ if (!isset($_SESSION['osp_user'])) {
                                                         }
                                                     }
                                                 ?>
-                                            </select>                                       
+                                            </select>
+                                            <span class="validity"></span>                                       
                                         </div>
                                         <!-- SECTION -->
                                         <div class="form-group col-md-2">
-                                            <label for="pilihDept">Section</label>
+                                            <label for="pilihSect">Section</label>
                                             <select type="text" class="form-control" id="pilihSect" name="pilihSect">
                                                 <option value="">Pilih...</option>
-                                                <option value="Komite QCCSS">Cost</option>
-                                            </select>                                       
+                                                <option id="all_sect" value="" class="d-none" disabled>All</option>
+                                                <?php 
+                                                    $query_sect = mysqli_query($link_osp,"SELECT * FROM bais_id_section") or die(mysqli_error($link_osp));
+                                                    if (mysqli_num_rows( $query_sect)>0){
+                                                        while($rows_sect = mysqli_fetch_assoc( $query_sect)){
+                                                            echo '<option value="'.$rows_sect['id_section'].'">'.$rows_sect['section'].'</option>'; 
+                                                        }
+                                                    }
+                                                ?>
+                                            </select>   
+                                            <span class="validity"></span>                                    
                                         </div>
                                         <!-- GROUP -->
                                         <div class="form-group col-md-2">
-                                            <label for="pilihDept">Group</label>
-                                            <select type="text" class="form-control" id="pilihGroup" name="pilihGroup">
+                                            <label for="pilihGrp">Group</label>
+                                            <select type="text" class="form-control" id="pilihGrp" name="pilihGrp">
                                                 <option value="">Pilih...</option>
-                                                <option value="Komite QCCSS">Komite QCCSS</option>
-                                            </select>                                       
+                                                <option id="all_grp" value="" class="d-none" disabled>All</option>
+                                                <?php 
+                                                    $query_grp = mysqli_query($link_osp,"SELECT * FROM bais_id_group") or die(mysqli_error($link_osp));
+                                                    if (mysqli_num_rows( $query_sect)>0){
+                                                        while($rows_grp = mysqli_fetch_assoc( $query_grp)){
+                                                            echo '<option value="'.$rows_grp['id_group'].'">'.$rows_grp['nama_group'].'</option>'; 
+                                                        }
+                                                    }
+                                                ?>
+                                            </select> 
+                                            <span class="validity"></span>                                      
                                         </div>
                                         <!-- Button CARI -->
                                         <div class="form-group col-md-2 text-md-right">
@@ -164,7 +186,7 @@ if (!isset($_SESSION['osp_user'])) {
 
 
 
-
+<!-- GRAFIK -->
 <script>
     var xValues = ["Jan", "Feb", "Mar", "Apr", "May"];
     var yValues = [55, 49, 44, 24, 15];
@@ -222,9 +244,7 @@ if (!isset($_SESSION['osp_user'])) {
 
 
 
-
-
-
+<!-- POST -->
 <script type="text/javascript">
     $(document).on('click', '.halaman', function(e){
         e.preventDefault()
@@ -250,3 +270,21 @@ if (!isset($_SESSION['osp_user'])) {
 
 </script>
 
+
+<script>
+    // TOGGLE DEPT
+     $(document).on('change', '#pilihDept', function(){
+         $('#all_sect').prop('selected', true);
+         $('#all_grp').prop('selected', true);
+     });
+    //  TOGGLE SECT
+     $(document).on('change', '#pilihSect', function(){
+         $('#all_dept').prop('selected', true);
+         $('#all_grp').prop('selected', true);
+     });
+     //  TOGGLE GROUP
+     $(document).on('change', '#pilihGrp', function(){
+         $('#all_dept').prop('selected', true);
+         $('#all_sect').prop('selected', true);
+     });
+</script>

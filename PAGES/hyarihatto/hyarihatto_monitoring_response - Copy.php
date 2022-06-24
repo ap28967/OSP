@@ -132,8 +132,8 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
 
 
 
-
-<ul class="pagination">
+    <nav>
+    <ul class="pagination">
 
         <?php
 

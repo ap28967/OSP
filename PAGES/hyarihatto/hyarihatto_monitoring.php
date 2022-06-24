@@ -32,25 +32,39 @@ if (!isset($_SESSION['osp_user'])) {
                                             <input type="month" class="form-control" id="endDate" name="endDate" placeholder="month" >                                            
                                         </div>
                                          <!-- DEPARTEMENT -->
-                                         <div class="form-group col-md-3">
+                                         <div class="form-group col-md-2">
                                             <label for="pilihDept">Departement</label>
                                             <select type="text" class="form-control" id="pilihDept" name="pilihDept">
                                                 <option value="">Pilih...</option>
-                                                <option value="Body 1">Body 1</option> 
-                                                <option value="Body 2">Body 2</option> 
-                                                <option value="BQC">BQC</option>
+                                                <?php 
+                                                    $query_dept = mysqli_query($link_osp,"SELECT * FROM bais_dept_account") or die(mysqli_error($link_osp));
+                                                    if (mysqli_num_rows( $query_dept)>0){
+                                                        while($rows_dept = mysqli_fetch_assoc( $query_dept)){
+                                                            echo '<option value="'.$rows_dept['id_dept_account'].'">'.$rows_dept['department_account'].'</option>'; 
+                                                        }
+                                                    }
+                                                ?>
                                             </select>                                       
                                         </div>
-                                        <!-- DEPARTEMENT -->
-                                        <div class="form-group col-md-3">
+                                        <!-- SECTION -->
+                                        <div class="form-group col-md-2">
                                             <label for="pilihDept">Section</label>
-                                            <select type="text" class="form-control" id="pilihDept" name="pilihDept">
+                                            <select type="text" class="form-control" id="pilihSect" name="pilihSect">
+                                                <option value="">Pilih...</option>
+                                                <option value="Komite QCCSS">Cost</option>
+                                            </select>                                       
+                                        </div>
+                                        <!-- GROUP -->
+                                        <div class="form-group col-md-2">
+                                            <label for="pilihDept">Group</label>
+                                            <select type="text" class="form-control" id="pilihGroup" name="pilihGroup">
                                                 <option value="">Pilih...</option>
                                                 <option value="Komite QCCSS">Komite QCCSS</option>
                                             </select>                                       
                                         </div>
                                         <!-- Button CARI -->
                                         <div class="form-group col-md-2 text-md-right">
+                                            <button type="button" name="export_excel"class="btn btn-primary btn-md halaman fa-solid fa-file-excel" style="font-size:medium;" id="export_excel"></button>
                                             <button type="button" name="btnSubmit"class="btn btn-primary btn-md halaman fa fa-search" style="font-size:medium;" id="1"></button>
                                         </div>
                                     
@@ -217,12 +231,13 @@ if (!isset($_SESSION['osp_user'])) {
         // var page = $('.page_active').attr('id');
         var start = $('#startDate').val();
         var end = $('#endDate').val();
+        var pilihDept = $('#pilihDept').val();
 
         if(start!='' && end!=''){
             $.ajax({
                 type: 'GET',
                 url: "hyarihatto_monitoring_response.php",
-                data: {page:page,start:start,end:end},
+                data: {page:page,start:start,end:end, pilihDept:pilihDept},
                 success: function(hasil) {
                     $('.dataTabel').html(hasil);
                     // console.log("ok")

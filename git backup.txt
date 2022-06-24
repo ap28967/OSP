@@ -3,3 +3,6 @@ git add.
 git commit -m "OSP"
 git remote add osp https://github.com/ap28967/OSP.git
 git push -u osp master
+
+
+git clone https://github.com/ap28967/OSP.git

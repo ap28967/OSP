@@ -1,6 +1,7 @@
 <?php 
 
-include("../CONFIG/koneksi.php"); 
+// include("../CONFIG/koneksi.php"); 
+include("../CONFIG/config.php"); 
 
 if (isset($_SESSION['osp_user'])) {
   header("Location: ../PAGES/gamifikasi/gamifikasi.php");
@@ -27,13 +28,12 @@ if (isset($_POST['submit'])) {
       $_SESSION['osp_grp'] =  $result_login['grp'];
       $_SESSION['osp_sect'] =  $result_login['sect'];
       $_SESSION['osp_dept'] =  $result_login['dept'];
-      $_SESSION['osp_division'] =  $result_login['division'];
+      $_SESSION['osp_divisi'] =  $result_login['divisi'];
       $_SESSION['osp_nama_grp'] =  $result_login['nama_grp'];
       $_SESSION['osp_nama_sect'] =  $result_login['nama_sect'];
       $_SESSION['osp_nama_dept'] =  $result_login['nama_dept'];
 
-      mysqli_free_result($query_login);
-      
+      mysqli_free_result($query_login);      
 
       header("Location: ../PAGES/gamifikasi/gamifikasi.php");
   } else {

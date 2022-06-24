@@ -56,7 +56,7 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
 
     $no = $limit_start + 1;    
     $jumlah_page = (ceil($total_records / $limit)<=0)?1:ceil($total_records / $limit);
-    $jumlah_number = 4; //jumlah halaman ke kanan dan kiri dari halaman yang aktif
+    $jumlah_number = 2; //jumlah halaman ke kanan dan kiri dari halaman yang aktif
     $start_number = ($page > $jumlah_number)? $page - $jumlah_number : 1;
     $end_number = ($page < ($jumlah_page - $jumlah_number))? $page + $jumlah_number : $jumlah_page;
 
@@ -74,7 +74,7 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
                     <label for="checkAll" class="custom-control-label">&nbsp;</label>
                 </div> -->
                 <!-- </th> -->
-                <th scope="col">#</th>
+                <th scope="col" class="fixed-header">#</th>
                 <th scope="col">NPK</th>
                 <th scope="col">Nama</th>
                 <th scope="col">Jabatan</th>

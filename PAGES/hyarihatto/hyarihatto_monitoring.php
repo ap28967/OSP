@@ -93,7 +93,7 @@ if (!isset($_SESSION['osp_user'])) {
 
 
                             <div class="dataTabel">  
-                                <table class="table table-striped table-responsive table-md article-table"  >
+                                <table class="table"  >
                                     <thead>
                                         <tr>
                                         <th scope="col">#</th>
@@ -168,15 +168,16 @@ if (!isset($_SESSION['osp_user'])) {
 <script>
     var xValues = ["Jan", "Feb", "Mar", "Apr", "May"];
     var yValues = [55, 49, 44, 24, 15];
-    var barColors = ["#fe5553"];
+    var barColors = ["#4bc0c0"];
 
     new Chart("myChart88", {    
     data: {
         labels: xValues,
         datasets: [{
             type: "line",
-            borderColor: "#000000",
-            data:[30, 30, 30, 30, 30],
+            borderColor: "grey",
+            backgroundColor: "grey",
+            data:[97, 97, 97, 97, 97],
             label: "Target"
         }, {            
             type: "bar",

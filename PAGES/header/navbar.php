@@ -119,7 +119,11 @@ if (!isset($_SESSION['osp_user'])) {
       color: #6777ef;
     }
   </style>
-
+  <style>
+    .fixed-header{
+      z-index: 50;
+    }
+  </style>
 
 
 <!-- General JS Scripts -->

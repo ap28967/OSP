@@ -3,7 +3,6 @@ BIRU
 rgba(103,119,239,255)
 
 
-
 MERAH GRAFIK
 #fe5553
 rgba(254,85,83,179)
@@ -15,6 +14,19 @@ rgba(62,82,227,204)
 
 HIJAU SUCCESS
 #63ed7a
+
+
+
+WARNA SOFT
+#4bc0c0	hijau
+#ffcd56 orange
+#ff6384 merah
+#36a2eb biru
+#d49cb8 ungu
+#7c988c hijau tua
+
+
+
 
 
 https://imagecolorpicker.com/

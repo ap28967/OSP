@@ -13,7 +13,8 @@ $dbpass_osp = "";
 $dbname_osp = "osp_db";
 $link_osp = mysqli_connect($dbhost_osp,$dbuser_osp,$dbpass_osp,$dbname_osp);
 if (!$link_osp) {
-    die("<script>alert('Gagal tersambung dengan database.')</script>");
+    // die("<script>alert('Gagal tersambung dengan database.')</script>");
+    header("location: ../CONFIG/404.html");
 }
 
 ?>

@@ -96,26 +96,11 @@ if (!isset($_SESSION['osp_user'])) {
                         </div>
 
 
-                        <div class="card">
-                            <div class="row">
-                                <div class="card-body col-md-8">
-                                    <canvas id="myChart88" style="width:100%;height:200px;"></canvas>
-                                </div>                            
-                                <div class="card-body col-md-4">
-                                    <canvas id="myChart99" style="width:100%;height:200px;"></canvas>
-                                </div>
-                            </div>
-                        <!-- Card -->
-                        </div>
-
-
-
-
-                        <div class="card">                        
-
-
-                            <div class="dataTabel">  
-                                <table class="table"  >
+                        <div class="card dataTabel">
+                            <!-- GRAFIK -->
+                            <!-- TABEL -->
+                            <div>  
+                                <table class="table table-responsive-sm"  >
                                     <thead>
                                         <tr>
                                         <th scope="col">#</th>
@@ -153,16 +138,9 @@ if (!isset($_SESSION['osp_user'])) {
                     </div>
                 <!-- Row -->
                 </div>
-
-
-
-
-
 <?php
   include("../header/footer.php");
 ?>
-
-
 
 <!-- General JS Scripts -->
 <script src="../../ASSETS/bootstrap/js/jquery-3.3.1.min.js" ></script>
@@ -180,65 +158,11 @@ if (!isset($_SESSION['osp_user'])) {
 <script src="../../ASSETS/bootstrap/js/chart.min.js"></script>
 <script src="../../ASSETS/js/custom.js"></script>
 <!-- Page Specific JS File -->
-<script src="../../ASSETS/js/page/index.js"></script>
+<!-- <script src="../../ASSETS/js/page/index.js"></script> -->
 
 
 
 
-
-<!-- GRAFIK -->
-<!-- <script>
-    var xValues = ["Jan", "Feb", "Mar", "Apr", "May"];
-    var yValues = [55, 49, 44, 24, 15];
-    var barColors = ["#4bc0c0"];
-
-    new Chart("myChart88", {    
-    data: {
-        labels: xValues,
-        datasets: [{
-            type: "line",
-            borderColor: "grey",
-            backgroundColor: "grey",
-            data:[97, 97, 97, 97, 97],
-            label: "Target"
-        }, {            
-            type: "bar",
-            backgroundColor: barColors,
-            data: yValues,
-            label: "Actual"
-            
-        }]
-    },
-    options: {
-        legend: {display: false},
-        title: {
-        display: true,
-        text: "Grafik Bar"
-        }
-    }
-    });
-
-    var donatLabel = ["UF", "UR", "UB", "SM", "MB", "SL"];
-    var donatValues = ["50", "40", "30", "20", "10", "5"];
-    var donatColors = ["#fe5553","#74C656", "#56C6AB ", "#5691C6", "#C6BE56", "grey"];
-    new Chart("myChart99", {    
-    data: {
-        labels: donatLabel,
-        datasets: [{
-            type: "doughnut",
-            data:donatValues  ,
-            backgroundColor: donatColors,        
-        }]
-    },
-    options: {
-        legend: {display: false},
-        title: {
-        display: true,
-        text: "Grafik Donut"
-        }
-    }
-    });
-</script> -->
 
 
 
@@ -301,4 +225,6 @@ if (!isset($_SESSION['osp_user'])) {
          $('#all_dept').prop('selected', true);
      });
 </script>
+
+
 

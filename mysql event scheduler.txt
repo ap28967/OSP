@@ -1,0 +1,29 @@
+https://vijaymrami.wordpress.com/2016/01/28/how-to-schedule-mysql-query-using-mysql-event-in-phpmyadmin/
+
+
+#scheduler status
+SELECT @@event_scheduler;
+
+
+#To enable event scheduler
+SET GLOBAL event_scheduler := 1;
+
+
+#process list
+SHOW PROCESSLIST;
+
+
+#Create Event for delete data in table
+CREATE EVENT delete_candle_data
+ON SCHEDULE EVERY 3 DAY
+DO
+DELETE FROM tx_candle_domain_model_candle where crdate < UNIX_TIMESTAMP(timestampadd(day, -3, now())) ORDER BY crdate DESC;
+
+
+#run the event once – one hour after the ALTER command is fired
+ALTER EVENT delete_candle_data
+ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 HOUR
+
+
+#DROP the created event
+DROP EVENT delete_candle_data;

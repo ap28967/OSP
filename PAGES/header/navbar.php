@@ -371,7 +371,16 @@ if (!isset($_SESSION['osp_user'])) {
      });
 </script>
 
-
+<!-- <script>
+  window.onload = function() {
+    if(typeof(Storage) != "undefined") {
+      sessionStorage.removeItem('sesi_buka_menu');
+      sessionStorage.removeItem('sesi_aktif_submenu');      
+    } else {
+      console.log("Sorry, your browser does not support web storage...");
+    }
+  }
+</script> -->
 
 
       <!-- Main Content --> 

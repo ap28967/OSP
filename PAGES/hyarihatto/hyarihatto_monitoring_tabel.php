@@ -16,6 +16,19 @@ if (!isset($_SESSION['osp_user'])) {
 // $_GET['page'] = 1;
 
 if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
+?>
+    <!-- GRAFIK HYARIHATTO -->
+    <div class="row">
+        <div class="card-body col-md-8">
+            <canvas id="myChart88" style="width:100%;height:300px;"></canvas>
+        </div>                            
+        <div class="card-body col-md-4">
+            <canvas id="myChart99" style="width:100%;height:300px;"></canvas>
+        </div>
+    </div>
+
+
+    <?php
     $page = $_GET['page'];
     $startDate = date('Y-m-d', strtotime($_GET['start']));
     $endDate = date('Y-m-t', strtotime($_GET['end']));
@@ -39,7 +52,7 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
     // $filter_tabel ="dept = '$_SESSION[osp_dept]'";
     // $filter_tabel ="divisi = '1-001'";
     if(isset($_GET['pilihDept'])){
-        $filter_tabel = "dept = '$_GET[pilihDept]'";
+        $filter_tabel = "dept_account = '$_GET[pilihDept]'";
     }
 
 
@@ -49,15 +62,16 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
    $queryAllKar = "SELECT npk FROM view_sesi WHERE $filter_tabel"; 
    $resultAllKar=mysqli_query($link_osp,$queryAllKar);    
    $total_records=mysqli_num_rows($resultAllKar);
+//    echo $total_records;
 
     // Pagination
     $no=1;        
-    $limit =50;
+    $limit =30;
     $limit_start = ($page-1) * $limit;    
 
     $no = $limit_start + 1;    
     $jumlah_page = (ceil($total_records / $limit)<=0)?1:ceil($total_records / $limit);
-    $jumlah_number = 2; //jumlah halaman ke kanan dan kiri dari halaman yang aktif
+    $jumlah_number = 1; //jumlah halaman ke kanan dan kiri dari halaman yang aktif
     $start_number = ($page > $jumlah_number)? $page - $jumlah_number : 1;
     $end_number = ($page < ($jumlah_page - $jumlah_number))? $page + $jumlah_number : $jumlah_page;
 
@@ -82,14 +96,37 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
                 <th scope="col">Group</th>
                 <th scope="col">Section</th>
                 <th scope="col">Dept</th>
-                <?php  
+                <?php
+                // DATASET GRAFIK
+                $array_x_label_bulan = [];
+                $array_y_total_mp = [];
+                $array_y_target_hyari = [];
+                $array_y_update_hyari = [];
+                // LOOPING TABEL HEADER BERDASARKAN BULAN
                 while ($mulai <= $selesai){
                     $bulan = date('Y-M', $mulai);
                     $awal_bulan = date('Y-m-d', $mulai);
                     $akhir_bulan = date('Y-m-t', $mulai);                    
-                    echo '<th scope="col">'.$bulan.'</th>'; // CODE LOOPING BULAN                    
+                    echo '<th scope="col">'.$bulan.'</th>'; // CODE LOOPING BULAN
+
+                    // GRAFIK
+                    $query_hitung_hyari = "SELECT tglinput FROM view_hyarihatto WHERE (tglinput BETWEEN '$awal_bulan' AND '$akhir_bulan') AND $filter_tabel";
+                    $result_hitung_hyari=mysqli_query($link_osp,$query_hitung_hyari) or die(mysqli_error($link_osp));
+                    $total_hitung_hyari=mysqli_num_rows($result_hitung_hyari);
+
+                    $array_y_update_hyari[] = $total_hitung_hyari;
+                    $array_x_label_bulan[] = $bulan; //X axis grafik
+                    $array_y_total_mp[] = $total_records; //bar Y axis grafik
+                    $array_y_target_hyari[] = 97;
+                                 
+                    // NEXT LOOP
                     $mulai = strtotime('+1 month',$mulai);  //  Increment next month 
-                } //while tabel header          
+                } //while tabel header
+                $json_x_label_bulan = json_encode($array_x_label_bulan); //X axis grafik json  
+                $json_y_total_mp = json_encode($array_y_total_mp); //Y total mp grafik json     
+                $json_y_target_hyari = json_encode($array_y_target_hyari); //Y target persen grafik json
+                $json_y_update_hyari = json_encode($array_y_update_hyari); //Y target persen grafik json 
+                // print_r($array_y_target_hyari)
                 ?>
             </tr>
         </thead>       
@@ -114,7 +151,7 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
                 <td><?php echo $rows['nama_sect'];?></td>
                 <td><?php echo $rows['nama_dept_account'];?></td>
 
-                <?php
+                <?php                
                 $mulai2 = strtotime($startDate);
                 while ($mulai2 <= $selesai){
                     $bulan = date('Y-M', $mulai2);
@@ -125,12 +162,11 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
                     if(mysqli_num_rows($resultHyari) > 0){
                             echo '<td>O</td>';                
                     } else {
-                        echo '<td>-</td>';
-                    }
+                        echo '<td>-</td>';                        
+                    }                                    
                     $mulai2 = strtotime('+1 month',$mulai2);        
-                }  //while status hyarihatto 
-
-                    ?>                                
+                }  //while status hyarihatto                 
+                ?>                                
                 </tr>
                 <?php
             } //while ALL NPK
@@ -178,39 +214,81 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
 
 <!-- GRAFIK -->
 <script>
-    var xValues = ["Jan", "Feb", "Mar", "Apr", "May"];
-    var yValues = [55, 49, 44, 24, 15];
+    var x_label_bulan = <?= $json_x_label_bulan  ?>;
+    var y_total_mp = <?= $json_y_total_mp ?>;
+    var y_update_hyari = <?= $json_y_update_hyari ?>; 
+    var y_update_persen = [87,85,82,83,90,78];   
+    var y_target_hyari = <?= $json_y_target_hyari ?>;
     var barColors = ["#4bc0c0"];
-
-    new Chart("myChart88", {    
-    data: {
-        labels: xValues,
-        datasets: [{
-            type: "line",
-            borderColor: "grey",
-            backgroundColor: "grey",
-            data:[97, 97, 97, 97, 97],
-            label: "Target"
-        }, {            
-            type: "bar",
-            backgroundColor: barColors,
-            data: yValues,
-            label: "Actual"
-            
-        }]
-    },
-    options: {
-        legend: {display: false},
-        title: {
-        display: true,
-        text: "Grafik Bar"
-        }
-    }
-    });
-
+            console.log(y_target_hyari);
     var donatLabel = ["UF", "UR", "UB", "SM", "MB", "SL"];
     var donatValues = ["50", "40", "30", "20", "10", "5"];
     var donatColors = ["#fe5553","#74C656", "#56C6AB ", "#5691C6", "#C6BE56", "grey"];
+
+    // BULANAN
+    new Chart("myChart88", {    
+        data: {   
+            labels: x_label_bulan,
+            datasets: [{ 
+                type: "line",
+                borderColor: "grey",
+                backgroundColor: "grey",
+                data: y_target_hyari,
+                label: "Target",
+                yAxisID: 'right_axis' 
+            }, {
+                type: "line",
+                borderColor: "orange",
+                backgroundColor: "orange",
+                data: y_update_persen,
+                label: "%",
+                yAxisID: 'right_axis'   
+            }, {   
+                type: "bar",
+                backgroundColor: barColors,
+                data: y_total_mp,
+                label: "Total MP",
+                yAxisID: 'left_axis'   
+            }, {            
+                type: "bar",
+                backgroundColor: "#ff6384",
+                data: y_update_hyari,
+                label: "Update Hyari",
+                yAxisID: 'left_axis'  
+            }]
+        },
+        options: {
+            responsive: true,
+            legend: {
+                display: false
+            },
+            title: {
+                display: true,
+                text: "Grafik Bar"        
+            },
+            scales: {
+                left_axis: {
+                    type: 'linear',
+                    display: true,
+                    position: 'left',
+                    min: 0,
+                    max: <?= round($total_records*2, -2); ?>                    
+                },
+                right_axis: {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    min: 0,
+                    max: 100,
+                    grid: {
+                    drawOnChartArea: false, // only want the grid lines for one axis to show up
+                    },
+                },
+            }
+        }
+    });
+
+    // DONUT
     new Chart("myChart99", {    
     data: {
         labels: donatLabel,
@@ -228,15 +306,18 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
         }
     }
     });
+
+    // myChart88.update();
 </script>
+
+
+
+
+
 
 <?php
 } //Isset
 ?>
-
-
-
-
             
 
 

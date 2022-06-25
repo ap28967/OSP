@@ -250,22 +250,22 @@ if (!isset($_SESSION['osp_user'])) {
 
 <!-- ###################################### SIDE BAR ##################################################### -->
 
-<div class="main-sidebar">
-        <aside id="sidebar-wrapper">
-          <div class="sidebar-brand">
+<div class="main-sidebar" >
+        <aside id="sidebar-wrapper"  >
+          <div class="sidebar-brand"  >
             <a class="nav-link" href="../index.php"><img alt="OSP" src="../../ASSETS/img/logo-osp.png" width="95px"></a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
             <a class="nav-link" href="../index.php">OSP</a>
             
           </div>
-          <ul class="sidebar-menu">            
+          <ul class="sidebar-menu" >            
               <li class="menu-header"></li>
               <li class="menu-header"></li>
 
-              <li class="nav-item dropdown buka_menu" data-name="dasb" id="dasb">
+              <li class="nav-item dropdown buka_menu" data-name="dasb" id="dasb"  >
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu" >
                   <li class="aktif_submenu" id="gamifi"><a href="../gamifikasi/gamifikasi.php">Gamifikasi</a></li>
                   <li><a class="aktif_submenu" id="judge" href="#">Judgement Gamifikasi</a></li>                  
                 </ul>

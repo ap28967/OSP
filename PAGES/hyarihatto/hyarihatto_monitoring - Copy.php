@@ -187,7 +187,7 @@ if (!isset($_SESSION['osp_user'])) {
 
 
 <!-- GRAFIK -->
-<!-- <script>
+<script>
     var xValues = ["Jan", "Feb", "Mar", "Apr", "May"];
     var yValues = [55, 49, 44, 24, 15];
     var barColors = ["#4bc0c0"];
@@ -238,7 +238,7 @@ if (!isset($_SESSION['osp_user'])) {
         }
     }
     });
-</script> -->
+</script>
 
 
 

@@ -35,10 +35,10 @@ if (!isset($_SESSION['osp_user'])) {
                                         </div>
                                          <!-- DEPARTEMENT -->
                                          <div class="form-group col-md-2">
-                                            <label for="pilihDept">Departement</label>
-                                            <select type="text" class="form-control" id="pilihDept" name="pilihDept">
-                                                <option value="">Pilih...</option>
-                                                <option id="all_dept" value="" class="d-none" disabled>All</option>
+                                            <label for="pilih_dept_account">Departement</label>
+                                            <select type="text" class="form-control" id="pilih_dept_account" name="pilih_dept_account">
+                                                <!-- <option value="">Pilih...</option> -->
+                                                <option id="all_dept" value="All" class="d-none">All</option>
                                                 <?php 
                                                     $query_dept = mysqli_query($link_osp,"SELECT * FROM bais_dept_account") or die(mysqli_error($link_osp));
                                                     if (mysqli_num_rows( $query_dept)>0){
@@ -52,10 +52,10 @@ if (!isset($_SESSION['osp_user'])) {
                                         </div>
                                         <!-- SECTION -->
                                         <div class="form-group col-md-2">
-                                            <label for="pilihSect">Section</label>
-                                            <select type="text" class="form-control" id="pilihSect" name="pilihSect">
-                                                <option value="">Pilih...</option>
-                                                <option id="all_sect" value="" class="d-none" disabled>All</option>
+                                            <label for="pilih_sect">Section</label>
+                                            <select type="text" class="form-control" id="pilih_sect" name="pilih_sect">
+                                                <!-- <option value="">Pilih...</option> -->
+                                                <option id="all_sect" value="All" class="d-none">All</option>
                                                 <?php 
                                                     $query_sect = mysqli_query($link_osp,"SELECT * FROM bais_id_section") or die(mysqli_error($link_osp));
                                                     if (mysqli_num_rows( $query_sect)>0){
@@ -69,10 +69,10 @@ if (!isset($_SESSION['osp_user'])) {
                                         </div>
                                         <!-- GROUP -->
                                         <div class="form-group col-md-2">
-                                            <label for="pilihGrp">Group</label>
-                                            <select type="text" class="form-control dataGrp" id="pilihGrp" name="pilihGrp">
-                                                <option value="">Pilih...</option>
-                                                <option id="all_grp" value="" class="d-none" disabled>All</option>
+                                            <label for="pilih_grp">Group</label>
+                                            <select type="text" class="form-control dataGrp" id="pilih_grp" name="pilih_grp">
+                                                <!-- <option value="_" class="d-none">Pilih...</option> -->
+                                                <option id="all_grp" value="All">All</option>
                                                 <?php 
                                                     // $query_grp = mysqli_query($link_osp,"SELECT * FROM bais_id_group") or die(mysqli_error($link_osp));
                                                     // if (mysqli_num_rows( $query_grp)>0){
@@ -100,17 +100,17 @@ if (!isset($_SESSION['osp_user'])) {
                             <!-- GRAFIK -->
                             <!-- TABEL -->
                             <div>  
-                                <table class="table table-responsive-sm"  >
+                                <table class="table table-sm"  >
                                     <thead>
-                                        <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">NPK</th>
-                                        <th scope="col">Nama</th>
-                                        <th scope="col">Jabatan</th>
-                                        <th scope="col">Group</th>
-                                        <th scope="col">Section</th>
-                                        <th scope="col">Dept</th>
-                                        <th scope="col">Bulan</th>
+                                        <tr style="background-color:#9A9791; color:white;">
+                                            <th scope="col">#</th>
+                                            <th scope="col">NPK</th>
+                                            <th scope="col">Nama</th>
+                                            <th scope="col">Jabatan</th>
+                                            <th scope="col">Group</th>
+                                            <th scope="col">Section</th>
+                                            <th scope="col">Dept</th>
+                                            <th scope="col">Bulan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -157,8 +157,6 @@ if (!isset($_SESSION['osp_user'])) {
 <script src="../../ASSETS/js/scripts.js"></script>
 <script src="../../ASSETS/bootstrap/js/chart.min.js"></script>
 <script src="../../ASSETS/js/custom.js"></script>
-<!-- Page Specific JS File -->
-<!-- <script src="../../ASSETS/js/page/index.js"></script> -->
 
 
 
@@ -176,26 +174,57 @@ if (!isset($_SESSION['osp_user'])) {
         // var page = $('.page_active').attr('id');
         var start = $('#startDate').val();
         var end = $('#endDate').val();
-        var pilihDept = $('#pilihDept').val();
+        var pilih_dept_account = $('#pilih_dept_account').val();
+        var pilih_sect = $('#pilih_sect').val();
+        var pilih_grp = $('#pilih_grp').val();
+        var pilih_data;
+        var pilih_type;
 
-        if(start!='' && end!=''){
-            $.ajax({
-                type: 'GET',
-                url: "hyarihatto_monitoring_tabel.php",
-                data: {page:page,start:start,end:end, pilihDept:pilihDept},
-                success: function(hasil) {
-                    $('.dataTabel').html(hasil);
-                    // console.log("ok")
-                }
-            });
+
+        if(start!="" && end!="" && (pilih_dept_account!=null || pilih_sect!=null || pilih_grp!=null)){    
+            
+            if (pilih_dept_account!="All" && pilih_sect=="All" && pilih_grp=="All"){
+                pilih_data = pilih_dept_account;
+                pilih_type = "dept_account";
+            } else if (pilih_dept_account=="All" && pilih_sect!="All" && pilih_grp=="All"){
+                pilih_data = pilih_sect;
+                pilih_type = "sect";
+            } else if (pilih_dept_account=="All" && pilih_sect!="All" && pilih_grp!="All"){
+                pilih_data = pilih_grp;
+                pilih_type = "grp";
+            }
+
+                $.ajax({
+                    type: 'GET',
+                    url: "hyarihatto_monitoring_tabel.php",
+                    data: {
+                        page               : page,
+                        start              : start,
+                        end                : end,
+                        pilih_data         : pilih_data,
+                        pilih_type         : pilih_type
+                    },             
+                    success: function(hasil) {
+                        $('.dataTabel').html(hasil);                    
+                    }
+                });
         };
     });
 </script>
 
+
+
+
+
+
+
+
+
+
 <!-- TOGGLE INPUT SELECTOR -->
 <script>
     // TOGGLE DEPT
-     $(document).on('change', '#pilihDept', function(){
+     $(document).on('change', '#pilih_dept_account', function(){
         $('#all_sect').prop('selected', true);
         $('#all_grp').prop('selected', true);
         $('.callback_grp').addClass('d-none');
@@ -203,16 +232,16 @@ if (!isset($_SESSION['osp_user'])) {
      });
 
     //  TOGGLE SECT
-     $(document).on('change', '#pilihSect', function(){
+     $(document).on('change', '#pilih_sect', function(){
         $('#all_dept').prop('selected', true);
         $('#all_grp').prop('selected', true);
         // var page = $(this).attr("id");
-        var pilihSect = $('#pilihSect').val();
-        if(pilihSect != ''){
+        var pilih_sect = $('#pilih_sect').val();
+        if(pilih_sect != ''){
             $.ajax({
                 type: 'GET',
                 url: "hyarihatto_monitoring_select.php",
-                data: {pilihSect:pilihSect},
+                data: {pilih_sect:pilih_sect},
                 success: function(hasil) {
                     $('.dataGrp').html(hasil);
                 }
@@ -221,7 +250,7 @@ if (!isset($_SESSION['osp_user'])) {
      });
 
      //  TOGGLE GROUP
-     $(document).on('change', '#pilihGrp', function(){
+     $(document).on('change', '#pilih_grp', function(){
          $('#all_dept').prop('selected', true);
      });
 </script>

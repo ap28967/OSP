@@ -27,11 +27,11 @@ if (isset($_POST['submit'])) {
       $_SESSION['osp_role_name'] =  $result_login['role_name'];
       $_SESSION['osp_grp'] =  $result_login['grp'];
       $_SESSION['osp_sect'] =  $result_login['sect'];
-      $_SESSION['osp_dept'] =  $result_login['dept'];
+      $_SESSION['osp_dept_account'] =  $result_login['dept_account'];
       $_SESSION['osp_divisi'] =  $result_login['divisi'];
       $_SESSION['osp_nama_grp'] =  $result_login['nama_grp'];
       $_SESSION['osp_nama_sect'] =  $result_login['nama_sect'];
-      $_SESSION['osp_nama_dept'] =  $result_login['nama_dept'];
+      $_SESSION['osp_nama_dept_account'] =  $result_login['nama_dept_account'];
 
       mysqli_free_result($query_login);      
 

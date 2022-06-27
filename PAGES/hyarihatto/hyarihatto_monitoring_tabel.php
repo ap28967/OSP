@@ -12,7 +12,7 @@ if (!isset($_SESSION['osp_user'])) {
             
 <?php
 // $_GET['start'] = '2022-01';
-// $_GET['end'] = '2022-03';
+// $_GET['end'] = '2022-06';
 // $_GET['page'] = 1;
 
 if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
@@ -49,11 +49,29 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
 
     // $filter_tabel = "grp = '$_SESSION[osp_grp]'";
     // $filter_tabel ="sect = '$_SESSION[osp_sect]'";
-    // $filter_tabel ="dept = '$_SESSION[osp_dept]'";
+    // $filter_tabel ="dept_account = '$_SESSION[osp_dept_account]'";
     // $filter_tabel ="divisi = '1-001'";
-    if(isset($_GET['pilihDept'])){
-        $filter_tabel = "dept_account = '$_GET[pilihDept]'";
+    // $filter_tabel = "grp = '1-001-001-012-048'";
+    // $filter_tabel ="sect = '1-001-001-012'";
+
+
+
+    if($_GET['pilih_type']=="dept_account"){
+        $filter_tabel = "dept_account = '$_GET[pilih_data]'";
+    } else if($_GET['pilih_type']=="sect"){
+        $filter_tabel = "sect = '$_GET[pilih_data]'";
+    } else if($_GET['pilih_type']=="grp"){
+        $filter_tabel = "grp = '$_GET[pilih_data]'";
     }
+
+
+    // $_GET['pilih_data'] =  '1-001-001-012';
+
+    // $filter_tabel = "sect = '$_GET[pilih_data]'";
+
+// echo $_GET['pilih_type'].'<br>';
+// echo $_GET['pilih_data'];
+    
 
 
 
@@ -66,7 +84,7 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
 
     // Pagination
     $no=1;        
-    $limit =30;
+    $limit =100;
     $limit_start = ($page-1) * $limit;    
 
     $no = $limit_start + 1;    
@@ -80,16 +98,16 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
   ?>
   
 
-  <table class="table table-striped table-responsive text-center text-nowrap" style="height: 600px;">
+  <table class="table table-striped table-responsive table-sm text-center text-nowrap" style="height: 600px;">
         <thead>
-            <tr>
+            <tr style="background-color:#9A9791; color:white;">
                 <!-- <th scope="col"> -->
                 <!-- <div class="custom-checkbox custom-control">
                     <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkAll">
                     <label for="checkAll" class="custom-control-label">&nbsp;</label>
                 </div> -->
                 <!-- </th> -->
-                <th scope="col" class="fixed-header">#</th>
+                <th scope="col" >#</th>
                 <th scope="col">NPK</th>
                 <th scope="col">Nama</th>
                 <th scope="col">Jabatan</th>
@@ -118,6 +136,11 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
                     $array_x_label_bulan[] = $bulan; //X axis grafik
                     $array_y_total_mp[] = $total_records; //bar Y axis grafik
                     $array_y_target_hyari[] = 97;
+                    if($total_records != 0){
+                        $array_y_update_persen[] = round(($total_hitung_hyari/$total_records)*100,0);
+                    } else {
+                        $array_y_update_persen[] = 0;
+                    }
                                  
                     // NEXT LOOP
                     $mulai = strtotime('+1 month',$mulai);  //  Increment next month 
@@ -126,6 +149,8 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
                 $json_y_total_mp = json_encode($array_y_total_mp); //Y total mp grafik json     
                 $json_y_target_hyari = json_encode($array_y_target_hyari); //Y target persen grafik json
                 $json_y_update_hyari = json_encode($array_y_update_hyari); //Y target persen grafik json 
+                $json_y_update_persen = json_encode($array_y_update_persen); //Y update persen grafik json 
+                
                 // print_r($array_y_target_hyari)
                 ?>
             </tr>
@@ -217,10 +242,11 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
     var x_label_bulan = <?= $json_x_label_bulan  ?>;
     var y_total_mp = <?= $json_y_total_mp ?>;
     var y_update_hyari = <?= $json_y_update_hyari ?>; 
-    var y_update_persen = [87,85,82,83,90,78];   
+    var y_update_persen = <?= $json_y_update_persen ?>;   
     var y_target_hyari = <?= $json_y_target_hyari ?>;
     var barColors = ["#4bc0c0"];
-            console.log(y_target_hyari);
+
+    
     var donatLabel = ["UF", "UR", "UB", "SM", "MB", "SL"];
     var donatValues = ["50", "40", "30", "20", "10", "5"];
     var donatColors = ["#fe5553","#74C656", "#56C6AB ", "#5691C6", "#C6BE56", "grey"];

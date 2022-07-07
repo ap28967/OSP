@@ -9,27 +9,29 @@ $npk = $_SESSION['osp_user'];
 ?>
 
 
-    <table class="table table-striped table-responsive table text-center text-nowrap">
+    <table class="table table-striped table-responsive table-sm text-center text-nowrap" style="height: 600px;">
         <thead>
-            <tr>
-            <!-- <th scope="col"> -->
-            <!-- <div class="custom-checkbox custom-control">
-                <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkAll">
-                <label for="checkAll" class="custom-control-label">&nbsp;</label>
-            </div> -->
-            <!-- </th> -->
-            <th scope="col">#</th>
-            <th scope="col">NPK</th>
-            <th scope="col">Kategori</th>
-            <th scope="col">Risk</th>
-            <th scope="col">STOP6</th>
-            <th scope="col">ICARE</th>
-            <th scope="col">Tanggal Kejadian</th>
-            <th scope="col">Lokasi</th>
-            <th scope="col">Temuan</th>
-            <th scope="col">Penyebab</th>
-            <th scope="col">Saran</th>
-            <th scope="col">Foto</th>
+            <tr style="background-color:#9A9791; color:white;">
+                <!-- <th scope="col"> -->
+                <!-- <div class="custom-checkbox custom-control">
+                    <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkAll">
+                    <label for="checkAll" class="custom-control-label">&nbsp;</label>
+                </div> -->
+                <!-- </th> -->
+                <th scope="col">#</th>
+                <th scope="col">NPK</th>
+                <th scope="col">Foto Temuan</th>
+                <th scope="col">Temuan</th>
+                <th scope="col">Penyebab</th>
+                <th scope="col">Kategori</th>
+                <th scope="col">Risk</th>
+                <th scope="col">STOP6</th>
+                <th scope="col">ICARE</th>
+                <th scope="col">Lokasi</th>  
+                <th scope="col">Tanggal Kejadian</th>                              
+                <th scope="col">Saran</th>                
+                <th scope="col">Foto Perbaikan</th>
+                <th scope="col">Tgl Input</th>
             </tr>
         </thead>
         <tbody>
@@ -75,7 +77,7 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
         $noLabel = $noLabel + 1;
         ?>
 
-        <tr>
+    <tr>
         <!-- <td scope="row">
             <div class="custom-checkbox custom-control">
                 <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input check" id="checkbox-<?php 
@@ -88,11 +90,13 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
         </td> -->
         <td><?php echo $no++;?></td>
         <td><?php echo $rows['npk'];?></td>
+        <td align="center"><img src="../../CACHE/hyarihatto/<?php echo $rows['foto_temuan'];?>" style="width:25px;cursor:pointer" onclick="onClick(this)" ></td>
+        <td><?php echo $rows['temuan'];?></td>
+        <td><?php echo $rows['penyebab'];?></td>
         <td><?php echo $rows['kategori'];?></td>
         <td><?php echo $rows['risk'];?></td>
         <td><?php echo $rows['stop6'];?></td>
-        <td><?php echo $rows['icare'];?></td>
-        <td><?php echo $rows['tanggal'];?></td>
+        <td><?php echo $rows['icare'];?></td>        
         <td>
             <?php if (STRLEN($rows['lokasi'])>=15) {
                     echo SUBSTR($rows['lokasi'],0,15)."...";
@@ -101,11 +105,11 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
                 }
             ?>
         </td>
-        <td><?php echo $rows['temuan'];?></td>
-        <td><?php echo $rows['penyebab'];?></td>
-        <td><?php echo $rows['saran'];?></td>
-        <td align="center"><img src="../../CACHE/hyarihatto/<?php echo $rows['nama_file'];?>" style="width:25px;cursor:pointer" onclick="onClick(this)" ></td>                                   
-        </tr>
+        <td><?php echo $rows['tanggal_kejadian'];?></td>        
+        <td><?php echo $rows['saran'];?></td>        
+        <td align="center"><img src="../../CACHE/hyarihatto/<?php echo $rows['foto_perbaikan'];?>" style="width:25px;cursor:pointer" onclick="onClick(this)" ></td>                                    
+        <td><?php echo $rows['tglinput'];?></td>
+    </tr>
 
         <?php
         } 

@@ -9,86 +9,77 @@ if (!isset($_SESSION['osp_user'])) {
 ?>
 
 
-            
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            
+<div class="row"><!--ROW-->
+    <div class="card card-header-custom col-md-12" ><!--CARD HEADER--> 
+    <div class="row"  style="padding-left:15px; ">
+        <div><i class="card-header-custom-icon bg-merah fas fa-car"></i></div>                            
+        <div class="vertical-center card-header-custom-judul" >My Hyarihatto</div>
+    </div>                  
+    </div><!--CARD HEADER-->                         
                         
-                            <div class="card-header">
-                                <h4>List Hyarihatto</h4>
-                            </div>
-                            <!-- FILTER RANGGAL -->
-                            <div class="card-body">
-                                <div class="row">
-                                    <!-- Periode DARI -->  
-                                    
-                                        <div class="form-group col-md-5">
-                                            <label for="dari_bulan">From</label>
-                                            <input type="month" class="form-control" id="startDate" name="startDate" placeholder="month">
-                                        </div>
-                                       
-                                        <!-- Periode HINGGA -->
-                                        <div class="form-group col-md-5">
-                                            <label for="hingga_bulan">Until</label>
-                                            <input type="month" class="form-control" id="endDate" name="endDate" placeholder="month" >                                            
-                                        </div>
-                                        <!-- Button CARI -->
-                                        <div class="form-group col-md-2">
-                                            <button type="button" name="btnSubmit"class="btn btn-primary btn-md halaman fa fa-search" style="font-size:medium;" id="1"></button>
-                                        </div>
-                                    
-                                </div>
-                            </div>
+                         
+    <!-- FILTER RANGGAL -->
+    <div class="card  col-md-12"><!--col-lg-12--> 
+        <div class="row"><!--ROW-->
+            <div class="form-group col-md-4">
+                <label for="dari_bulan">From</label>
+                <input type="month" class="form-control" id="startDate" name="startDate" placeholder="month">
+            </div>            
+            <div class="form-group col-md-4">
+                <label for="hingga_bulan">Until</label>
+                <input type="month" class="form-control" id="endDate" name="endDate" placeholder="month" >                                            
+            </div>
+            <div class="form-group col-md-2" style="margin-top:30px;">
+                <button type="button" name="btnSubmit"class="btn btn-primary btn-md halaman fa fa-search" style="font-size:medium;" id="1"></button>
+            </div>
+        </div> <!--ROW-->        
+    </div><!--col-lg-12--> 
 
-                            <div class="dataTabel">  
-                                <table class="table table-striped table-responsive table-md article-table"  >
-                                    <thead>
-                                        <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">NPK</th>
-                                        <th scope="col">Kategori</th>
-                                        <th scope="col">Risk</th>
-                                        <th scope="col">STOP6</th>
-                                        <th scope="col">ICARE</th>
-                                        <th scope="col">Tanggal Kejadian</th>
-                                        <th scope="col">Lokasi</th>
-                                        <th scope="col">Temuan</th>
-                                        <th scope="col">Penyebab</th>
-                                        <th scope="col">Saran</th>
-                                        <th scope="col">Foto</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                        <td scope='row'></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td ></td>                                  
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+    <div class="card  col-md-12"><!--col-lg-12--> 
+        <div class="row dataTabel"> <!--ROW--> 
+            <table class="table table-striped table-responsive table-sm text-center text-nowrap" style="height: 600px;">
+                <thead>
+                    <tr style="background-color:#9A9791; color:white;">
+                        <th scope="col">#</th>
+                        <th scope="col">NPK</th>
+                        <th scope="col">Foto Temuan</th>
+                        <th scope="col">Temuan</th>
+                        <th scope="col">Penyebab</th>
+                        <th scope="col">Kategori</th>
+                        <th scope="col">Risk</th>
+                        <th scope="col">STOP6</th>
+                        <th scope="col">ICARE</th>
+                        <th scope="col">Lokasi</th>  
+                        <th scope="col">Tanggal Kejadian</th>                              
+                        <th scope="col">Saran</th>                
+                        <th scope="col">Foto Perbaikan</th>
+                        <th scope="col">Tgl Input</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope='row'></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>                                 
+                    </tr>
+                </tbody>
+            </table>
+        </div><!--ROW--> 
+    </div><!--col-lg-12--> 
 
+</div><!--ROW-->
 
-
-                            
-
-                        <!-- Card -->
-                        </div>
-                    <!-- Col -->
-                    </div>
-                <!-- Row -->
-                </div>
-                   
 
 <?php
   include("../header/footer.php");
@@ -131,7 +122,7 @@ if (!isset($_SESSION['osp_user'])) {
 <script src="../../ASSETS/js/custom.js"></script>
 
 <!-- Page Specific JS File -->
-<script src="../../ASSETS/js/page/index.js"></script>
+<!-- <script src="../../ASSETS/js/page/index.js"></script> -->
 <!-- <script src="assets/js/page/bootstrap-modal.js"></script> -->
 
 <!-- FUNCTION VIEW IMAGE -->

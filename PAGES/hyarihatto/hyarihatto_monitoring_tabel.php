@@ -5,26 +5,30 @@ if (!isset($_SESSION['osp_user'])) {
     header("Location: ../../AUTH/auth-login.php");
 }
 
+// PHP SPREADSHEET
+require '../../vendor/autoload.php';
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 ?>
 
 
 
             
 <?php
-// $_GET['start'] = '2022-01';
-// $_GET['end'] = '2022-06';
-// $_GET['page'] = 1;
 
 if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
 ?>
     <!-- GRAFIK HYARIHATTO -->
     <div class="row">
-        <div class="card-body col-md-8">
-            <canvas id="myChart88" style="width:100%;height:300px;"></canvas>
-        </div>                            
-        <div class="card-body col-md-4">
-            <canvas id="myChart99" style="width:100%;height:300px;"></canvas>
+        <div class="card-body col-md-12">
+            <canvas id="chart_hyari_bulanan" style="width:100%;height:300px;"></canvas>
         </div>
+        <!-- <div class="card-body col-md-6">
+            <canvas id="chart_hyari_perjalur" style="width:100%;height:300px;"></canvas>
+        </div>                              -->
+        <!-- <div class="card-body col-md-4">
+            <canvas id="myChart99" style="width:100%;height:300px;"></canvas>
+        </div> -->
     </div>
 
 
@@ -35,24 +39,6 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
 
     $mulai = strtotime($startDate);   
     $selesai = strtotime(date('Y-m-d', strtotime($_GET['end'])));
-
-    // FILTER DATA TABEL BERDASARKAN LEVEL SESSION
-    // if ($_SESSION['osp_code_level'] >= 2 && $_SESSION['osp_code_level']<=3){
-    //     $filter_tabel = "grp = '$_SESSION[osp_grp]'";
-    // } elseif ($_SESSION['osp_code_level'] == 4) {
-    //     $filter_tabel ="sect = '$_SESSION[osp_sect]'";
-    // } elseif ($_SESSION['osp_code_level'] >= 5 && $_SESSION['osp_code_level']<=6){
-    //     $filter_tabel ="dept = '$_SESSION[osp_dept]'";
-    // } elseif ($_SESSION['osp_code_level'] >= 7) {
-    //     $filter_tabel ="division = '$_SESSION[osp_division]'";
-    // }
-
-    // $filter_tabel = "grp = '$_SESSION[osp_grp]'";
-    // $filter_tabel ="sect = '$_SESSION[osp_sect]'";
-    // $filter_tabel ="dept_account = '$_SESSION[osp_dept_account]'";
-    // $filter_tabel ="divisi = '1-001'";
-    // $filter_tabel = "grp = '1-001-001-012-048'";
-    // $filter_tabel ="sect = '1-001-001-012'";
 
 
 
@@ -65,14 +51,6 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
     }
 
 
-    // $_GET['pilih_data'] =  '1-001-001-012';
-
-    // $filter_tabel = "sect = '$_GET[pilih_data]'";
-
-// echo $_GET['pilih_type'].'<br>';
-// echo $_GET['pilih_data'];
-    
-
 
 
 
@@ -80,11 +58,11 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
    $queryAllKar = "SELECT npk FROM view_sesi WHERE $filter_tabel"; 
    $resultAllKar=mysqli_query($link_osp,$queryAllKar);    
    $total_records=mysqli_num_rows($resultAllKar);
-//    echo $total_records;
+
 
     // Pagination
     $no=1;        
-    $limit =100;
+    $limit =10;
     $limit_start = ($page-1) * $limit;    
 
     $no = $limit_start + 1;    
@@ -98,7 +76,7 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
   ?>
   
 
-  <table class="table table-striped table-responsive table-sm text-center text-nowrap" style="height: 600px;">
+  <table class="table table-striped table-responsive table-sm text-center text-nowrap" >
         <thead>
             <tr style="background-color:#9A9791; color:white;">
                 <!-- <th scope="col"> -->
@@ -201,58 +179,54 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
     </table>
 
 
+    <div>
+        <nav>
+            <ul class="pagination">
+                <?php
 
-    <nav>
-        <ul class="pagination">
-            <?php
+                if($page == 1){
+                    echo '<li class="page-item disabled"><a class="page-link" >First</a></li>';
+                    echo '<li class="page-item disabled"><a class="page-link" ><span aria-hidden="true">&laquo;</span></a></li>';
+                } else {
+                    $link_prev = ($page > 1)? $page - 1 : 1;
+                    echo '<li class="page-item halaman" id="1" style="color:#6777ef"><a class="page-link" >First</a></li>';
+                    echo '<li class="page-item halaman" id="'.$link_prev.'" style="color:#6777ef"><a class="page-link" href="#"><span aria-hidden="true">&laquo;</span></a></li>';
+                }
 
-            if($page == 1){
-                echo '<li class="page-item disabled"><a class="page-link" >First</a></li>';
-                echo '<li class="page-item disabled"><a class="page-link" ><span aria-hidden="true">&laquo;</span></a></li>';
-            } else {
-                $link_prev = ($page > 1)? $page - 1 : 1;
-                echo '<li class="page-item halaman" id="1" style="color:#6777ef"><a class="page-link" >First</a></li>';
-                echo '<li class="page-item halaman" id="'.$link_prev.'" style="color:#6777ef"><a class="page-link" href="#"><span aria-hidden="true">&laquo;</span></a></li>';
-            }
-
-            for($i = $start_number; $i <= $end_number; $i++){
-                $link_active = ($page == $i)? ' active page_active' : '';
-                echo '<li class="page-item halaman '.$link_active.'" id="'.$i.'"  style="color:#6777ef"><a class="page-link" >'.$i.'</a></li>';
-            }
-
-
-            if($page == $jumlah_page){
-                echo '<li class="page-item disabled"><a class="page-link" ><span aria-hidden="true">&raquo;</span></a></li>';
-                echo '<li class="page-item disabled"><a class="page-link" >Last</a></li>';
-            } else {
-                $link_next = ($page < $jumlah_page)? $page + 1 : $jumlah_page;
-                echo '<li class="page-item halaman" id="'.$link_next.'" style="color:#6777ef"><a class="page-link" ><span aria-hidden="true">&raquo;</span></a></li>';
-                echo '<li class="page-item halaman" id="'.$jumlah_page.'" style="color:#6777ef"><a class="page-link" >Last</a></li>';
-            }
-
-            
-            ?>
-        </ul>
-    </nav>
+                for($i = $start_number; $i <= $end_number; $i++){
+                    $link_active = ($page == $i)? ' active page_active' : '';
+                    echo '<li class="page-item halaman '.$link_active.'" id="'.$i.'"  style="color:#6777ef"><a class="page-link" >'.$i.'</a></li>';
+                }
 
 
+                if($page == $jumlah_page){
+                    echo '<li class="page-item disabled"><a class="page-link" ><span aria-hidden="true">&raquo;</span></a></li>';
+                    echo '<li class="page-item disabled"><a class="page-link" >Last</a></li>';
+                } else {
+                    $link_next = ($page < $jumlah_page)? $page + 1 : $jumlah_page;
+                    echo '<li class="page-item halaman" id="'.$link_next.'" style="color:#6777ef"><a class="page-link" ><span aria-hidden="true">&raquo;</span></a></li>';
+                    echo '<li class="page-item halaman" id="'.$jumlah_page.'" style="color:#6777ef"><a class="page-link" >Last</a></li>';
+                }
 
-<!-- GRAFIK -->
+                
+                ?>
+            </ul>
+        </nav>
+    </div>
+
+
+
+<!-- CHART BULANAN -->
 <script>
     var x_label_bulan = <?= $json_x_label_bulan  ?>;
     var y_total_mp = <?= $json_y_total_mp ?>;
     var y_update_hyari = <?= $json_y_update_hyari ?>; 
     var y_update_persen = <?= $json_y_update_persen ?>;   
     var y_target_hyari = <?= $json_y_target_hyari ?>;
-    var barColors = ["#4bc0c0"];
-
+    var barColors = ["#4bc0c0"];    
     
-    var donatLabel = ["UF", "UR", "UB", "SM", "MB", "SL"];
-    var donatValues = ["50", "40", "30", "20", "10", "5"];
-    var donatColors = ["#fe5553","#74C656", "#56C6AB ", "#5691C6", "#C6BE56", "grey"];
-
-    // BULANAN
-    new Chart("myChart88", {    
+    
+    new Chart("chart_hyari_bulanan", {    
         data: {   
             labels: x_label_bulan,
             datasets: [{ 
@@ -298,7 +272,15 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
                     display: true,
                     position: 'left',
                     min: 0,
-                    max: <?= round($total_records*2, -2); ?>                    
+                    max:    <?php 
+                                if($total_records<100){
+                                    echo round($total_records*2, 0);
+                                } elseif ($total_records<1000) {
+                                    echo round($total_records*2, -2);
+                                } elseif ($total_records>=1000) {
+                                    echo round($total_records*2, -3);
+                                }
+                            ?>                   
                 },
                 right_axis: {
                     type: 'linear',
@@ -313,8 +295,100 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
             }
         }
     });
+</script>
 
+
+
+<!-- CHART PERJALUR -->
+<script>
+    var x_label_bulan = <?= $json_x_label_bulan  ?>;
+    var y_total_mp = <?= $json_y_total_mp ?>;
+    var y_update_hyari = <?= $json_y_update_hyari ?>; 
+    var y_update_persen = <?= $json_y_update_persen ?>;   
+    var y_target_hyari = <?= $json_y_target_hyari ?>;
+    var barColors = ["#4bc0c0"];    
+    
+    
+    new Chart("chart_hyari_perjalur", {    
+        data: {   
+            labels: x_label_bulan,
+            datasets: [{ 
+                type: "line",
+                borderColor: "grey",
+                backgroundColor: "grey",
+                data: y_target_hyari,
+                label: "Target",
+                yAxisID: 'right_axis' 
+            }, {
+                type: "line",
+                borderColor: "orange",
+                backgroundColor: "orange",
+                data: y_update_persen,
+                label: "%",
+                yAxisID: 'right_axis'   
+            }, {   
+                type: "bar",
+                backgroundColor: barColors,
+                data: y_total_mp,
+                label: "Total MP",
+                yAxisID: 'left_axis'   
+            }, {            
+                type: "bar",
+                backgroundColor: "#ff6384",
+                data: y_update_hyari,
+                label: "Update Hyari",
+                yAxisID: 'left_axis'  
+            }]
+        },
+        options: {
+            responsive: true,
+            legend: {
+                display: false
+            },
+            title: {
+                display: true,
+                text: "Grafik Bar"        
+            },
+            scales: {
+                left_axis: {
+                    type: 'linear',
+                    display: true,
+                    position: 'left',
+                    min: 0,
+                    max:    <?php 
+                                if($total_records<100){
+                                    echo round($total_records*2, 0);
+                                } elseif ($total_records<1000) {
+                                    echo round($total_records*2, -2);
+                                } elseif ($total_records>=1000) {
+                                    echo round($total_records*2, -3);
+                                }
+                            ?>                   
+                },
+                right_axis: {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    min: 0,
+                    max: 100,
+                    grid: {
+                    drawOnChartArea: false, // only want the grid lines for one axis to show up
+                    },
+                },
+            }
+        }
+    });
+</script>
+
+
+
+
+<script>
     // DONUT
+    var donatLabel = ["UF", "UR", "UB", "SM", "MB", "SL"];
+    var donatValues = ["50", "40", "30", "20", "10", "5"];
+    var donatColors = ["#fe5553","#74C656", "#56C6AB ", "#5691C6", "#C6BE56", "grey"];
+
     new Chart("myChart99", {    
     data: {
         labels: donatLabel,

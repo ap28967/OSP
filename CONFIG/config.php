@@ -39,7 +39,38 @@ function compressedImage($source, $path, $quality) {
     imagejpeg($image, $path, $quality);
 }
 
+// SPECIAL USER ############################################################################################
+if(isset($_SESSION['osp_user'])){
+  $query_user_special = mysqli_query($link_osp, "SELECT * FROM user_special WHERE npk = '$_SESSION[osp_user]'");
+    if(mysqli_num_rows($query_user_special)>0){
+      while($rows_user_special = mysqli_fetch_assoc($query_user_special)){
+       $hyarihatto_monitor =  $rows_user_special['hyarihatto_monitor'];
+       $hyarihatto_export = $rows_user_special['hyarihatto_export'];
+      } 
+    } else {
+        $hyarihatto_monitor =  0;
+        $hyarihatto_export = 0;
+    }
 
+
+}
+
+
+// GENERAL SETTING ########################################################################################
+if(isset($_SESSION['osp_user'])){
+  $query_general_setting = mysqli_query($link_osp, "SELECT * FROM setting WHERE parameter = 'max_size_upload'");
+    if(mysqli_num_rows($query_general_setting)>0){
+      while($rows_general_setting = mysqli_fetch_assoc($query_general_setting)){
+       $max_size_upload =  $rows_general_setting['value'];
+      } 
+    }
+    $query_general_setting = mysqli_query($link_osp, "SELECT * FROM setting WHERE parameter = 'image_compress_ratio'");
+    if(mysqli_num_rows($query_general_setting)>0){
+      while($rows_general_setting = mysqli_fetch_assoc($query_general_setting)){
+       $image_compress_ratio =  $rows_general_setting['value'];
+      } 
+    }  
+}
 
 
 // NOTIFIKASI #############################################################################################
@@ -54,7 +85,7 @@ if(isset($_SESSION['osp_user'])){
   }
 }
 
-// session_start();
+
 ?>
 
 

@@ -1,0 +1,13 @@
+// Swal.fire({
+        // title: 'Anda Yakin ?',
+        // text: "Data Akan Dihapus Permanent",
+        // icon: 'warning',
+        // showCancelButton: true,
+        // confirmButtonColor: '#FF5733',
+        // cancelButtonColor: '#B2BABB',
+        // confirmButtonText: 'Yes, delete!'
+        // }).then((result) => {
+        //     if (result.value) {
+        //         document.location.href=getLink;
+        //     }
+        // })

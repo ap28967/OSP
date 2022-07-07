@@ -1,17 +1,10 @@
+          
           <!-- Section Body    -->
           </div> 
         <!-- Section -->        
         </section> 
     <!-- Main Content       -->
     </div>
-    
-
-
-
-
-
-
-
     
 
 
@@ -30,8 +23,13 @@
 
 
 
+
+
+
+  <script src="../../ASSETS/bootstrap/js/jquery-3.3.1.min.js" ></script>
   <script src="../../ASSETS/sweetalert2/dist/sweetalert2.min.js"></script>
   
+ 
 
 
 </body>

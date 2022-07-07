@@ -1,10 +1,10 @@
 <?php 
+$dashboard = "Location: ../PAGES/hyarihatto/hyarihatto_form.php";
 
-// include("../CONFIG/koneksi.php"); 
 include("../CONFIG/config.php"); 
 
 if (isset($_SESSION['osp_user'])) {
-  header("Location: ../PAGES/gamifikasi/gamifikasi.php");
+  header($dashboard);
 }
 
 if (isset($_POST['submit'])) {
@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
 
       mysqli_free_result($query_login);      
 
-      header("Location: ../PAGES/gamifikasi/gamifikasi.php");
+      header($dashboard);
   } else {
       $pesan = "galat";  
       // echo "<script>alert('NPK atau password Anda salah. Silahkan coba lagi!')</script>";
@@ -44,6 +44,9 @@ if (isset($_POST['submit'])) {
 
 
   ?>
+
+
+
 
 
 

@@ -8,38 +8,55 @@ if (!isset($_SESSION['osp_user'])) {
 
 
 // Fungsi Sesi NPK
-$npk           = $_SESSION['osp_user'];
-$kategori      = $_POST['kategori'];
-$risk          = $_POST['risk'];
-$stop6         = $_POST['stop6'];
-$icare         = $_POST['icare'];
-$tanggal       = $_POST['tanggal'];
-$lokasi        = $_POST['lokasi'];      
-$temuan        = $_POST['temuan'];
-$penyebab      = $_POST['penyebab'];
-$saran         = $_POST['saran'];
+$npk                = $_SESSION['osp_user'];
+$kategori           = $_POST['kategori'];
+$risk               = $_POST['risk'];
+$stop6              = $_POST['stop6'];
+$icare              = $_POST['icare'];
+$tanggal_kejadian   = $_POST['tanggal'];
+$lokasi             = $_POST['lokasi'];      
+$temuan             = $_POST['temuan'];
+$penyebab           = $_POST['penyebab'];
+$saran              = $_POST['saran'];
 
 
 
 
 $ekstensi =  array('png','jpg','jpeg','gif','img');
-$filename = $_FILES['foto']['name'];
-$ukuran = $_FILES['foto']['size'];
-$ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-$basename = pathinfo($filename, PATHINFO_FILENAME);
 $destination = '../../CACHE/hyarihatto/';
-
 $id = $thn.$bln."_".$npk;
-// $xx = $basename.'_'.$thn.$bln.".".$ext;
-$xx = $id.".".$ext;
+
+
+$foto_temuan = $_FILES['foto_temuan']['name'];
+$foto_temuan_ukuran = $_FILES['foto_temuan']['size'];
+$foto_temuan_ext = strtolower(pathinfo($foto_temuan, PATHINFO_EXTENSION));
+// $basename = pathinfo($foto_temuan, PATHINFO_FILENAME);
+$foto_temuan_basename = $id."_temuan.".$foto_temuan_ext;
+
+
+if(isset($_FILES['foto_perbaikan'])){
+    $foto_perbaikan = $_FILES['foto_perbaikan']['name'];
+    $foto_perbaikan_ukuran = $_FILES['foto_perbaikan']['size'];
+    $foto_perbaikan_ext = strtolower(pathinfo($foto_perbaikan, PATHINFO_EXTENSION));
+    $foto_perbaikan_basename = $id."_perbaikan.".$foto_perbaikan_ext;
+} else {
+    $foto_perbaikan_basename = "";
+}
 
 
 
-if(in_array($ext,$ekstensi) ) {
-	if($ukuran < (99*1024*1024)){
-        compressedImage($_FILES['foto']['tmp_name'], $destination.$xx,25);
-		mysqli_query($link_osp, "INSERT INTO hyarihatto (`id`, `npk`, `kategori`, `risk`, `stop6`, `icare`, `tanggal`, `lokasi`, `temuan`, `penyebab`, `saran`, `nama_file`)
-                                 VALUES('$id','$npk','$kategori','$risk','$stop6','$icare','$tanggal','$lokasi','$temuan','$penyebab','$saran','$xx')");
+
+
+if(in_array($foto_temuan_ext,$ekstensi) ) {
+	if($foto_temuan_ukuran < ($max_size_upload*1024*1024)){
+
+        compressedImage($_FILES['foto_temuan']['tmp_name'], $destination.$foto_temuan_basename,$image_compress_ratio);
+        if(isset($_FILES['foto_perbaikan'])){
+            compressedImage($_FILES['foto_perbaikan']['tmp_name'], $destination.$foto_perbaikan_basename,$image_compress_ratio);
+        }
+        
+		mysqli_query($link_osp, "INSERT INTO hyarihatto (`id`, `npk`, `kategori`, `risk`, `stop6`, `icare`, `tanggal_kejadian`, `lokasi`, `temuan`, `penyebab`, `saran`, `foto_temuan`, `foto_perbaikan`)
+                                 VALUES('$id','$npk','$kategori','$risk','$stop6','$icare','$tanggal_kejadian','$lokasi','$temuan','$penyebab','$saran','$foto_temuan_basename', '$foto_perbaikan_basename')");
        
         ?>        
         <script>
@@ -55,9 +72,17 @@ if(in_array($ext,$ekstensi) ) {
             cancelButtonColor: '#B2BABB',            
         })
         $('#formInputData').addClass('d-none');
-         $('#notifSudah').removeClass('d-none'); 
+        $('#notifSudah').removeClass('d-none'); 
             // $('#formInputData')[0].reset();  
+        $('#notif_beep').removeClass('beep'); 
+        $('#notif_hyarihatto').addClass('d-none'); 
         </script>
+
+        <div class="card-body">
+            <div class="alert alert-success">
+            Terimakasih anda sudah membuat Hyarihatto bulan ini.
+            </div>
+        </div>
 
         <?php        
 	}else{

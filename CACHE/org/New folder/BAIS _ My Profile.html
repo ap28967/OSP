@@ -1,0 +1,2353 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)http://10.59.12.51/CAIS/BAIS/dashboard/profile/index.php?profile=me -->
+<html lang="en" class="perfect-scrollbar-on"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <link rel="apple-touch-icon" sizes="76x76" href="http://10.59.12.51/CAIS/BAIS/dashboard/img/logo.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="icon" href="./BAIS _ My Profile_files/logo.png" type="image/png">
+  <link rel="manifest" href="http://10.59.12.51/CAIS/BAIS/assets/js/manifest.json">
+  <style>
+    
+    @font-face {
+        font-family: hotel_de_paris;
+        src: url('/CAIS/BAIS/assets/font/hotel_de_paris.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: FontAwesome;
+        src: url('/CAIS/BAIS/assets/fontawesome/webfonts/fa-regular-400.woff2') format('truetype');
+    }
+    @font-face {
+        font-family: FontAwesome;
+        src: url('/CAIS/BAIS/assets/fontawesome/webfonts/fa-regular-400.woff') format('truetype');
+    }
+    @font-face {
+        font-family: FontAwesome;
+        src: url('/CAIS/BAIS/assets/fontawesome/webfonts/fa-brands-400.woff') format('truetype');
+    }
+    @font-face {
+        font-family: FontAwesome;
+        src: url('/CAIS/BAIS/assets/fontawesome/webfonts/fa-brands-400.woff2') format('truetype');
+    }
+    @font-face {
+        font-family: FontAwesome;
+        src: url('/CAIS/BAIS/assets/fontawesome/webfonts/fa-solid-900.woff') format('truetype');
+    }
+    @font-face {
+        font-family: FontAwesome;
+        src: url('/CAIS/BAIS/assets/fontawesome/webfonts/fa-solid-900.woff2') format('truetype');
+    }
+    @font-face {
+        font-family: FontAwesome;
+        src: url('/CAIS/BAIS/assets/fontawesome/webfonts/fa-regular-400.ttf') format('truetype');
+    }
+    </style>
+    <script>
+      document.onreadystatechange = function () {
+      if (document.readyState === "complete") {
+      console.log(document.readyState);
+      document.getElementById("PreLoaderBar").style.display = "none";
+      }
+      }
+  </script>
+  <!-- css progreess bar loading page -->
+  <style type="text/css">
+    .progress {
+    position: relative;
+    height: 2px;
+    display: block;
+    width: 100%;
+    background-color: white;
+    border-radius: 2px;
+    background-clip: padding-box;
+    /*margin: 0.5rem 0 1rem 0;*/
+  overflow: hidden;
+
+  }
+    .progress .indeterminate {
+    background-color:black; }
+    .progress .indeterminate:before {
+    content: '';
+    position: absolute;
+    background-color: #FF5733;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    will-change: left, right;
+    -webkit-animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+    animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite; }
+    .progress .indeterminate:after {
+    content: '';
+    position: absolute;
+    background-color: #FFC300;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    will-change: left, right;
+    -webkit-animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+    animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+    -webkit-animation-delay: 1.15s;
+  animation-delay: 1.15s; }
+
+
+  @-webkit-keyframes indeterminate {
+    0% {
+    left: -35%;
+    right: 100%; }
+    60% {
+    left: 100%;
+    right: -90%; }
+    100% {
+    left: 100%;
+    right: -90%; } }
+    @keyframes indeterminate {
+    0% {
+    left: -35%;
+    right: 100%; }
+    60% {
+    left: 100%;
+    right: -90%; }
+    100% {
+    left: 100%;
+    right: -90%; } }
+    @-webkit-keyframes indeterminate-short {
+    0% {
+    left: -200%;
+    right: 100%; }
+    60% {
+    left: 107%;
+    right: -8%; }
+    100% {
+    left: 107%;
+    right: -8%; } }
+    @keyframes indeterminate-short {
+    0% {
+    left: -200%;
+    right: 100%; }
+    60% {
+    left: 107%;
+    right: -8%; }
+    100% {
+    left: 107%;
+    right: -8%; } }
+  </style>
+  <style>.cke{visibility:hidden;}</style></head><body class="" onload="hide_loading();"><div class="progress" id="PreLoaderBar" style="display: none;">
+      <div class="indeterminate"></div>
+  </div>
+  <title>
+    BAIS | My Profile  </title>
+ 
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" name="viewport">
+  <!--     Fonts and icons     -->
+  <link href="./BAIS _ My Profile_files/stylefonts.css" rel="stylesheet">
+ 
+  <link href="./BAIS _ My Profile_files/all.css" rel="stylesheet">
+  
+  <!-- CSS Files -->
+  <link href="./BAIS _ My Profile_files/bootstrap.min.css" rel="stylesheet">
+  <link href="./BAIS _ My Profile_files/paper-dashboard.css" rel="stylesheet">
+  <link href="./BAIS _ My Profile_files/moreicon.css" rel="stylesheet">
+  <link href="./BAIS _ My Profile_files/all.css" rel="stylesheet">
+    <!-- CSS Files 
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />-->
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet"> -->
+
+  <link href="./BAIS _ My Profile_files/MultiStep-theme.css" rel="stylesheet">
+  <link href="./BAIS _ My Profile_files/MultiStep.css" rel="stylesheet">
+  <link href="./BAIS _ My Profile_files/bootstrap-timepicker.css" rel="stylesheet">
+
+  <!-- owl carousel -->
+  <link rel="stylesheet" href="./BAIS _ My Profile_files/owl.carousel.min.css">
+  <link rel="stylesheet" href="./BAIS _ My Profile_files/owl.theme.default.min.cs">
+  
+  <script src="./BAIS _ My Profile_files/jquery.min.js.download"></script>
+  <script src="./BAIS _ My Profile_files/ckeditor.js.download"></script>
+  <link href="./BAIS _ My Profile_files/csscustom.css" rel="stylesheet">
+  
+  <!-- loading bar -->
+  <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
+  <link rel="stylesheet" type="text/css" href="./BAIS _ My Profile_files/loading-bar.css">
+  <script type="text/javascript" src="./BAIS _ My Profile_files/loading-bar.js.download"></script>
+<!-- untuk notifikasi Supervisor & Admin -->
+
+  
+  
+  <!-- heatmap -->
+  <!-- date range picker -->
+  <style type="text/css">
+    .lds-ellipsis {
+      display: inline-block;
+      position: absolute;
+      top:40%;
+      width: 80px;
+      height: 80px;
+    }
+    .lds-ellipsis div {
+      position: absolute;
+      top: 33px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: #66615B;
+      animation-timing-function: cubic-bezier(0, 1, 1, 0);
+    }
+    .lds-ellipsis div:nth-child(1) {
+      left: 8px;
+      animation: lds-ellipsis1 0.6s infinite;
+    }
+    .lds-ellipsis div:nth-child(2) {
+      left: 8px;
+      animation: lds-ellipsis2 0.6s infinite;
+    }
+    .lds-ellipsis div:nth-child(3) {
+      left: 32px;
+      animation: lds-ellipsis2 0.6s infinite;
+    }
+    .lds-ellipsis div:nth-child(4) {
+      left: 56px;
+      animation: lds-ellipsis3 0.6s infinite;
+    }
+    @keyframes lds-ellipsis1 {
+      0% {
+        transform: scale(0);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    @keyframes lds-ellipsis3 {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(0);
+      }
+    }
+    @keyframes lds-ellipsis2 {
+      0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(24px, 0);
+      }
+    }
+    
+    .overlay {
+      z-index :9999;
+      position : fixed;
+      top:0;
+      bottom:0;
+      left:0;
+      right:0;
+      background-color: rgba(255, 255, 255, 0.7);
+      text-align: center;
+    }
+
+  </style>
+
+  
+
+
+
+
+  <div class="loading overlay" style="opacity: 0; display: none;">
+    <!-- <div class="loadingio-spinner-wedges-kild66l96a"><div class="ldio-wgt5lhdj7pi">
+      <div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div>
+    </div></div> -->
+    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+  </div>
+  <div class="wrapper ">
+    <div class="sidebar bg-primary sdbr ps" data-color="default" data-active-color="danger">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color=" default | primary | info | success | warning | danger |"
+      -->
+      <div class="logo">
+        <a href="http://10.59.12.51/CAIS/BAIS/dashboard/profile/index.php" class="simple-text logo-mini">
+          <div class="logo-image-small">
+            <img src="./BAIS _ My Profile_files/logo.png">
+          </div>
+          <!-- <p>CT</p> -->
+        </a>
+        <a href="http://10.59.12.51/CAIS/BAIS/welcome" class="simple-text logo-normal" style="font-family: hotel_de_paris; font-size:1.5rem">
+          B A I S
+          <!-- <div class="logo-image-big">
+            <img src="../img/logo.png">
+          </div> -->
+        </a>
+      </div>
+      <div class="sidebar-wrapper ps ps--active-y">
+                <div class="user">
+          
+          <div class="photo">
+            <img src="data:image/jpg;base64,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pklDntUizCm0eGX1K05XAPHSqYmB707zRilZj5i+kxzjtTmcN1rOSfHU083C+tJphcsSFQKqySgVFLdDoDVRpSxppCbLEkuKj5dXJ6YNRIpdquiLEBHrT2HB2aZkUU51KMVIIweCe4ptRKLi7M+ihNTV0FFFFIoKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKsWmfMJxxgjP5VByeAMnsKsx/u2Vf1960granDjaqhDl7k7LmomTmrFIVoPHK/wAw6Gm73FT7RQYwadwK+96X5u5qbyuad5eKLhYr4PelVCxqfYKliiFK4WC3ixjNWJlxGfpUiKAKiuD8ppdRmYEM8JwBvU8e49KrVfsR9/61BexGObco+VucjoDWko8yujuwNez9m/kVqKKKwPXCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAoopeTwBknoB3ppOTshSkoq7EoqZbdiAX+TnkdTinNEikY5PvVqm76nHPG0o7asS3Tkuwxxx9KW4yuGHapl7U2ZcrWi7I8WtWdWfMySKQOoNSVQtnKsVNXlOahoadwxRTsc04LSAaCMUYzTtlPCUhkYWrEScZpEj5qcAKKGAdBVS6bCGrDviqF0+Rj1oS1BsdYr8hPrU8sSyKVcAg9eM0lquIxUxHFbptaowUrO6M17Abf3bEt/tEYqtJBLExVlJwM5UEitkDNIVoajJao7aeOqQeuqMKitOawjbLR/Ix6Y6flVOW0mj527l65WspU2tj06WMp1NHoyCiiisjsCiiigAooooAKKKKACiiigAooooAKKKKACiinJGz52KWx1xTSb2JlJRV2NpyqznCgk+1WorPvKeo4A9anCrGu1BjAx+FaKn3OCrmEI6Q1KyWh4Z2wO4HWpFijiHydSckkk81JyabIo21qlZWR5VTEVKr1Y0n0pirl8+lSIvGaFHJNBiKRQwyKdjilxxSEUJFKPuFWYJdwoljBFVkzG+01MkXF9DQzTkcd6jjORTttQaE6stOLqOlVwKeFNIaJ1alZ6YoxTXNIBrsTVST5pQtWiCe1QJGfMLEfSritSJPQvRLhBTscUIPlFKRgVqZDSMc0jHNKwyvFRZK9aAHZo60xnHanIeBQAyS3jlGGUcdCOoqtJp3OY2wO4bmtCg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">
+          </div>
+          <div class="info"> 
+            <a data-toggle="collapse" href="http://10.59.12.51/CAIS/BAIS/dashboard/profile/index.php?profile=me#profile" class="clpse collapsed" data-id="profile" data-name="profile">
+              <span style="text-transform:uppercase">
+                ANUGRAH [gu]                <b class="caret"></b>
+              </span>
+            </a>
+            <div class="clearfix"></div>
+            <div class="collapse " id="profile">
+              <ul class="nav">
+                <li class="menu " data-name="myprofile" id="myprofile">
+                  <a href="http://10.59.12.51/CAIS/BAIS/dashboard/profile/index.php?profile=me">
+                    <span class="sidebar-mini-icon">MP</span>
+                    <span class="sidebar-normal">My Profile</span>
+                  </a>
+                </li>                
+                <li>
+                  <a href="http://10.59.12.51/CAIS/BAIS/auth/logout.php">
+                    <span class="sidebar-mini-icon">LO</span>
+                    <span class="sidebar-normal">Log Out</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+                <ul class="nav">
+            <li class="menu clpse d-none" data-name="dashboard" id="dashboard" data-target="dashboard">
+              <a href="http://10.59.12.51/CAIS/BAIS/dashboard/">
+                <i class="nc-icon nc-bank"></i>
+                <p>Dashboard</p>
+              </a>
+            </li>
+            
+            <li class="clpse " data-name="achieve" id="achieve" data-target="achieve_">
+              <a data-toggle="collapse" href="http://10.59.12.51/CAIS/BAIS/dashboard/profile/index.php?profile=me#achieve_" aria-expanded="false">
+                <i class="nc-icon nc-chart-bar-32"></i>
+                <p>
+                Dashboard <b class="caret"></b>
+                </p>
+              </a>
+              <div class="collapse" id="achieve_">
+                <ul class="nav">
+                  <li class="menu " data-name="ach" id="ach">
+                    <a href="http://10.59.12.51/CAIS/BAIS/dashboard/administrasi/attendance_record.php"><!---link halaman absen MP--->
+                      <span class="sidebar-mini-icon">ME</span>
+                      <span class="sidebar-normal"> Attendance Efficiency </span>
+                    </a>
+                  </li>
+                  <li class="menu " data-name="rcg" id="rcg">
+                    <a href="http://10.59.12.51/CAIS/BAIS/dashboard/administrasi/in_out.php"><!---link halaman pengajuan SUPEM--->
+                      <span class="sidebar-mini-icon">IO</span>
+                      <span class="sidebar-normal"> In - Out Monitoring</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              </div>
+            </li>
+            
+                          <li class="clpse " data-name="tf" id="tf" data-target="transfer">
+                <a data-toggle="collapse" href="http://10.59.12.51/CAIS/BAIS/dashboard/profile/index.php?profile=me#transfer">
+                  <i class="nc-icon nc-book-bookmark"></i>
+                  <p>
+                    INFORMATION <b class="caret"></b>
+                  </p>
+                </a>
+                <div class="collapse" id="transfer">
+                  <ul class="nav">
+                    
+                    <li class="menu " data-name="infoportal" id="infoportal">
+                      <a href="http://10.59.12.51/CAIS/BAIS/dashboard/administrasi/info.php"><!---link halaman request edit MP--->
+                        <span class="sidebar-mini-icon">GI</span>
+                        <span class="sidebar-normal"> General Information </span>
+                      </a>
+                    </li>
+                    <li class="menu" data-name="lisbl" id="lisbl">
+                      <a href="http://10.59.12.51/CAIS/BAIS/dashboard/document/hospital.php?data=BL"><!---link halaman request edit MP--->
+                        <span class="sidebar-mini-icon">CB</span>
+                        <span class="sidebar-normal"> Clinic Blacklist </span>
+                      </a>
+                    </li>
+                    <li class="menu" data-name="lisrc" id="lisrc">
+                      <a href="http://10.59.12.51/CAIS/BAIS/dashboard/document/hospital.php?data=RH"><!---link halaman request edit MP--->
+                        <span class="sidebar-mini-icon">CR</span>
+                        <span class="sidebar-normal"> Clinic Recomendation </span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+                       
+              
+                                
+              <li class="clpse " data-name="req" id="req" data-target="requests">
+                <a data-toggle="collapse" href="http://10.59.12.51/CAIS/BAIS/dashboard/profile/index.php?profile=me#requests" aria-expanded="false">
+                  <i class="nc-icon nc-ruler-pencil"></i>
+                  <p>
+                  attendance <b class="caret"></b>
+                  </p>
+                </a>
+                <div class="collapse" id="requests">
+                  <ul class="nav">
+                    <li class="menu " data-name="abs" id="abs">
+                      <a href="http://10.59.12.51/CAIS/BAIS/dashboard/pages/absensi.php"><!---link halaman absen MP--->
+                        <span class="sidebar-mini-icon">AM</span>
+                        <span class="sidebar-normal"> attendance Monitoring </span>
+                      </a>
+                    </li>
+                                      </ul>
+                </div>
+              </li>
+                       
+                            <li class="clpse " data-name="ot" id="ot" data-target="overtime">
+                <a data-toggle="collapse" href="http://10.59.12.51/CAIS/BAIS/dashboard/profile/index.php?profile=me#overtime" aria-expanded="false"><!---link halaman Kontrol--->
+                  <i class="nc-icon nc-box"></i>
+                  <p>
+                  Overtime <b class="caret"></b>
+                  </p>
+                  <p></p>
+                </a>
+                <div class="cllpse collapse " id="overtime" data-name="overtime">
+                  <ul class="nav">
+                    
+                    <li class="menu " data-name="ovrtime" id="ovrtime">
+                      <a href="http://10.59.12.51/CAIS/BAIS/dashboard/pages/overtime.php">
+                        <span class="sidebar-mini-icon">OM</span>
+                        <span class="sidebar-normal"> Overtime Montoring </span>
+                      </a>
+                    </li>
+                                      </ul>
+                </div>
+              </li>
+               
+                            <li class="clpse " data-name="doc" id="doc" data-target="documentation">
+                <a data-toggle="collapse" href="http://10.59.12.51/CAIS/BAIS/dashboard/profile/index.php?profile=me#documentation" aria-expanded="true" class=""><!---link halaman Kontrol--->
+                  <i class="nc-icon nc-book-bookmark"></i>
+                  <p>
+                  Document &amp; Form <b class="caret"></b>
+                  </p>
+                  <p></p>
+                </a>
+                <div class="collapse show" id="documentation" style="">
+                  <ul class="nav">
+                    <li class="menu " data-name="UG" id="UG">
+                      <a href="http://10.59.12.51/CAIS/BAIS/dashboard/document/guide.php">
+                        <span class="sidebar-mini-icon">UG</span>
+                        <span class="sidebar-normal"> User Guidance </span>
+                      </a>
+                    </li>
+                    
+                    
+                    <li class="menu " data-name="admForm" id="admForm">
+                      <a href="http://10.59.12.51/CAIS/BAIS/dashboard/document/form.php">
+                        <span class="sidebar-mini-icon">AF</span>
+                        <span class="sidebar-normal"> Administration Forms </span>
+                      </a>
+                    </li>
+                    <li class="menu " data-name="exportmp" id="exportmp">
+                      <a href="http://10.59.12.51/CAIS/BAIS/dashboard/setting/employee/proses/export.php?export=mp">
+                        <span class="sidebar-mini-icon">EX</span>
+                        <span class="sidebar-normal"> Export Employee Data </span>
+                      </a>
+                    </li>
+                    <li class="menu " data-name="exportmp" id="exportmp">
+                      <a href="http://10.59.12.51/CAIS/BAIS/dashboard/setting/employee/proses/export.php?export=organization">
+                        <span class="sidebar-mini-icon">EO</span>
+                        <span class="sidebar-normal"> Export Org Data </span>
+                      </a>
+                    </li>
+                    
+                  </ul>
+                </div>
+              </li>
+                      </ul>
+      <div class="ps__rail-x" style="left: 0px; bottom: -50px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 50px; right: 0px; height: 582px;"><div class="ps__thumb-y" tabindex="0" style="top: 47px; height: 535px;"></div></div></div>
+    <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
+    <div class="main-panel ps ps--active-y">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-minimize">
+              <button id="minimizeSidebar" class="btn btn-icon btn-round">
+                <i class="nc-icon nc-minimal-right text-center visible-on-sidebar-mini "></i>
+                <i class="nc-icon nc-minimal-left text-center visible-on-sidebar-regular"></i>
+              </button>
+            </div>
+            <div class="navbar-toggle">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <a class="navbar-brand" href="javascript:;"><strong>My Profile</strong></a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
+
+          <!--- inactive sementara-->
+          <div class="collapse navbar-collapse justify-content-end" id="navigation">
+          <span class="col-md-4 px-0">
+            <span id="tgl" class="input-group no-border "><input type="text" value="Rabu, 6 Juli 2022" class="form-control text-right"><div class="input-group-append"><div class="input-group-text"><i class="nc-icon nc-calendar-60"></i></div></div></span>
+          </span>
+          <span class="px-0 col-sm-3 col-md-2 " style="width:140px">
+          <div id="clock" class="input-group no-border"><input type="text" value="08:05:41 AM" class="form-control text-right"><div class="input-group-append"><div class="input-group-text"><i class="fa fa-clock"></i></div></div></div>
+          </span>
+          <!--
+            <form>
+              <div class="input-group no-border">
+                <input type="text" value="" class="form-control" placeholder="Search...">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <i class="nc-icon nc-zoom-split"></i>
+                  </div>
+                </div>
+              </div>
+            </form>-->
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link btn-magnify" href="javascript:;">
+                  <i id="fullscreen" class="fas fa-expand" onclick="toggleFullScreen ();"></i>
+                  <p>
+                    <span class="d-lg-none d-md-block">Stats</span>
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item btn-rotate dropdown">
+                <a class="nav-link dropdown-toggle" href="http://10.59.12.51/CAIS/BAIS/dashboard/profile/index.php?profile=me" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="nc-icon nc-send"></i>
+                  <p>
+                    <span class="d-lg-none d-md-block">Some Actions</span>
+                  </p>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" target="blank" href="http://hrd.daihatsu.astra.co.id/hrd-site/index.php">Personal Site</a>
+                  <a class="dropdown-item" target="blank" href="https://adm-hrd.daihatsu.astra.co.id/PM2/Default.aspx">HRIS</a>
+                  <a class="dropdown-item" target="blank" href="http://10.59.12.51/CAIS">CAIS</a>
+                  <a class="dropdown-item" target="blank" href="http://10.59.12.51/CAIS/BAIS/dashboard/setting/portBlast.php">Report Issue</a>
+                </div>
+              </li>
+                          </ul>
+          </div>
+        </div>
+        
+      </nav>
+      
+      <!-- Seleseai Navbar -->
+      <div class="content">
+        <!--content taruh sini--->      
+        <!-- untuk notifikasi -->
+        <div class="info-data" data-infodata=""></div>
+        <div class="message" data-infodata=""></div>
+        
+        <div class="row">
+            <div class="modal fade" id="modal_lock" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered ">
+            
+                <div class="modal-content border" style="border:5px">
+                    <div class="modal-body ">
+                      <h6>Lock</h6>
+                    </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+                		
+		
+		<div class="row">
+			<div class="modal fade" id="modalProfile" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header justify-content-center">
+						
+						<h4 class="title title-up">Ganti Foto Profil</h4>
+					</div>
+					<div class="modal-body">
+						<form enctype="multipart/form-data" class="form-group border rounded py-auto text-center upload-ft d-none">
+							<div class="fileinput fileinput-new text-center " data-provides="fileinput">
+								<div class="fileinput-new thumbnail">
+									
+								</div>
+								<div class="fileinput-preview fileinput-exists thumbnail mt-4   mx-0 shadow-none" style="width:300px;min-width:300px">
+									<input type="text" class="form-control mx-0">
+								</div>
+								<div>
+									<span class="btn btn-outline-default btn-round btn-rose btn-file">
+									<span class="fileinput-new ">Select Image</span>
+									<span class="fileinput-exists">Change</span>
+										<input type="file" name="file_import" id="file_import" accept="image/jpg">
+									</span>
+									<a href="javascript:;" class="btn btn-danger btn-outline-danger btn-icon btn-round btn-rose btn-file fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i></a>
+								</div>
+								<p class="category">pastikan gambar berformat .JPG</p>
+							</div>
+							</form>
+						<div id="my_camera" class="border rounded ">
+							<img src="data:image/jpg;base64,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pklDntUizCm0eGX1K05XAPHSqYmB707zRilZj5i+kxzjtTmcN1rOSfHU083C+tJphcsSFQKqySgVFLdDoDVRpSxppCbLEkuKj5dXJ6YNRIpdquiLEBHrT2HB2aZkUU51KMVIIweCe4ptRKLi7M+ihNTV0FFFFIoKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKsWmfMJxxgjP5VByeAMnsKsx/u2Vf1960granDjaqhDl7k7LmomTmrFIVoPHK/wAw6Gm73FT7RQYwadwK+96X5u5qbyuad5eKLhYr4PelVCxqfYKliiFK4WC3ixjNWJlxGfpUiKAKiuD8ppdRmYEM8JwBvU8e49KrVfsR9/61BexGObco+VucjoDWko8yujuwNez9m/kVqKKKwPXCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAoopeTwBknoB3ppOTshSkoq7EoqZbdiAX+TnkdTinNEikY5PvVqm76nHPG0o7asS3Tkuwxxx9KW4yuGHapl7U2ZcrWi7I8WtWdWfMySKQOoNSVQtnKsVNXlOahoadwxRTsc04LSAaCMUYzTtlPCUhkYWrEScZpEj5qcAKKGAdBVS6bCGrDviqF0+Rj1oS1BsdYr8hPrU8sSyKVcAg9eM0lquIxUxHFbptaowUrO6M17Abf3bEt/tEYqtJBLExVlJwM5UEitkDNIVoajJao7aeOqQeuqMKitOawjbLR/Ix6Y6flVOW0mj527l65WspU2tj06WMp1NHoyCiiisjsCiiigAooooAKKKKACiiigAooooAKKKKACiinJGz52KWx1xTSb2JlJRV2NpyqznCgk+1WorPvKeo4A9anCrGu1BjAx+FaKn3OCrmEI6Q1KyWh4Z2wO4HWpFijiHydSckkk81JyabIo21qlZWR5VTEVKr1Y0n0pirl8+lSIvGaFHJNBiKRQwyKdjilxxSEUJFKPuFWYJdwoljBFVkzG+01MkXF9DQzTkcd6jjORTttQaE6stOLqOlVwKeFNIaJ1alZ6YoxTXNIBrsTVST5pQtWiCe1QJGfMLEfSritSJPQvRLhBTscUIPlFKRgVqZDSMc0jHNKwyvFRZK9aAHZo60xnHanIeBQAyS3jlGGUcdCOoqtJp3OY2wO4bmtCg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" alt="">
+						</div>
+						<div id="results" class="border rounded d-none">
+							
+						</div>
+						
+					</div>
+					<div class="modal-footer">
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<input type="button" class="btn btn-sm btn-warning submit-foto d-none" value="Sumbit Foto">
+							<input type="button" class="btn btn-sm btn-warning upload-foto" value="Upload Foto">
+							<input type="button" class="btn btn-sm btn-primary load-webcam" value="Ambil Foto Kamera" onclick="configure()">
+							<input type="button" class="btn btn-sm btn-info take-snap d-none" disabled="" value="Ambil Foto" onclick="take_snapshot()">
+							<input type="button" class="btn btn-sm btn-success save-snap d-none" disabled="" value="Upload Foto" onclick="saveSnap()">
+							<input type="button" class="btn btn-sm btn-danger cancel-upload-foto d-none" value="Cancel">
+							<input type="button" class="btn btn-sm btn-danger cancel-load-webcam d-none" value="Cancel">
+						</div>
+					</div>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+		<div class="row ">
+			<div class="col-md-4" id="sticker">
+				<div class="card card-user " id="">
+					<div class="image">
+						<img src="./BAIS _ My Profile_files/damir-bosnjak.jpg" alt="...">
+					</div>
+					<div class="card-body">
+						<div class="author">
+							<a data-toggle="modal" data-target="#modalProfile">
+								<img class="avatar border-gray" src="data:image/jpg;base64,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pklDntUizCm0eGX1K05XAPHSqYmB707zRilZj5i+kxzjtTmcN1rOSfHU083C+tJphcsSFQKqySgVFLdDoDVRpSxppCbLEkuKj5dXJ6YNRIpdquiLEBHrT2HB2aZkUU51KMVIIweCe4ptRKLi7M+ihNTV0FFFFIoKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKsWmfMJxxgjP5VByeAMnsKsx/u2Vf1960granDjaqhDl7k7LmomTmrFIVoPHK/wAw6Gm73FT7RQYwadwK+96X5u5qbyuad5eKLhYr4PelVCxqfYKliiFK4WC3ixjNWJlxGfpUiKAKiuD8ppdRmYEM8JwBvU8e49KrVfsR9/61BexGObco+VucjoDWko8yujuwNez9m/kVqKKKwPXCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAoopeTwBknoB3ppOTshSkoq7EoqZbdiAX+TnkdTinNEikY5PvVqm76nHPG0o7asS3Tkuwxxx9KW4yuGHapl7U2ZcrWi7I8WtWdWfMySKQOoNSVQtnKsVNXlOahoadwxRTsc04LSAaCMUYzTtlPCUhkYWrEScZpEj5qcAKKGAdBVS6bCGrDviqF0+Rj1oS1BsdYr8hPrU8sSyKVcAg9eM0lquIxUxHFbptaowUrO6M17Abf3bEt/tEYqtJBLExVlJwM5UEitkDNIVoajJao7aeOqQeuqMKitOawjbLR/Ix6Y6flVOW0mj527l65WspU2tj06WMp1NHoyCiiisjsCiiigAooooAKKKKACiiigAooooAKKKKACiinJGz52KWx1xTSb2JlJRV2NpyqznCgk+1WorPvKeo4A9anCrGu1BjAx+FaKn3OCrmEI6Q1KyWh4Z2wO4HWpFijiHydSckkk81JyabIo21qlZWR5VTEVKr1Y0n0pirl8+lSIvGaFHJNBiKRQwyKdjilxxSEUJFKPuFWYJdwoljBFVkzG+01MkXF9DQzTkcd6jjORTttQaE6stOLqOlVwKeFNIaJ1alZ6YoxTXNIBrsTVST5pQtWiCe1QJGfMLEfSritSJPQvRLhBTscUIPlFKRgVqZDSMc0jHNKwyvFRZK9aAHZo60xnHanIeBQAyS3jlGGUcdCOoqtJp3OY2wO4bmtCg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" alt="..." style="background:#0000">
+								<h5 class="title text-uppercase">ANUGRAH PRATAMA</h5>
+								
+							</a>
+							<div class="description desc">
+								TEAM MEMBER							</div>
+							<div class="description middle d-none">
+								<i class="nc-icon nc-album-2"></i> Ganti Foto Profile
+							</div>
+							
+						</div>
+						
+					</div>
+					<!-- <div class="card-footer">
+						<hr>
+						<div class="button-container">
+							<div class="row">
+								
+							</div>
+						</div>
+					</div> -->
+				</div>
+				<!-- <div class="card ">
+					<div class="card-body">
+						<h5 class="text-uppercase">Sisa Cuti Tahunan</h5>
+						<p class="description">
+							- Hari
+						</p>
+					</div>
+				</div>
+				<div class="card ">
+					<div class="card-body">
+						<h5 class="text-uppercase">Sisa Cuti panjang</h5>
+						<p class="description">
+							- Hari
+						</p>
+					</div>
+				</div> -->
+				
+				<div class="row">
+					<div class="col-md-12" id="form_account" style="">            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <h5 class="text-uppercase col-md-6">account info</h5>
+                                <div class="col-md-6 text-right">
+                                    <a class="btn btn-sm btn-info" data-toggle="collapse" href="http://10.59.12.51/CAIS/BAIS/dashboard/profile/index.php?profile=me#change_password" role="button" aria-expanded="true" aria-controls="collapseExample">Change Password</a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <hr>
+                        <form class="card-body" action="http://10.59.12.51/CAIS/BAIS/dashboard/profile/index.php?profile=me" method="POST">
+                            <div class="col-md-12 px-1">
+                            <label>NPK</label>
+                                <div class="input-group no-border">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text  px-2" id="npkUser">
+                                            <i class="nc-icon nc-single-02"></i>
+                                        </span>
+                                    </div>
+                                    <input type="number" readonly="" class="form-control" placeholder="8788344xxxx" value="28967">
+                                </div>
+                            </div>
+                            <div class="col-md-12 px-1">
+                            <div class="col-md-12 px-1">
+                                <label>User Level</label>
+                                <div class="input-group no-border">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text  px-2" id="basic-addon1">
+                                            <i class="nc-icon nc-single-02"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" readonly="" class="form-control" value="General User">
+                                </div>
+                            </div>
+                            <div class="collapse collapse-view" id="change_password">
+                                <div class="col-md-12 px-1">
+                                    <label>Password</label>
+                                    <div class="input-group ">
+                                        <div class="input-group-prepend ">
+                                            <span class="input-group-text px-2" id="pass">
+                                                <i class="nc-icon nc-lock-circle-open"></i>
+                                            </span>
+                                        </div>
+                                        <input type="password" id="new_pass" required="" class="form-control" placeholder="password baru" value="" autocomplete="off">
+                                    </div>
+                                    </div>
+
+                                    <label>Password Lama</label>
+                                    <div class="input-group ">
+                                        <div class="input-group-prepend ">
+                                            <span class="input-group-text px-2" id="basic-addon1">
+                                                <i class="nc-icon nc-lock-circle-open"></i>
+                                            </span>
+                                        </div>
+                                        <input type="password" id="old_pass" required="" class="form-control" placeholder="password Lama">
+                                    </div>
+                                    <p class="category">konfirmasi password lamu untuk ubah password</p>
+                                    <div class="row">
+                                        <div class="col-md-6 ">
+                                            <button type="button" class="btn btn-sm  btn-link btn-danger" data-toggle="collapse" href="#change_password" role="button" aria-expanded="true" aria-controls="collapseExample">cancel</button>
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <button type="reset" class="btn btn-sm btn-warning">reset</button>
+                                            <button type="submit" id="submit_account" class="btn btn-sm btn-primary">change</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            </div>
+				</div>
+				
+			</div>
+			<div class="col-md-8">
+				
+				<div class="card">
+					<div class="card-header">
+						<div class="row">
+							<div class="col-md-6">
+								<h5 class="title">Profile Karyawan</h5>
+
+							</div>
+							<div class="col-md-6 text-right">
+															</div>
+						</div>
+					</div>
+					<div class="card-body">
+					
+						<form action="http://10.59.12.51/CAIS/BAIS/dashboard/profile/proses.php" method="POST">
+						<div class="card card-plain">
+						<h6 class="title">Organization</h6>
+							<div class="row">
+								<div class="col-md-4 pr-1">
+									<div class="form-group">
+										<label>Division</label>
+										<input type="hidden" id="data_npk" name="data_npk" class="form-control" value="28967">
+										<input type="text" class="form-control" disabled="true" value="BODY DIVISION">
+									</div>
+								</div>
+								<div class="col-md-4 px-1">
+									<div class="form-group">
+										<label>Department Account</label>
+										<input type="text" class="form-control" disabled="true" placeholder="Body 2" value="BODY PLANT 2">
+									</div>
+								</div>
+								<div class="col-md-4 pl-1">
+									<div class="form-group">
+										<label for="exampleInputEmail1">Department</label>
+										<input type="text" class="form-control" disabled="true" value="PROJECT">
+									</div>
+								</div>
+								<div class="col-md-3 pr-1">
+									<div class="form-group">
+										<label>Section</label>
+										<input type="text" class="form-control" disabled="true" value="COST CONTROL">
+									</div>
+								</div>
+								<div class="col-md-3 px-1">
+									<div class="form-group">
+										<label>Group</label>
+										<input type="text" class="form-control" disabled="true" value="KOMITE QCCSS">
+									</div>
+								</div>
+								<div class="col-md-3 px-1">
+									<div class="form-group">
+										<label for="exampleInputEmail1">Pos Kerja</label>
+										<input type="text" class="form-control" disabled="true" value="PDCA HOSHIN">
+									</div>
+								</div>
+								<div class="col-md-3 pl-1">
+									<div class="form-group">
+										<label for="exampleInputEmail1">Shift</label>
+										<input type="text" class="form-control" id="d_shift" disabled="true" value="N">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card card-plain">
+							<h6 class="title">Personal Data</h6>
+							<div class="row">
+							
+								<div class="col-md-6 pr-1">
+									<div class="form-group">
+										<label>Nama Lengkap</label>
+										<input type="text" disabled="" class="form-control" placeholder="Company" name="nama_profile" value="ANUGRAH PRATAMA">
+									</div>
+								</div>
+								<div class="col-md-6 pl-1">
+									<div class="form-group">
+										<label>Nama Panggilan</label>
+										<input type="text" disabled="" class="form-control" placeholder="Nama Panggilan" value="ANUGRAH">
+									</div>
+								</div>
+								<div class="col-md-4 pr-1">
+									<div class="form-group">
+										<label>Status Karyawan</label>
+										<input type="text" disabled="" class="form-control" placeholder="Company" name="nama_profile" value="P">
+									</div>
+								</div>
+								<div class="col-md-4 px-1 ">
+									<div class="form-group">
+										<label>Tanggal Masuk</label>
+										<input type="text" disabled="" class="form-control" placeholder="Nama Panggilan" value="15 November 2007">
+									</div>
+								</div>
+								<div class="col-md-4 pl-1 d-none">
+									<div class="form-group">
+										<label>Masa Kerja</label>
+										<input type="text" disabled="" class="form-control" placeholder="Company" name="nama_profile" value="ANUGRAH PRATAMA">
+									</div>
+								</div>
+								
+								
+							</div>
+							<div class="row ">
+								<div class="col-md-6">
+								<label>Tanggal Lahir</label>
+									<div class="form-group">
+										<input type="text" name="birth" class="form-control datepicker" data-date-format="DD/MM/YYYY" value="//">
+									</div>
+								</div>
+								<div class="col-md-6">
+								<label>No Telp / HP</label>
+									<div class="input-group">
+										
+										<div class="input-group-prepend">
+											<span class="input-group-text category" id="basic-addon1">+62</span>
+										</div>
+										<input type="number" name="handphone" class="form-control" placeholder="8788344xxxx" value="">
+									</div>
+								</div>
+							</div>
+
+							<div class="row ">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Alamat Domisili</label>
+										<textarea rows="4" cols="80" name="domisili" class="form-control textarea"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12 text-right">
+									<input type="submit" class="btn btn-sm btn-primary" value="Update">
+
+								</div>
+
+							</div>
+						</div>
+						</form>
+					</div>
+				</div>
+				<div class="row" id="sumary" style="">         <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-body ">
+                    <div class="row">
+                    <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                        <i class="nc-icon nc-globe text-warning"></i>
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                        <div class="numbers">
+                        <p class="card-category">Masuk</p>
+                        <p class="card-title">4 hari</p><p>
+                        </p></div>
+                    </div>
+                    </div>
+                </div>
+                <div class="card-footer ">
+                    <hr>
+                    <div class="stats">
+                    <i class="fa fa-refresh"></i>
+                    21 hari produksi
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-body ">
+                    <div class="row">
+                    <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                        <i class="nc-icon nc-globe text-warning"></i>
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                        <div class="numbers">
+                        <p class="card-category">Overtime</p>
+                        <p class="card-title">0 jam, 0 menit </p><p>
+                        </p></div>
+                        
+                    </div>
+                    </div>
+                </div>
+                <div class="card-footer ">
+                    <hr>
+                    <div class="stats">
+                    <i class="fa fa-refresh"></i>
+                    0 hari
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        </div>
+				<div class="row">
+					<div class="col-md-12 ">
+						<div class="card " id="contoh2">
+							<div class="card-header ">
+								<h5 class="card-title">Monitoring Absensi &amp; Overtime</h5>
+								<p class="card-category"></p>
+							</div>
+							<div class="card-body ">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="input-group no-border">
+											<input type="date" class="form-control" name="start_date" id="start_date" value="2022-07-01">
+											<label for="" class="form-control text-center col-md-1">to</label>
+											<input type="date" class="form-control form-col-4" name="end_date" id="end_date" value="2022-07-31">
+											<div class="input-group-append ">
+												<span id="filterGo" class="btn btn-sm input-group-text text-sm px-2 py-0 m-0">go</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12" id="data-administratif" style="">
+        <div class="table-responsive text-uppercase">
+            <table class="table-sm  table-striped" style="width:100%">
+                <thead class="table-info">
+                    <tr>
+                        <th scope="col" rowspan="2">No</th>
+                        <th scope="col" rowspan="2">Hari</th>
+                        <th scope="col" rowspan="2">Tanggal</th>                  
+                        <th scope="col" colspan="2">Absensi</th>
+                        <th scope="col" rowspan="2">Ket</th>
+                        <th scope="col" colspan="2">Overtime</th>
+                    </tr>
+                    <tr>
+
+                    <th scope="col" colspan="1">In</th>
+                        <th scope="col" colspan="1">Out</th>
+                        <th scope="col" colspan="1">Mulai</th>
+                        <th scope="col" colspan="1">Selesai</th>
+                    </tr>
+                </thead>
+                <tbody class="text-nowrap">
+                                            
+
+                    
+                        <tr class="  ">
+                        
+                            <td>1</td>
+                            <td>Jumat</td>
+                            <td>01 Jul 2022</td>
+                            <td>06:56</td>
+                            <td>16:56</td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class="table-warning  ">
+                        
+                            <td>2</td>
+                            <td>Sabtu</td>
+                            <td>02 Jul 2022</td>
+                            <td>07:41</td>
+                            <td>16:08</td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class="table-warning  ">
+                        
+                            <td>3</td>
+                            <td>Minggu</td>
+                            <td>03 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class="  ">
+                        
+                            <td>4</td>
+                            <td>Senin</td>
+                            <td>04 Jul 2022</td>
+                            <td>06:50</td>
+                            <td>16:26</td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class="  ">
+                        
+                            <td>5</td>
+                            <td>Selasa</td>
+                            <td>05 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class="  ">
+                        
+                            <td>6</td>
+                            <td>Rabu</td>
+                            <td>06 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class=" table-danger ">
+                        
+                            <td>7</td>
+                            <td>Kamis</td>
+                            <td>07 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class=" table-danger ">
+                        
+                            <td>8</td>
+                            <td>Jumat</td>
+                            <td>08 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class="table-warning table-danger ">
+                        
+                            <td>9</td>
+                            <td>Sabtu</td>
+                            <td>09 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class="table-warning table-danger ">
+                        
+                            <td>10</td>
+                            <td>Minggu</td>
+                            <td>10 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class=" table-danger ">
+                        
+                            <td>11</td>
+                            <td>Senin</td>
+                            <td>11 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class=" table-danger ">
+                        
+                            <td>12</td>
+                            <td>Selasa</td>
+                            <td>12 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class=" table-danger ">
+                        
+                            <td>13</td>
+                            <td>Rabu</td>
+                            <td>13 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class=" table-danger ">
+                        
+                            <td>14</td>
+                            <td>Kamis</td>
+                            <td>14 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class=" table-danger ">
+                        
+                            <td>15</td>
+                            <td>Jumat</td>
+                            <td>15 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class="table-warning table-danger ">
+                        
+                            <td>16</td>
+                            <td>Sabtu</td>
+                            <td>16 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class="table-warning table-danger ">
+                        
+                            <td>17</td>
+                            <td>Minggu</td>
+                            <td>17 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class=" table-danger ">
+                        
+                            <td>18</td>
+                            <td>Senin</td>
+                            <td>18 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class=" table-danger ">
+                        
+                            <td>19</td>
+                            <td>Selasa</td>
+                            <td>19 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class=" table-danger ">
+                        
+                            <td>20</td>
+                            <td>Rabu</td>
+                            <td>20 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class=" table-danger ">
+                        
+                            <td>21</td>
+                            <td>Kamis</td>
+                            <td>21 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class=" table-danger ">
+                        
+                            <td>22</td>
+                            <td>Jumat</td>
+                            <td>22 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class="table-warning table-danger ">
+                        
+                            <td>23</td>
+                            <td>Sabtu</td>
+                            <td>23 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class="table-warning table-danger ">
+                        
+                            <td>24</td>
+                            <td>Minggu</td>
+                            <td>24 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class=" table-danger ">
+                        
+                            <td>25</td>
+                            <td>Senin</td>
+                            <td>25 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class=" table-danger ">
+                        
+                            <td>26</td>
+                            <td>Selasa</td>
+                            <td>26 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class=" table-danger ">
+                        
+                            <td>27</td>
+                            <td>Rabu</td>
+                            <td>27 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class=" table-danger ">
+                        
+                            <td>28</td>
+                            <td>Kamis</td>
+                            <td>28 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class=" table-danger ">
+                        
+                            <td>29</td>
+                            <td>Jumat</td>
+                            <td>29 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class="table-warning table-danger ">
+                        
+                            <td>30</td>
+                            <td>Sabtu</td>
+                            <td>30 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                                
+
+                    
+                        <tr class="table-warning table-danger ">
+                        
+                            <td>31</td>
+                            <td>Minggu</td>
+                            <td>31 Jul 2022</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="">  </td>
+                            <td class="">  </td>                             							
+                        </tr>
+                        
+                                        </tbody>
+            </table>
+        </div>
+        </div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="info_"></div>
+
+					
+					
+		
+<!-- maintnance  -->
+<label for="" class="d-none" id="waktu_maintenance">5</label>
+<div class="modal fade modal-primary" id="myModal_maintenance" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+    <div class="modal-content ">
+        <div class="modal-header justify-content-center">
+        <div class="modal-profile mx-auto border-danger" style="margin-top:-500">
+            <i class="nc-icon nc-time-alarm text-danger"></i>
+        </div>
+        </div>
+        <div class="modal-body text-center">
+        <h5 class="title text-danger text-uppercase">Mohon Maaf</h5>
+        <label for="" class="card-label text-uppercase"> System Sedang dalam proses maintenance
+            
+        </label>
+        </div>
+        <div class="modal-footer">
+                  </div>
+    </div>
+    </div>
+</div>
+<button class="btn btn-maintenance d-none" data-toggle="modal" data-id="0" data-target="#myModal_maintenance">
+    Lock
+</button>
+<!-- maintenance -->
+</div>
+<footer class="footer footer-black  footer-white ">
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="mailto:admin.body1@daihatsu.astra.co.id" target="_blank">Admin Body 1</a></li>
+                    <li><a href="mailto:support.body2@daihatsu.astra.co.id" target="_blank">Admin Body 2</a></li>
+                    <li><a href="mailto:agus.catur@daihatsu.astra.co.id" target="_blank">Admin BQC</a></li>
+                </ul>
+            </nav>
+            <div class="credits ml-auto">
+                <span class="copyright">
+                    © <script>
+                    document.write(new Date().getFullYear())
+                    </script>2022, Admin x DnA Body Division
+                </span>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px; height: 657px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 185px;"></div></div></div>
+</div>
+<div class="fixed-plugin">
+    <div class="dropdown show-dropdown">
+      <a href="http://10.59.12.51/CAIS/BAIS/dashboard/profile/index.php?profile=me#" data-toggle="dropdown">
+        <i class="fa fa-cog fa-2x"> </i>
+      </a>
+      <ul class="dropdown-menu">
+        <li class="header-title"> Sidebar Background</li>
+        <li class="adjustments-line">
+          <div class="switch-trigger background-color">
+            <div class="badge-colors text-center">
+              <span class="badge filter badge-default btn-sidebar-color" data-color="default"></span>
+              <span class="badge filter badge-light btn-sidebar-color" data-color="white"></span>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </li>
+        <li class="header-title"> Sidebar Active Color</li>
+        <li class="adjustments-line text-center">
+          <a href="javascript:void(0)" class="switch-trigger active-color">
+            <span class="badge filter badge-primary btn-sidebar-active" data-color="primary"></span>
+            <span class="badge filter badge-info btn-sidebar-active" data-color="info"></span>
+            <span class="badge filter badge-success btn-sidebar-active" data-color="success"></span>
+            <span class="badge filter badge-warning btn-sidebar-active" data-color="warning"></span>
+            <span class="badge filter badge-danger btn-sidebar-active" data-color="danger"></span>
+          </a>
+        </li>
+       
+      </ul>
+    </div>
+  </div>
+<!--   Core JS Files   -->
+<script src="./BAIS _ My Profile_files/jquery.min.js.download"></script>
+<script src="./BAIS _ My Profile_files/popper.min.js.download"></script>
+<script src="./BAIS _ My Profile_files/bootstrap.min.js.download"></script>
+<script src="./BAIS _ My Profile_files/perfect-scrollbar.jquery.min.js.download"></script>
+<script src="./BAIS _ My Profile_files/moment.min.js.download"></script>
+<!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+<script src="./BAIS _ My Profile_files/bootstrap-switch.js.download"></script>
+<!--  Plugin for Sweet Alert -->
+<script src="./BAIS _ My Profile_files/sweetalert2.min.js.download"></script>
+<!-- Forms Validations Plugin -->
+<script src="./BAIS _ My Profile_files/jquery.validate.min.js.download"></script>
+<!--  Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+<script src="./BAIS _ My Profile_files/jquery.bootstrap-wizard.js.download"></script>
+<!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+<script src="./BAIS _ My Profile_files/bootstrap-selectpicker.js.download"></script>
+<!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+<script src="./BAIS _ My Profile_files/bootstrap-datetimepicker.js.download"></script>
+<!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
+<script src="./BAIS _ My Profile_files/jquery.dataTables.min.js.download"></script>
+<!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+<script src="./BAIS _ My Profile_files/bootstrap-tagsinput.js.download"></script>
+<!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+<script src="./BAIS _ My Profile_files/jasny-bootstrap.min.js.download"></script>
+<!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
+<script src="./BAIS _ My Profile_files/fullcalendar.min.js.download"></script>
+<script src="./BAIS _ My Profile_files/daygrid.min.js.download"></script>
+<script src="./BAIS _ My Profile_files/timegrid.min.js.download"></script>
+<script src="./BAIS _ My Profile_files/interaction.min.js.download"></script>
+<!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
+<script src="./BAIS _ My Profile_files/jquery-jvectormap.js.download"></script>
+<!--  Plugin for the Bootstrap Table -->
+<script src="./BAIS _ My Profile_files/nouislider.min.js.download"></script>
+<!--  Google Maps Plugin    
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>-->
+<!-- Chart JS -->
+<script src="./BAIS _ My Profile_files/chartjs.min.js.download"></script>
+<!--  Notifications Plugin    -->
+<script src="./BAIS _ My Profile_files/bootstrap-notify.js.download"></script>
+<!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="./BAIS _ My Profile_files/paper-dashboard.min.js.download" type="text/javascript"></script>
+<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+<script src="./BAIS _ My Profile_files/demo.js.download"></script>
+
+<script src="./BAIS _ My Profile_files/bootstrap-datepicker.js.download"></script>
+<script src="./BAIS _ My Profile_files/bootstrap-datepicker.min.js.download"></script>
+<script src="./BAIS _ My Profile_files/owl.carousel.min.js.download"></script>
+
+<script src="./BAIS _ My Profile_files/bootstrap-timepicker.js.download"></script>
+<script src="./BAIS _ My Profile_files/jquery.floatThead.js.download"></script>
+<script src="./BAIS _ My Profile_files/jquery.modal-wizard.js.download"></script>
+<script src="./BAIS _ My Profile_files/MultiStep.js.download"></script>
+<script src="./BAIS _ My Profile_files/ResizeSensor.js.download"></script>
+<script src="./BAIS _ My Profile_files/theia-sticky-sidebar.min.js.download"></script>
+<script src="./BAIS _ My Profile_files/jquery.sticky.js.download"></script>
+<script src="./BAIS _ My Profile_files/jquery.pin.js.download"></script>
+<script src="./BAIS _ My Profile_files/loading.js.download"></script>
+<script src="./BAIS _ My Profile_files/selectcustom.js.download"></script>
+<script src="./BAIS _ My Profile_files/timeku.js.download"></script>
+<script src="./BAIS _ My Profile_files/approvalsistem.js.download"></script>
+<script src="./BAIS _ My Profile_files/jquery.idle.js.download"></script>
+<script src="./BAIS _ My Profile_files/jquery.table2excel.min.js.download"></script>
+<script src="./BAIS _ My Profile_files/register.js.download"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sticksy/dist/sticksy.min.js"></script>
+<!--
+<script>
+$(document).ready(function() {
+    // Javascript method's body can be found in assets/js/demos.js
+    demo.initDashboardPageCharts();
+
+
+    demo.initVectorMap();
+
+});
+</script>-->
+
+<!-- <script>
+  $(document).ready(function(){
+    $(".sticker").sticky({topSpacing:70});
+    
+  });
+</script> -->
+<script>
+  $(document).ready(function(){
+    function ubah_sidebar_color(sidebarcolor){
+      $.ajax({
+          url:'/CAIS/BAIS/dashboard/style.php',
+          method:"POST",
+          data:{sidebar_color : sidebarcolor},
+          success:function(){
+            $('.sdbr').attr('data-color', sidebarcolor);
+          }
+      })
+    }
+    function ubah_sidebar_active(activecolor){
+      
+      $.ajax({
+          url:'/CAIS/BAIS/dashboard/style.php',
+          method:"POST",
+          data:{active_color : activecolor},
+          success:function(){
+            $('.sdbr').attr('data-active-color', activecolor);
+          }
+      })
+    }
+
+    $('.btn-sidebar-color').on('click',function(a){
+      a.preventDefault();
+      $('.btn-sidebar-color').removeClass('active');
+      $(this).addClass('active');
+      var color = $(this).attr('data-color');
+      ubah_sidebar_color(color)
+    })
+    $('.btn-sidebar-active').on('click',function(a){
+      a.preventDefault();
+      $('.btn-sidebar-active').removeClass('active');
+      $(this).addClass('active');
+      var color = $(this).attr('data-color');
+      ubah_sidebar_active(color)
+    })
+    
+
+  })
+</script>
+<script>
+    var stickyEl = new Sticksy('.sticker', {topSpacing: 70})
+    stickyEl.onStateChanged = function (state) {
+        if(state === 'fixed') stickyEl.nodeRef.classList.add('widget--sticky')
+        else stickyEl.nodeRef.classList.remove('widget--sticky')
+    }
+</script>
+<script>
+//untuk date & time picker
+    $(document).ready(function() {
+      // initialise Datetimepicker and Sliders
+      demo.initDateTimePicker();
+      if ($('.slider').length != 0) {
+        demo.initSliders();
+      }
+    });
+</script>
+    
+
+<script>
+    //autofocus form di dalam modal edit data mp
+    $('#editmp').on('shown.bs.modal', function () {
+  $('#npk').trigger('focus')
+})
+</script>
+<script>
+/*
+$(document).on("click", "#tomboledit", function(){
+    let id = $(this).data('npk'); //menangkap id dari yang dikirim dari tombol edit 
+    let id = $(this).data('nama');
+    let id = $(this).data('nick');
+    let id = $(this).data('status');
+    let id = $(this).data('jabatan');
+    let id = $(this).data('masuk');
+    let id = $(this).data('shift');
+    let id = $(this).data('post');
+
+    $(".modal-body #npk").val(npk)); //menangkap id dari yang dikirim dari modal edit 
+    $(".modal-body #nama").val($(this).data(nama));
+    $("#nick").val($(this).data(nick));
+    $("#ststus").val($(this).data(status));
+    $("#jabatan").val($(this).data(jabatan));
+    $("#tgl_masuk").val($(this).data(masuk));
+    $("#shift").val($(this).data(shift));
+})*/
+</script>
+
+<script>
+//untuk checkbox
+$(document).ready(function(){
+    $('#select_all').on('click', function() {
+        if(this.checked){
+            $('.check').each(function() {
+                this.checked = true;
+            })
+        } else {
+            $('.check').each(function() {
+                this.checked = false;
+            })
+        }
+
+    });
+
+    $('.check').on('click', function() {
+        if($('.check:checked').length == $('.check').length){
+            $('#select_all').prop('checked', true)
+        } else {
+            $('#select_all').prop('checked', false)
+        }
+    })
+})
+$(document).ready(function(){
+    $('#dept_all').on('click', function() {
+        if(this.checked){
+            $('.deptcheck').each(function() {
+                this.checked = true;
+            })
+        } else {
+            $('.deptcheck').each(function() {
+                this.checked = false;
+            })
+        }
+    });
+
+    $('.deptcheck').on('click', function() {
+        if($('.deptcheck:checked').length == $('.deptcheck').length){
+            $('#dept_all').prop('checked', true)
+        } else {
+            $('#dept_all').prop('checked', false)
+        }
+    })
+})
+</script>
+<script>
+//untuk tombol refresh
+
+function reloadpage()
+{
+location.reload()
+}
+</script>
+<script>
+// $(document).ready(function(){
+//     $('ul li a').click(function(){
+//       $('li a').removeClass("active");
+//       $(this).addClass("active");
+//     });
+//   });
+// </script>
+<!-- <script>
+$(document).ready(function(){
+    $('ul li').on('click', 'ul li' , function(a){
+        $(this).addClass('active').sibblings().removeClass('active');
+    });
+});
+</script> -->
+
+<script>
+$(document).ready(function(){
+    var sesi = localStorage.getItem('session');
+    $('body').addClass(sesi);
+
+    $('#minimizeSidebar').on('click', function(e){
+        e.preventDefault();
+        var getsesi = $('body').attr('class');
+        if(getsesi == 'sidebar-mini'){
+            localStorage.setItem('session', 'sidebar-mini');
+            
+        }else{
+            localStorage.setItem('session', '');
+            $('body').removeClass('sidebar-mini');
+        };
+        
+    });
+});
+</script>
+
+<script>
+	$(document).ready(function(){
+	  $('[data-toggle="tooltip"]').tooltip();
+	});
+</script>
+
+<!-- script untuk notifikasi hapus -->
+<script>
+    $(document).ready(function(){
+        const notifikasi = $('.info-data').data('infodata');
+        const pesan = $('.message').data('infodata');
+        if(notifikasi == "Disimpan" || notifikasi=="Dihapus" ){
+            Swal.fire({
+            icon: 'success',
+            title: 'Sukses',
+            text: ''+pesan+' data Berhasil '+notifikasi,
+            })
+        }else if(notifikasi == "Gagal Disimpan" || notifikasi=="Gagal Dihapus"){
+            Swal.fire({
+            icon: 'error',
+            title: 'GAGAL',
+            text: ''+pesan+' data '+notifikasi,
+            })
+        }else if(notifikasi == "Kosong"){
+            Swal.fire({
+            icon: 'error',
+            title: 'GAGAL',
+            text: ''+pesan+' data Dipilih '+notifikasi+' atau tidak ada',
+            })
+        }else if(notifikasi == "Request"){
+            Swal.fire({
+            icon: 'success',
+            title: 'Requested',
+            text: ''+pesan+' data '+notifikasi+' telah diteruskan',
+            })
+        }else if(notifikasi == "Return"){
+            Swal.fire({
+            icon: 'success',
+            title: 'Returned',
+            text: ''+pesan+' Pengajuan telah di'+notifikasi+' ',
+            })
+        }else if(notifikasi == "Reject"){
+            Swal.fire({
+            icon: 'success',
+            title: 'Rejected',
+            text: ''+pesan+' Pengajuan telah di'+notifikasi+' ',
+            })
+        }else if(notifikasi == "Stop"){
+            Swal.fire({
+            icon: 'success',
+            title: 'Stopped',
+            text: ''+pesan+' Pengajuan telah di'+notifikasi+' ',
+            })
+        }else if(notifikasi == "Arsipkan"){
+            Swal.fire({
+            icon: 'success',
+            title: 'Archieved',
+            text: ''+pesan+' Pengajuan telah di'+notifikasi+' ',
+            })
+        }else if(notifikasi == "Approve"){
+            Swal.fire({
+            icon: 'success',
+            title: 'Approved',
+            text: ''+pesan+' Pengajuan telah di'+notifikasi+' ',
+            })
+        }else if(notifikasi == "Import Gagal" || notifikasi == "Error" ){
+            Swal.fire({
+            icon: 'error',
+            title: 'Kesalahan',
+            text: ''+pesan+'',
+            })
+        }
+        
+        $('.del').on('click', function(e){
+            e.preventDefault();
+            var getLink = $(this).attr('href');
+            var id = $(this).parents("tr").attr("id");
+                
+            Swal.fire({
+            title: 'Anda Yakin ?',
+            text: "Data Man Power dengan NPK : " + id + " akan dihapus secara permanent",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#FF5733',
+            cancelButtonColor: '#B2BABB',
+            confirmButtonText: 'Yes, delete!'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = getLink;
+                }
+            })
+        });
+    });
+</script>
+    <script>
+        var autoLockTimer;
+        // window.onload = resetTimer;
+        window.onmousemove = resetTimer;
+        window.onmousedown = resetTimer; // catches touchscreen presses
+        window.onclick = resetTimer;     // catches touchpad clicks
+        window.onscroll = resetTimer;    // catches scrolling with arrow keys
+        window.onkeypress = resetTimer;
+
+        function lockScreen() {
+                        localStorage.setItem('page', 'http://10.59.12.51/CAIS/BAIS/dashboard/profile/index.php?profile=me');
+            window.location.href = ' /CAIS/BAIS/auth/lock.php?u=300a9a8fbe2e76a2403bfc99740148d0db3d707b';
+        }
+
+        function resetTimer() {
+            clearTimeout(autoLockTimer);
+            autoLockTimer = setTimeout(lockScreen, 900000);  // time is in milliseconds
+        }
+
+    </script>
+    
+<script>
+    $('.menu').click(function(){
+        if(typeof(Storage) !== "undefined") {
+            sessionStorage.activemenu = $(this).data('name');
+          } else {
+            console.log("Sorry, your browser does not support web storage...");
+          }
+    });
+//   console.log(sessionStorage.activemenu);
+  $('#'+sessionStorage.activemenu).addClass('active');
+</script>
+<script>
+    $('.clpse').click(function(){
+        if(typeof(Storage) !== "undefined") {
+            sessionStorage.activeclpse = $(this).data('name');
+          } else {
+            console.log("Sorry, your browser does not support web storage...");
+          }
+    });
+//   console.log(sessionStorage.activeclpse);
+  $('#'+sessionStorage.activeclpse).addClass('active');
+</script>
+<script>
+    $('.clpse').click(function(){
+        if(typeof(Storage) !== "undefined") {
+            sessionStorage.showclpse = $(this).data('target');
+            
+          } else {
+            console.log("Sorry, your browser does not support web storage...");
+          }
+    });
+//   console.log(sessionStorage.showclpse);
+  $('#'+sessionStorage.showclpse).addClass('show');
+
+</script>
+<script type="text/javascript">
+        function toggleFullScreen() {
+  if ((document.fullScreenElement && document.fullScreenElement !== null) ||  
+   (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+    if (document.documentElement.requestFullScreen) {
+      document.documentElement.requestFullScreen();
+      $('#fullscreen').removeClass("fa-expand");
+      $('#fullscreen').addClass("fa-compress");
+    } else if (document.documentElement.mozRequestFullScreen) {
+      document.documentElement.mozRequestFullScreen();
+      $('#fullscreen').removeClass("ffa-expand");
+      $('#fullscreen').addClass("fa-compress");
+    } else if (document.documentElement.webkitRequestFullScreen) {
+      document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+      $('#fullscreen').removeClass("fa-expand");
+      $('#fullscreen').addClass("fa-compress");
+    }
+  } else {
+    if (document.cancelFullScreen) {
+      document.cancelFullScreen();
+      $('#fullscreen').removeClass("fa-compress");
+      $('#fullscreen').addClass("fa-expand");
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+      $('#fullscreen').removeClass("fa-compress");
+      $('#fullscreen').addClass("fa-expand");
+    } else if (document.webkitCancelFullScreen) {
+      document.webkitCancelFullScreen();
+      $('#fullscreen').removeClass("fa-compress");
+      $('#fullscreen').addClass("fa-expand");
+    }
+  }
+}
+</script>
+<script type="text/javascript">
+        function toggleFullScreen() {
+  if ((document.fullScreenElement && document.fullScreenElement !== null) ||  
+   (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+    if (document.documentElement.requestFullScreen) {
+      document.documentElement.requestFullScreen();
+      $('#fullscreen').removeClass("fa-expand");
+      $('#fullscreen').addClass("fa-compress");
+    } else if (document.documentElement.mozRequestFullScreen) {
+      document.documentElement.mozRequestFullScreen();
+      $('#fullscreen').removeClass("ffa-expand");
+      $('#fullscreen').addClass("fa-compress");
+    } else if (document.documentElement.webkitRequestFullScreen) {
+      document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+      $('#fullscreen').removeClass("fa-expand");
+      $('#fullscreen').addClass("fa-compress");
+    }
+  } else {
+    if (document.cancelFullScreen) {
+      document.cancelFullScreen();
+      $('#fullscreen').removeClass("fa-compress");
+      $('#fullscreen').addClass("fa-expand");
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+      $('#fullscreen').removeClass("fa-compress");
+      $('#fullscreen').addClass("fa-expand");
+    } else if (document.webkitCancelFullScreen) {
+      document.webkitCancelFullScreen();
+      $('#fullscreen').removeClass("fa-compress");
+      $('#fullscreen').addClass("fa-expand");
+    }
+  }
+}
+</script>
+<script>
+  $(document).ready(function(){
+    $(document).on('click', '.btn', function(){
+      $.ajax({
+        method : 'POST',
+        url : '/CAIS/BAIS/dashboard/interaction_counter.php',
+        data : {interaction : '1'}
+      })
+    })
+    $(document).on('click', 'a', function(){
+      $.ajax({
+        method : 'POST',
+        url : '/CAIS/BAIS/dashboard/interaction_counter.php',
+        data : {interaction : '1'}
+      })
+    })
+  })
+</script>
+<script>
+    // showNotification5('bottom','right')
+    function showNotification5(from, align){
+    color = 1;
+    // 4 danger //untuk notifikasi pengajuan bermasalah
+    // 3 warning //untuk reminder pengajuan
+    // 1 info //informasi 
+    // 2 success
+    $.notify({
+      icon: 'far fa-calendar-check',
+      message: '<h6><strong>Anda belum Membuat SPL hari ini</strong></h6><i><em>notifikasi hilang anda sudah membuat dan mengajukan spl hari ini</em></i>'
+
+    },{
+      type: type[1],
+      timer: false,
+      placement: {
+        from: from,
+        align: align
+      }
+    });
+  }
+</script>
+      
+      <script>
+          showNotification2('top','right')
+          function showNotification2(from, align){
+          color = 1;
+          // 4 danger //untuk notifikasi pengajuan bermasalah
+          // 3 warning //untuk reminder pengajuan
+          // 1 info //informasi 
+          // 2 success
+          $.notify({
+            icon: 'far fa-sticky-note',
+            message: '<h6><strong>attention!!!</strong></h6>'+'<p>LAKUKAN MONITORING KEHADIRAN DAN PROGRESS ADMINISTRASI SECARA BERKALA&nbsp;</p>'
+
+          },{
+            type: type[3],
+            timer: 1000,
+            placement: {
+              from: from,
+              align: align
+            }
+          });
+        }
+      </script>
+        		<script>
+			
+			$(document).ready(function(){
+				$('.upload-foto').click( function(){
+					$('.load-webcam').addClass('d-none')
+					$(this).addClass('d-none')
+					$('.cancel-upload-foto').removeClass('d-none')
+					$('.upload-ft').removeClass('d-none')
+					$('#my_camera').addClass('d-none')
+					$('.submit-foto').removeClass('d-none')
+					
+				})
+				$('.load-webcam').on('click', function(){
+					
+					$('.upload-foto').addClass('d-none')
+					$('#my_camera').removeClass('d-none')
+					$('#results').addClass('d-none')
+					$('.cancel-load-webcam').removeClass('d-none')
+					$('.take-snap').prop('disabled', false)
+					$('.take-snap').removeClass('d-none')
+					$('.save-snap').prop('disabled', true)
+					$('.save-snap').addClass('d-none')
+					$('.submit-foto').addClass('d-none')
+				})
+
+				$('.cancel-load-webcam').on('click', function(){
+					$(this).addClass('d-none')
+					$('.upload-foto').prop('disabled', false)
+					$('.upload-foto').removeClass('d-none')
+					$('.load-webcam').removeClass('d-none')
+					$('.take-snap').prop('disabled', true)
+					$('.take-snap').addClass('d-none')
+					$('.save-snap').addClass('d-none')
+					$('.submit-foto').addClass('d-none')
+				})
+				$('.cancel-upload-foto').on('click', function(){
+					$('.load-webcam').removeClass('d-none')
+					$('.upload-foto').removeClass('d-none')
+					$(this).addClass('d-none')
+					$('#my_camera').removeClass('d-none')
+					$('.upload-ft').addClass('d-none')
+					$('.submit-foto').addClass('d-none')
+				})
+				$('.take-snap').on('click', function(){
+					$('#my_camera').addClass('d-none')
+					$('#results').removeClass('d-none')
+					$('.save-snap').prop('disabled', false)
+					$('.save-snap').removeClass('d-none')
+					$(this).addClass('d-none')
+					
+				})
+				$('.submit-foto').click(function(e){
+					e.preventDefault()
+					var file_import = $('#file_import').prop('files')[0];
+					var file_imports = $('#file_import').val();
+					
+					if(file_imports == '' ){
+						Swal.fire({
+							title: "Foto Masih Kosong",
+							text: "pilih foto lebih dulu",
+							timer: 2000,
+							
+							icon: "error",
+							showCancelButton: false,
+							showConfirmButton: false,
+							confirmButtonColor: '#00B9FF',
+							cancelButtonColor: '#B2BABB',
+						})
+					}else{
+						let formData = new FormData();
+						formData.append('file_import', file_import);
+						console.log(formData)
+						$.ajax({
+							type: 'POST',
+							url: "upload/upload.php?ganti_foto=28967",
+							data: formData,
+							cache: false,
+							processData: false,
+							contentType: false,
+							success: function (msg) {
+								Swal.fire({
+									title: "Sukses",
+									text: "Ganti foto berhasil",
+									timer: 2000,
+									
+									icon: "success",
+									showCancelButton: false,
+									showConfirmButton: true,
+									confirmButtonColor: '#00B9FF',
+									cancelButtonColor: '#B2BABB',
+								}).then((result) => {
+									if (result.value) {
+										location.reload();
+									}
+								})
+							},
+							error: function () {
+								alert("Data Gagal Diupload");
+							}
+						});
+					}
+					
+				})
+				$(document).on('click', '#filterGo', function(){
+					dataAbsen()
+					dataSumary();
+				})
+				dataAbsen()
+				function dataAbsen(){
+					var id = 'data-absen';
+					var shift = $('#d_shift').val();
+					var npk = $('#data_npk').val();
+					var start = $('#start_date').val();
+					var end = $('#end_date').val();
+					$.ajax({
+						url:"data-administratif.php",
+						method:"GET",
+						data:{shift:shift,id:id,npk:npk,start:start,end:end},
+						success:function(data){
+							$('#data-administratif').fadeOut('fast', function(){
+								$(this).html(data).fadeIn('fast');
+							});
+						}
+					})
+				}
+				dataSumary();
+				function dataSumary(){
+					var id = 'sumary';
+					var shift = $('#d_shift').val();
+					var npk = $('#data_npk').val();
+					var start = $('#start_date').val();
+					var end = $('#end_date').val();
+					$.ajax({
+						url:"data-administratif.php",
+						method:"GET",
+						data:{shift:shift,id:id,npk:npk,start:start,end:end},
+						success:function(data){
+							$('#sumary').fadeOut('fast', function(){
+								$(this).html(data).fadeIn('fast');
+							});
+						}
+					})
+				}
+				formAccount();
+				function formAccount(){
+					var npk = $('#data_npk').val();
+					$.ajax({
+						url:"form-account.php",
+						method:"GET",
+						data:{npk:npk},
+						success:function(data){
+							$('#form_account').fadeOut('fast', function(){
+								$(this).html(data).fadeIn('fast');
+							});
+						}
+					})
+				}
+				function submitAccount(submit){
+					var old_pass = $('#old_pass').val()
+					var new_pass = $('#new_pass').val()
+					var update = $('#new_pass').val()
+					var npk = $('#data_npk').val();
+					if(old_pass == ''|| new_pass == ''){
+						success('Data Kosong','Pastikan Semua Form telah diisi','')
+					}else{
+						// console.log(old_pass)
+						$.ajax({
+						url:"proses.php",
+						method:"GET",
+						data:{submit:submit,old_pass:old_pass,new_pass:new_pass,npk:npk},
+						success:function(data){
+							$('.info_').html(data);
+						}
+					})
+					}
+				}
+				function success(data1,data2,icon){
+					Swal.fire({
+						title: data1,
+						text: data2,
+						timer: 2000,
+						
+						icon: icon,
+						showCancelButton: false,
+						showConfirmButton: false,
+						confirmButtonColor: '#00B9FF',
+						cancelButtonColor: '#B2BABB',
+					})
+				}
+				$(document).on('click', '#submit_account', function(a){
+					a.preventDefault();
+					var data = $(this).attr('id');
+					submitAccount(data)
+				})
+			})
+		</script>
+		<script>
+			$(document).ready(function(){
+				$('.avatar').mouseenter(function(){
+					$('.middle').removeClass('d-none');
+					$('.desc').addClass('d-none');
+				})
+				$('.avatar').mouseleave(function(){
+					$('.desc').removeClass('d-none');
+					$('.middle').addClass('d-none');
+				})
+				
+			})
+		</script>
+		<script type="text/javascript" src="./BAIS _ My Profile_files/webcam.js.download"></script>
+
+<!-- Code to handle taking the snapshot and displaying it locally -->
+		<script language="JavaScript">
+			// Configure a few settings and attach camera
+			function configure(){
+				$('.upload-foto').prop('disabled', true)
+				Webcam.set({
+					
+					height: 300,
+					image_format: 'jpg',
+					jpeg_quality: 90
+				});
+				Webcam.attach( '#my_camera' );
+				
+			}
+			// A button for taking snaps
+			
+
+			// preload shutter audio clip
+			var shutter = new Audio();
+			shutter.autoplay = false;
+			shutter.src = navigator.userAgent.match(/Firefox/) ? 'upload/shutter.ogg' : 'upload/shutter.mp3';
+
+			function take_snapshot() {
+				// play sound effect
+				shutter.play();
+
+				// take snapshot and get image data
+				Webcam.snap( function(data_uri) {
+					// display results in page
+					document.getElementById('results').innerHTML = 
+						'<img id="imageprev" src="'+data_uri+'"/>';
+				} );
+
+				Webcam.reset();
+			}
+
+			function saveSnap(){
+				// Get base64 value from <img id='imageprev'> source
+				var base64image =  document.getElementById("imageprev").src;
+
+				Webcam.upload( base64image, 'upload/upload.php?npk=28967', function(code, text) {
+					Swal.fire({
+						title: "Update Foto Berhasil",
+						text: "Foto Profile Telah Diganti",
+						timer: 2000,
+						
+						icon: "success",
+						showCancelButton: false,
+						showConfirmButton: true,
+						confirmButtonColor: '#00B9FF',
+						cancelButtonColor: '#B2BABB',
+					}).then((result) => {
+                    if (result.value) {
+                        location.reload();
+                    }
+                })
+					
+					//console.log(text);
+				});
+
+			}
+		</script>
+		
+
+</body></html>

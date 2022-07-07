@@ -1,0 +1,55 @@
+function getFoto($npk){
+    $link = $GLOBALS['link'];
+    $query_dir = mysqli_query($link, "SELECT `root` FROM external_directory WHERE keterangan = 'FOTO' ")or die(mysqli_error($link));
+            $sql_dir = mysqli_fetch_assoc($query_dir);
+            $root_path = $sql_dir['root'];
+    $path = "//adm-fs/HRD/HRD-Photo/".$npk.".jpg";
+    $newPath = "$root_path".$npk.".jpg";
+    if(file_exists($newPath)){
+        
+        $type = pathinfo($path, PATHINFO_EXTENSION);
+        $dataImage = file_get_contents($newPath);
+        $image = 'data:image/' . $type . ';base64,' . base64_encode($dataImage);
+        $base64 = ($image)? $image : "";
+    }else{
+        $type = pathinfo($path, PATHINFO_EXTENSION);
+        if (file_exists($path)) {
+            
+            // compress image
+            $source = $path;
+            $imgInfo = getimagesize($source); 
+            $mime = $imgInfo['mime'];  
+            // $fileName = $npk.".jpg";
+            $destination = $newPath;
+            $quality = 50;
+            // membuat image baru
+            switch($mime){ 
+            // proses kode memilih tipe tipe image 
+                case 'image/jpeg': 
+                    $image = imagecreatefromjpeg($source); 
+                    break; 
+                case 'image/png': 
+                    $image = imagecreatefrompng($source); 
+                    break; 
+                case 'image/gif': 
+                    $image = imagecreatefromgif($source); 
+                    break; 
+                default: 
+                    $image = imagecreatefromjpeg($source); 
+            } 
+            
+            imagejpeg($image, $newPath, $quality); 
+            // $base64 = $newPath;
+
+            $dataImage = file_get_contents($newPath);
+            $image = 'data:image/' . $type . ';base64,' . base64_encode($dataImage);
+            $base64 = ($image)? $image : "";
+        } else {
+            $base64 = base_url()."/assets/img/img/tm.png";
+            // $file = fopen($path, "r");
+            // echo "File berhasil dibaca.";
+        }
+
+    }
+    return $base64;
+}

@@ -11,6 +11,9 @@ if ($_SESSION['osp_code_level']<3 AND $hyarihatto_monitor==0){
     echo '<script>window.location.href = "hyarihatto_list.php";</script>';
 } 
 
+
+$startDate = date('Y-m-01');
+$endDate = date('Y-m-t');
 ?>
 
 
@@ -183,102 +186,69 @@ if ($_SESSION['osp_code_level']<3 AND $hyarihatto_monitor==0){
 </div><!--ROW HISTORICAL -->
 
 
-<?php
 
-    $bulan = date('Y-M', time());
-    $awal_bulan = date('Y-m-01', time());
-    $akhir_bulan = date('Y-m-t', time()); 
-
-    // DATASET GRAFIK SECTION
-    $array_label_sect = [];
-    $array_total_mp_sect = [];
-    $array_target_hyari_sect = [];
-    $array_update_hyari_sect = [];
-    $array_update_persen_sect = [];                  
-        
-                                 
-        // GRAFIK PER_SECTION HYARIHATTO
-        $query_sect = "SELECT * FROM bais_id_section";
-        $result_sect=mysqli_query($link_osp,$query_sect) or die(mysqli_error($link_osp));
-        if(mysqli_num_rows($result_sect)>0){
-            while ($rows_sect = mysqli_fetch_assoc($result_sect)){
-                // AMBIL NAMA SECTION HEAD
-                $array_label_sect[] = $rows_sect['section']; //rows_sect
-                
-
-                // HITUNG TOTAL MP PER MASING-MASING SECTION HEAD
-                $code_sect_loop = $rows_sect['id_section'];             
-                $query_mp_sect = "SELECT npk FROM bais_org WHERE sect = '$code_sect_loop'";
-                $result_mp_sect = mysqli_query($link_osp, $query_mp_sect) or die(mysqli_error($link_osp));
-                if(mysqli_num_rows($result_mp_sect)>0){
-                    $total_result_mp_sect = mysqli_num_rows($result_mp_sect); 
-                }  
-
-                // HITUNG TOTAL UPDATE HYARI PER MASING-MASING SECTION HEAD
-                $query_update_hyari_sect = "SELECT npk FROM view_hyarihatto WHERE sect = '$code_sect_loop' AND (tglinput BETWEEN '$awal_bulan' AND '$akhir_bulan')";
-                $result_update_hyari_sect = mysqli_query($link_osp, $query_update_hyari_sect) or die(mysqli_error($link_osp));
-                if(mysqli_num_rows($result_update_hyari_sect)>0){
-                    $total_records_update_hyari_sect = mysqli_num_rows($result_update_hyari_sect);
-                    $total_update_persen_sect = round(($total_records_update_hyari_sect/$total_result_mp_sect)*100,0);
-                } else {
-                    $total_records_update_hyari_sect = 0;
-                    $total_update_persen_sect = 0;
-                }
-
-                $array_total_mp_sect[] = $total_result_mp_sect;
-                $max_array_total_mp_sect = max( $array_total_mp_sect);
-                $array_target_hyari_sect[] = 97;
-                $array_update_hyari_sect[] = $total_records_update_hyari_sect;      
-                $array_update_persen_sect[] = $total_update_persen_sect;
-                
-            }
-            $json_label_sect = json_encode($array_label_sect); //X axis grafik json 
-            $json_total_mp_sect = json_encode($array_total_mp_sect); //Y total mp grafik json 
-            $json_target_hyari_sect = json_encode($array_target_hyari_sect);
-            $json_update_hyari_sect = json_encode($array_update_hyari_sect);
-            $json_update_persen_sect = json_encode($array_update_persen_sect);
-
-        }
-
-    ?>
     
 <div class="row" id="tab_1_content"><!--ROW MONITOR AREA-->  
         <div class="card col-md-12">
-            <canvas id="chart_grp" style="height:400px; font-size:8px;"></canvas> 
-            <div id="hero-donut" class="graph"></div>
+            <div class="card-body">
+                <canvas id="chart_grp" style="height:400px; font-size:8px;"></canvas>
+            </div>
+            <div class="row" >
+                <div id="donut-shift" class="card-body col-md-3" style="height:200px;" ></div>
+                <div id="donut-kategori" class="card-body col-md-3" style="height:200px;" ></div>
+                <div id="donut-risk" class="card-body col-md-3" style="height:200px;" ></div>
+                <div id="donut-stop6" class="card-body col-md-3" style="height:200px;" ></div>
+                <div id="donut-icare" class="card-body col-md-3" style="height:200px;" ></div>
+                
+            </div>
         </div>
-
 </div><!--ROW MONITOR AREA--> 
 
 
 <div id="notifikasi"></div>
 <div id="loader" class="d-none"></div>
-                
-                
+      
+<!-- trial -->
+<!-- <select type="text" id="startfiscal">
+    <option value="">Pilih...</option>
+    <?php
+        // $awal = date('Y')-1;
+        // $akhir = $awal + 4;
+        // for($i = $awal; $i <= $akhir; $i++){
+        //     echo '<option value="'.$i.'">'.$i.' Apr</option>';
+        // }
+    ?>
+</select>
+<select type="text" id="endfiscal">
+    <option id="tahun_end" value="">Pilih...</option>
+</select> -->
+      
+
+
 <?php
   include("../header/footer.php");
 ?>
 
 
 <!-- General JS Scripts ###############################################################################-->
-<script src="../../ASSETS/bootstrap/js/jquery-3.3.1.min.js" ></script>
-<script src="../../ASSETS/bootstrap/js/popper.min.js"></script>
-<script src="../../ASSETS/bootstrap/js/bootstrap.min.js"></script>
-<script src="../../ASSETS/bootstrap/js/jquery.nicescroll.min.js"></script>
-<script src="../../ASSETS/bootstrap/js/moment.min.js"></script>
-<script src="../../ASSETS/js/stisla.js"></script>
-<!-- JS Libraies -->
-<script src="../../ASSETS/bootstrap/js/jquery.sparkline.min.js"></script>
-<script src="../../ASSETS/bootstrap/js/owl.carousel.min.js"></script>
-<script src="../../ASSETS/bootstrap/js/jquery.chocolat.min.js"></script>
-<!-- Template JS File -->
-<script src="../../ASSETS/js/scripts.js"></script>
-<script src="../../ASSETS/bootstrap/js/chart.min.js"></script>
-<script src="../../ASSETS/js/custom.js"></script>
-<!-- Morris JS -->
-<script src="../../ASSETS/morris.js-0.5.1/raphael-min.js"></script>
-<script src="../../ASSETS/morris.js-0.5.1/morris.min.js"></script>
-
+    <script src="../../ASSETS/bootstrap/js/jquery-3.3.1.min.js" ></script>
+    <script src="../../ASSETS/bootstrap/js/popper.min.js"></script>
+    <script src="../../ASSETS/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../ASSETS/bootstrap/js/jquery.nicescroll.min.js"></script>
+    <script src="../../ASSETS/bootstrap/js/moment.min.js"></script>
+    <script src="../../ASSETS/js/stisla.js"></script>
+    <!-- JS Libraies -->
+    <script src="../../ASSETS/bootstrap/js/jquery.sparkline.min.js"></script>
+    <script src="../../ASSETS/bootstrap/js/owl.carousel.min.js"></script>
+    <script src="../../ASSETS/bootstrap/js/jquery.chocolat.min.js"></script>
+    <!-- Template JS File -->
+    <script src="../../ASSETS/js/scripts.js"></script>
+    <script src="../../ASSETS/bootstrap/js/chart.min.js"></script>
+    <script src="../../ASSETS/js/custom.js"></script>
+    <!-- Morris JS -->
+    <script src="../../ASSETS/morris.js-0.5.1/raphael-min.js"></script>
+    <script src="../../ASSETS/morris.js-0.5.1/morris.min.js"></script>
+<!-- General JS Scripts ###############################################################################-->
 
 
 <!-- PILIHAN TAB JUDUL ###############################################################################-->
@@ -443,7 +413,66 @@ if ($_SESSION['osp_code_level']<3 AND $hyarihatto_monitor==0){
 </script>
 
 
-<!-- MONITOR AREA TAB_1 ##############################################################################-->
+<!-- PHP GRAFIK PER_SECTION HYARIHATTO -->
+<?php
+
+    $bulan = date('Y-M', time());
+    $awal_bulan = date('Y-m-01', time());
+    $akhir_bulan = date('Y-m-t', time()); 
+
+    // DATASET GRAFIK SECTION
+    $array_label_sect = [];
+    $array_total_mp_sect = [];
+    $array_target_hyari_sect = [];
+    $array_update_hyari_sect = [];
+    $array_update_persen_sect = [];                  
+        
+                                 
+        // GRAFIK PER_SECTION HYARIHATTO
+        $query_sect = "SELECT * FROM bais_id_section";
+        $result_sect=mysqli_query($link_osp,$query_sect) or die(mysqli_error($link_osp));
+        if(mysqli_num_rows($result_sect)>0){
+            while ($rows_sect = mysqli_fetch_assoc($result_sect)){
+                // AMBIL NAMA SECTION HEAD
+                $array_label_sect[] = $rows_sect['section']; //rows_sect
+                
+
+                // HITUNG TOTAL MP PER MASING-MASING SECTION HEAD
+                $code_sect_loop = $rows_sect['id_section'];             
+                $query_mp_sect = "SELECT npk FROM bais_org WHERE sect = '$code_sect_loop'";
+                $result_mp_sect = mysqli_query($link_osp, $query_mp_sect) or die(mysqli_error($link_osp));
+                if(mysqli_num_rows($result_mp_sect)>0){
+                    $total_result_mp_sect = mysqli_num_rows($result_mp_sect); 
+                }  
+
+                // HITUNG TOTAL UPDATE HYARI PER MASING-MASING SECTION HEAD
+                $query_update_hyari_sect = "SELECT npk FROM view_hyarihatto WHERE sect = '$code_sect_loop' AND (tglinput BETWEEN '$awal_bulan' AND '$akhir_bulan')";
+                $result_update_hyari_sect = mysqli_query($link_osp, $query_update_hyari_sect) or die(mysqli_error($link_osp));
+                if(mysqli_num_rows($result_update_hyari_sect)>0){
+                    $total_records_update_hyari_sect = mysqli_num_rows($result_update_hyari_sect);
+                    $total_update_persen_sect = round(($total_records_update_hyari_sect/$total_result_mp_sect)*100,0);
+                } else {
+                    $total_records_update_hyari_sect = 0;
+                    $total_update_persen_sect = 0;
+                }
+
+                $array_total_mp_sect[] = $total_result_mp_sect;
+                $max_array_total_mp_sect = max( $array_total_mp_sect);
+                $array_target_hyari_sect[] = 97;
+                $array_update_hyari_sect[] = $total_records_update_hyari_sect;      
+                $array_update_persen_sect[] = $total_update_persen_sect;
+                
+            }
+            $json_label_sect = json_encode($array_label_sect); //X axis grafik json 
+            $json_total_mp_sect = json_encode($array_total_mp_sect); //Y total mp grafik json 
+            $json_target_hyari_sect = json_encode($array_target_hyari_sect);
+            $json_update_hyari_sect = json_encode($array_update_hyari_sect);
+            $json_update_persen_sect = json_encode($array_update_persen_sect);
+
+        }
+
+?>
+<!-- JS GRAFIK PER_SECTION HYARIHATTO -->
 <script>
     var label_sect = <?= $json_label_sect; ?>;
     var total_mp_sect = <?= $json_total_mp_sect; ?>;
@@ -524,39 +553,165 @@ if ($_SESSION['osp_code_level']<3 AND $hyarihatto_monitor==0){
     });
 </script>
 
-<!-- GRAFIK PIE ##############################################################################-->
+
+
+<!-- PHP GRAFIK DONUT TAB 1 ############################################################################## -->
+<?php
+    $query_donut_all = mysqli_query($link_osp, "SELECT npk FROM view_hyarihatto WHERE (tglinput BETWEEN '$startDate' AND '$endDate') ") or die(mysqli_error($link_osp));
+    $donut_all = mysqli_num_rows($query_donut_all);
+
+    // <!-- GRAFIK DONUT SHIFT ############################################################################## -->
+    $array_id_shift = [];
+    $array_value_shift = [];
+    $query_id_shift = mysqli_query($link_osp, "SELECT id_shift FROM bais_shift") or die(mysqli_error($link_osp));
+    if(mysqli_num_rows($query_id_shift)>0){
+        while($rows_id_shift = mysqli_fetch_assoc($query_id_shift)){        
+            $query_donut_shift = mysqli_query($link_osp, "SELECT npk FROM view_hyarihatto WHERE (tglinput BETWEEN '$startDate' AND '$endDate') AND shift = '$rows_id_shift[id_shift]' ") or die(mysqli_error($link_osp));        
+            $array_donut_shift[] = array('label' => $rows_id_shift['id_shift'], 'value' => mysqli_num_rows($query_donut_shift)); 
+        }    
+        $json_donut_shift = json_encode($array_donut_shift);
+    }
+
+    // <!-- GRAFIK DONUT KATEGORI ############################################################################## -->
+    $array_kategori = [];
+    $array_value_kategori = [];
+    $query_kategori = mysqli_query($link_osp, "SELECT kategori FROM hyarihatto_kategori") or die(mysqli_error($link_osp));
+    if(mysqli_num_rows($query_kategori)>0){
+        while($rows_kategori = mysqli_fetch_assoc($query_kategori)){        
+            $query_donut_kategori = mysqli_query($link_osp, "SELECT npk FROM view_hyarihatto WHERE (tglinput BETWEEN '$startDate' AND '$endDate') AND kategori = '$rows_kategori[kategori]' ") or die(mysqli_error($link_osp));        
+            $array_donut_kategori[] = array('label' => $rows_kategori['kategori'], 'value' => mysqli_num_rows($query_donut_kategori)); 
+        }    
+        $json_donut_kategori = json_encode($array_donut_kategori);
+    }
+
+    // <!-- GRAFIK DONUT RISK ############################################################################## -->
+    $array_risk = [];
+    $array_value_risk = [];
+    $query_risk = mysqli_query($link_osp, "SELECT risk FROM hyarihatto_risk") or die(mysqli_error($link_osp));
+    if(mysqli_num_rows($query_risk)>0){
+        while($rows_risk = mysqli_fetch_assoc($query_risk)){        
+            $query_donut_risk = mysqli_query($link_osp, "SELECT npk FROM view_hyarihatto WHERE (tglinput BETWEEN '$startDate' AND '$endDate') AND risk = '$rows_risk[risk]' ") or die(mysqli_error($link_osp));        
+            $array_donut_risk[] = array('label' => $rows_risk['risk'], 'value' => mysqli_num_rows($query_donut_risk)); 
+        }    
+        $json_donut_risk = json_encode($array_donut_risk);
+    }
+
+    // <!-- GRAFIK DONUT STOP6 ############################################################################## -->
+    $array_stop6 = [];
+    $array_value_stop6 = [];
+    $query_stop6 = mysqli_query($link_osp, "SELECT stop6 FROM hyarihatto_stop6") or die(mysqli_error($link_osp));
+    if(mysqli_num_rows($query_stop6)>0){
+        while($rows_stop6 = mysqli_fetch_assoc($query_stop6)){        
+            $query_donut_stop6 = mysqli_query($link_osp, "SELECT npk FROM view_hyarihatto WHERE (tglinput BETWEEN '$startDate' AND '$endDate') AND stop6 = '$rows_stop6[stop6]' ") or die(mysqli_error($link_osp));        
+            $array_donut_stop6[] = array('label' => $rows_stop6['stop6'], 'value' => mysqli_num_rows($query_donut_stop6)); 
+        }    
+        $json_donut_stop6 = json_encode($array_donut_stop6);
+    }
+
+        // <!-- GRAFIK DONUT ICARE ############################################################################## -->
+        $array_icare = [];
+        $array_value_icare = [];
+        $query_icare = mysqli_query($link_osp, "SELECT stop6 FROM hyarihatto_icare") or die(mysqli_error($link_osp));
+        if(mysqli_num_rows($query_icare)>0){
+            while($rows_icare = mysqli_fetch_assoc($query_icare)){        
+                $query_donut_stop6 = mysqli_query($link_osp, "SELECT npk FROM view_hyarihatto WHERE (tglinput BETWEEN '$startDate' AND '$endDate') AND stop6 = '$rows_stop6[stop6]' ") or die(mysqli_error($link_osp));        
+                $array_donut_stop6[] = array('label' => $rows_stop6['stop6'], 'value' => mysqli_num_rows($query_donut_stop6)); 
+            }    
+            $json_donut_stop6 = json_encode($array_donut_stop6);
+        }
+?>
+
+
+<!-- JS GRAFIK DONUT TAB 1 ############################################################################## -->
 <script>
-//     new Morris.Line({
-//   // ID of the element in which to draw the chart.
-//   element: 'myfirstchart',
-//   // Chart data records -- each entry in this array corresponds to a point on
-//   // the chart.
-//   data: [
-//     { year: '2008', value: 20 },
-//     { year: '2009', value: 10 },
-//     { year: '2010', value: 5 },
-//     { year: '2011', value: 5 },
-//     { year: '2012', value: 20 }
-//   ],
-//   // The name of the data record attribute that contains x-values.
-//   xkey: 'year',
-//   // A list of names of data record attributes that contain y-values.
-//   ykeys: ['value'],
-//   // Labels for the ykeys -- will be displayed when you hover over the
-//   // chart.
-//   labels: ['Value']
-// });
+    
+    var warna = ["#ff6384", "#ffcd56", "#4bc0c0", "#36a2eb", "#d49cb8", "#7c988c" ];
+    var donut_all = <?php echo $donut_all ?>;
+
+    // <!-- GRAFIK DONUT SHIFT ############################################################################## -->
+    var donut_shift = <?php echo $json_donut_shift; ?>;
+    new Morris.Donut({
+        element: 'donut-shift',
+        data: donut_shift,
+        colors: warna,
+        // resize: true,
+        // redraw: true,
+        formatter: function (y) { return Math.round((y/donut_all)*100) + "%" }
+    });
+
+    // <!-- GRAFIK DONUT KATEGORI ############################################################################## -->
+    var donut_kategori = <?php echo $json_donut_kategori; ?>;
+    new Morris.Donut({
+        element: 'donut-kategori',
+        data: donut_kategori,
+        colors: warna,
+        // resize: true,
+        // redraw: true,
+        formatter: function (y) { return Math.round((y/donut_all)*100) + "%" }
+    });
+
+
+    // <!-- GRAFIK DONUT RISK ############################################################################## -->
+    var donut_risk = <?php echo $json_donut_risk; ?>;
+    new Morris.Donut({
+        element: 'donut-risk',
+        data: donut_risk,
+        colors: warna,
+        // resize: true,
+        // redraw: true,
+        formatter: function (y) { return Math.round((y/donut_all)*100) + "%" }
+    });
+
+    // <!-- GRAFIK DONUT STOP6 ############################################################################## -->
+    var donut_stop6 = <?php echo $json_donut_stop6; ?>;
+    new Morris.Donut({
+        element: 'donut-stop6',
+        data: donut_stop6,
+        colors: warna,
+        // resize: true,
+        // redraw: true,
+        formatter: function (y) { return Math.round((y/donut_all)*100) + "%" }
+    });
+
+        // <!-- GRAFIK DONUT ICARE ############################################################################## -->
+        var donut_icare = <?php echo $json_donut_icare; ?>;
+    new Morris.Donut({
+        element: 'donut-icare',
+        data: donut_icare,
+        colors: warna,
+        // resize: true,
+        // redraw: true,
+        formatter: function (y) { return Math.round((y/donut_all)*100) + "%" }
+    });
 
 
 
-new Morris.Donut({
-    element: 'hero-donut',
-    data: [
-      {label: 'Shift A', value: 25 },
-      {label: 'Shift B', value: 40 },
-      {label: 'Shift N', value: 25 },
-      {label: 'Shift N2', value: 10 }
-    ],
-    formatter: function (y) { return y + "%" }
-  });
+
+
+    // $(document).ready(function() {
+    //     $(document).Morris.redraw();
+    //     // barChart();
+    //     // lineChart();
+    //     // areaChart();
+    //     // donutChart();
+
+    //     $(window).resize(function() {
+    //         window.Morris.redraw();
+    //         // window.barChart.redraw();
+    //         // window.lineChart.redraw();
+    //         // window.areaChart.redraw();
+    //         // window.donutChart.redraw();
+    //     });
+    // });
 </script>
+
+<!-- <script>
+    $('#startfiscal').on('change', function(){
+
+        var endfiscal = parseInt($(this).val())+1;
+
+        $('#tahun_end').html('<option id="tahun_end" value="'+ endfiscal  +'" selected>'+endfiscal+' Mar</option>');
+        
+
+    })
+</script> -->

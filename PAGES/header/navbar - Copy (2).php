@@ -24,7 +24,7 @@ if (!isset($_SESSION['osp_user'])) {
   <!-- General CSS Files -->  
   <link rel="stylesheet" href="../../ASSETS/modules/summernote/summernote-bs4.min.css">  
   <link rel="stylesheet" href="../../ASSETS/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../../ASSETS/fontawesome-free-6.1.1-web/css/all.min.css">   
+  <link rel="stylesheet" href="../../ASSETS/bootstrap/css/all.css">  
   <link rel="stylesheet" href="../../ASSETS/css/custom.css">
   
   <!-- Template CSS -->
@@ -32,7 +32,7 @@ if (!isset($_SESSION['osp_user'])) {
   <link rel="stylesheet" href="../../ASSETS/css/components.css">
   <link rel="stylesheet" href="../../ASSETS/sweetalert2/dist/sweetalert2.min.css">
   <link rel="stylesheet" href="../../ASSETS/modules/dropzonejs/min/dropzone.min.css">
-  <link rel="stylesheet" href="../../ASSETS/morris.js-0.5.1/morris.css">
+1 <link rel="stylesheet" href="../../ASSETS/morris.js-0.5.1/morris.css">
 
 
   <style>
@@ -460,10 +460,9 @@ function waktu() {
               <li class="menu-header"></li>
               <li class="menu-header"></li>
 
-              <li class="menu-header">PMRs</li>
               <!-- SIDEBAR HYARIHATTO -->
               <li class="nav-item dropdown buka_menu" data-name="hyarihatto" id="hyarihatto">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa fa-car-burst"></i> <span>Hyarihatto</span></a>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Hyarihatto</span></a>
                 <ul class="dropdown-menu">
                   <li class="aktif_submenu" id="hyariform"><a href="../hyarihatto/hyarihatto_form.php">Form Hyarihatto</a></li>
                   <li class="aktif_submenu" id="ach"><a href="../hyarihatto/hyarihatto_list.php">My Hyarihatto</a></li>
@@ -472,67 +471,22 @@ function waktu() {
                   <?php } ?>
                 </ul>
               </li>
-              <!-- SIDEBAR KY GENBUTSU -->
-              <li class="nav-item dropdown buka_menu" data-name="ky_genbutsu" id="ky_genbutsu">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa fa-motorcycle"></i> <span>Ky-Genbutsu</span></a>
-                <ul class="dropdown-menu">
-                  <li class="aktif_submenu" id="ky_genbutsu_form"><a href="#">Form Ky-Genbutsu</a></li>
-                  <li class="aktif_submenu" id="ky_genbutsu_acv"><a href="#">My Ky-Genbutsu</a></li>
-                    <li class="aktif_submenu" id="ky_genbutsu_mtr"><a  href="#">Monitor Ky-Genbutsu</a></li>
-                </ul>
-              </li>
-              <!-- SAFETY PATROL -->
-              <li class="nav-item dropdown buka_menu" data-name="safety_patrol" id="safety_patrol">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Safety Patrol</span></a>
-                <ul class="dropdown-menu">
-                  <li class="aktif_submenu" id="safety_patrol_form"><a href="#">Form Safety Patrol</a></li>
-                  <li class="aktif_submenu" id="safety_patrol_acv"><a href="#">My Safety Patrol</a></li>
-                    <li class="aktif_submenu" id="safety_patrol_mtr"><a  href="#">Monitor Safety Patrol</a></li>
-                </ul>
-              </li>
-              <!-- SMEC -->
-              <li class="nav-item dropdown buka_menu" data-name="smec" id="smec">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-wrench"></i> <span>SMEC</span></a>
-                <ul class="dropdown-menu">
-                  <li class="aktif_submenu" id="smec_form"><a href="#">Form SMEC</a></li>
-                  <li class="aktif_submenu" id="smec_acv"><a href="#">My SMEC</a></li>
-                    <li class="aktif_submenu" id="smec_mtr"><a  href="#">Monitor SMEC</a></li>
-                </ul>
-              </li>
-              <!-- Work Observation -->
-              <li class="nav-item dropdown buka_menu" data-name="work_ob" id="work_ob">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa-solid fa-helmet-safety"></i><span>Work Obeservation</span></a>
-                <ul class="dropdown-menu">
-                  <li class="aktif_submenu" id="work_ob_form"><a href="#">Form </a></li>
-                    <li class="aktif_submenu" id="work_ob_mtr"><a  href="#">Monitoring</a></li>
-                </ul>
-              </li>
               
-              <li class="menu-header">Performance</li>
               <!-- SIDEBAR SENAM -->
               <?php
                 // if ($_SESSION['osp_jabatan']=='TL' OR $_SESSION['osp_jabatan']=='ATL' OR $_SESSION['osp_code_level']==3 OR $_SESSION['osp_code_level']==8){
                   if ($_SESSION['osp_code_level']>=8){
-              ?>               
+              ?> 
+              
               <li class="nav-item dropdown buka_menu" id="senam">
-                <a href="#" class="nav-link has-dropdown"><i class="fa-solid fa-person-running"></i><span>Senam Pagi</span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Senam Pagi</span></a>
                 <ul class="dropdown-menu">
                   <li class="aktif_submenu" id="senam_abs"><a class="nav-link" href="../senam/senam_absensi.php">Absensi Senam</a></li>
                   <li class="aktif_submenu" id="senam_mtr"><a class="nav-link" href="../senam/senam_monitoring.php">Monitoring Senam</a></li>                  
                 </ul>
-              </li>              
-              <?php }?>
-
-              <!-- GAMIFIKASI -->
-              <li class="nav-item dropdown buka_menu" id="gamifikasi">
-                <a href="#" class="nav-link has-dropdown"><i class="fa fa-gamepad"></i><span>Gamifikasi</a>
-                <ul class="dropdown-menu">  
-                  <li class="aktif_submenu" id="gamifikasi_acv"><a class="nav-link" href="../gamifikasi/gamifikasi.php">Acv Gamifikasi</a></li>
-                  <li class="aktif_submenu" id="gamifikasi_judge"><a class="nav-link" href="#">Judge Gamifikasi</a></li>                  
-                </ul>
               </li>
+              <?php }?> 
 
-              <!-- PBK -->
               <?php if ($_SESSION['osp_code_level']>=8){?> 
               <li class="nav-item dropdown buka_menu" id="pbk" data-name="pbk" id="pbk" data-target="pbk">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i> <span>PBK</span></a>
@@ -541,20 +495,17 @@ function waktu() {
                   <li class="aktif_submenu" id="exportpbk"><a class="nav-link" href="#">Export Data</a></li>
                   <li class="aktif_submenu" id="histpbk"><a class="nav-link" href="#">History PBK</a></li>
                 </ul>
-              </li>
-
-              <!-- FMDS -->
-              <li class="menu-header">FMDS</li>
+              </li>     
               <li class="nav-item dropdown buka_menu" id="fmds" data-name="fmds" id="fmds" data-target="fmds">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-bicycle"></i> <span>FMDS</span></a>
                 <ul class="dropdown-menu">
                   <li class="aktif_submenu" id="mtrfmds"><a class="nav-link" href="../fmds/fmds_monitoring.php">Monitoring FMDS</a></li>
                   <li class="aktif_submenu" id="reportfmds"><a class="nav-link" href="../fmds/fmds_report.php">Report FMDS</a></li>
                   <li class="aktif_submenu" id="picfmds"><a class="nav-link" href="#">PIC Materi</a></li>
-                  <li class="aktif_submenu" id="schedfmds"><a class="nav-link" href="#">Schedule</a></li>                  
+                  <li class="aktif_submenu" id="schedfmds"><a class="nav-link" href="#">Schedule</a></li>
+                  
                 </ul>
-              </li>
-
+              </li>     
               <li class="nav-item dropdown buka_menu" id="wlp" data-name="wlp" id="wlp" data-target="wlp">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-train"></i> <span>WLP</span></a>
                 <ul class="dropdown-menu">
@@ -565,10 +516,6 @@ function waktu() {
                   <li class="aktif_submenu" id="updwlp"><a class="nav-link" href="#">Update WLP</a></li>
                 </ul>
               </li>
-
-
-              <!-- Setting -->
-              <li class="menu-header">Setting</li>
               <li class="nav-item dropdown buka_menu" id="admin" data-name="admin" id="admin" data-target="admin">
                 <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Admin</span></a>
                 <ul class="dropdown-menu">

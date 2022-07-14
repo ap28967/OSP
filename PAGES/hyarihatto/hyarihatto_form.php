@@ -215,7 +215,7 @@ if (!isset($_SESSION['osp_user'])) {
 
           <div class="card-footer col-md-12 text-md-right">
           <!-- <div class="btn-group"> -->
-            <button type="reset" id="btnReset" name="btnReset" class="btn btn-danger">Reset</button>
+            <button type="reset" class="btn btn-danger">Reset</button>
             <button type="submit" id="btnSubmit" name="btnSubmit" class="btn btn-primary">Submit</button>
           <!-- </div> -->
           </div>
@@ -335,7 +335,7 @@ sessionStorage.setItem('radioHyari', 'Belum');
     formData.append('foto_perbaikan', foto_perbaikan);  
     
 
-
+console.log(formData)
 
     if(foto_temuan==undefined){ 
       Swal.fire({
@@ -370,7 +370,7 @@ sessionStorage.setItem('radioHyari', 'Belum');
             processData: false,
             data: formData,
             success: function (msg) {
-              $('.notifikasi').html(msg);
+              $('notifikasi').html(msg);
               // $('#formInputData').style.visibility = "hidden";
               // $('#notifsudah').style.visibility = "visible";           
             }

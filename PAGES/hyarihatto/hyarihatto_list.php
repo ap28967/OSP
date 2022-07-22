@@ -80,13 +80,7 @@ if (!isset($_SESSION['osp_user'])) {
 
 </div><!--ROW-->
 
-
-<?php
-  include("../header/footer.php");
-?>
-  
-
-    <div  id="modal01" class="modal modal-backdrop"  onclick="this.style.display='none'">
+<div  id="modal01" class="modal modal-backdrop"  onclick="this.style.display='none'">
         <div class="modal-dialog  modal-dialog-centered modal-lg" >
             <div class="modal-content">
                 <div class="modal-body">
@@ -99,6 +93,16 @@ if (!isset($_SESSION['osp_user'])) {
             </div>
         </div>
     </div>
+
+
+
+
+<?php
+  include("../header/footer.php");
+?>
+  
+
+ 
 
 
 
@@ -125,13 +129,8 @@ if (!isset($_SESSION['osp_user'])) {
 <!-- <script src="../../ASSETS/js/page/index.js"></script> -->
 <!-- <script src="assets/js/page/bootstrap-modal.js"></script> -->
 
-<!-- FUNCTION VIEW IMAGE -->
-<script> 
-    function onClick(element) {
-        document.getElementById("img01").src = element.src;
-        document.getElementById("modal01").style.display = "block";
-    }
-</script>
+
+
 
 <script>
     $(document).ready(function(){
@@ -176,7 +175,7 @@ if (!isset($_SESSION['osp_user'])) {
             });
         };
     });
-
-
 </script>
+
+
 

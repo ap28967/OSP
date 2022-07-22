@@ -39,6 +39,71 @@ function compressedImage($source, $path, $quality) {
     imagejpeg($image, $path, $quality);
 }
 
+// PROFIL USER #############################################################################################
+if(isset($_SESSION['osp_user'])){
+  $query_organization = mysqli_query($link_osp, "SELECT * FROM view_organization WHERE npk = '$_SESSION[osp_user]'") or die(mysqli_error($link_osp));
+  if(mysqli_num_rows($query_organization)>0){
+      $profil_organization = mysqli_fetch_assoc($query_organization); 
+      
+      
+      $plant = $profil_organization['plant'];
+      $division = $profil_organization['division'];
+      $department = $profil_organization['dept'];
+      $dept_account = $profil_organization['dept_account'];
+      $section = $profil_organization['section'];
+      $groupfrm = $profil_organization['groupfrm'];
+      $pos = $profil_organization['pos'];
+      
+      $id_plant = $profil_organization['id_plant'];
+      $id_division = $profil_organization['id_division'];
+      $id_department = $profil_organization['id_dept'];
+      $id_dept_account = $profil_organization['id_dept_account'];
+      $id_section = $profil_organization['id_sect'];
+      $id_groupfrm = $profil_organization['id_grp'];
+      $id_pos = $profil_organization['id_post_leader'];
+
+
+
+      $npk = $profil_organization['npk'];
+      $nama = $profil_organization['nama'];
+      $nama_depan = $profil_organization['nama_depan'];
+      $shift = $profil_organization['shift'];
+      $jabatan = $profil_organization['jabatan'];
+      $status = $profil_organization['status'];
+      $tgl_masuk = $profil_organization['tgl_masuk'];
+      
+      
+      
+  }
+
+  $query_user = mysqli_query($link_osp, "SELECT * FROM view_user WHERE npk = '$_SESSION[osp_user]'") or die(mysqli_error($link_osp));
+  if(mysqli_num_rows($query_user)>0){
+      $profil_user = mysqli_fetch_assoc($query_user);
+      $level = $profil_user['level'];
+      $id_role = $profil_user['id_role'];
+      $role_name = $profil_user['role_name'];
+  }
+
+
+  $query_karyawan = mysqli_query($link_osp, "SELECT * FROM karyawan_profile WHERE npk = '$_SESSION[osp_user]'") or die(mysqli_error($link_osp));
+  if(mysqli_num_rows($query_karyawan)>0){
+      $profil_karyawan = mysqli_fetch_assoc($query_karyawan);
+      $birth_city = $profil_karyawan['birth_city'];
+      $birth = $profil_karyawan['birth'];
+      $handphone = $profil_karyawan['handphone'];
+      $email = $profil_karyawan['email'];
+      $domisili = $profil_karyawan['domisili'];
+  } else {
+      $birth_city = '';
+      $birth = '';
+      $handphone = '';
+      $email = '';
+      $domisili = '';
+  }
+}
+
+
+
 // SPECIAL USER ############################################################################################
 if(isset($_SESSION['osp_user'])){
   $query_user_special = mysqli_query($link_osp, "SELECT * FROM user_special WHERE npk = '$_SESSION[osp_user]'");

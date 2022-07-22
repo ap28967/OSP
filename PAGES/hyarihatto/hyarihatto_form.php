@@ -412,19 +412,4 @@ console.log(formData)
 
 
 
-<!-- SETTING NAV BAR ACTIVE SAAT URL BARU PERTAMA KALI DI LOAD SEBELUM REDIRECT-->
-<script>
-  // $(document).ready(function(){
-      var buka_menu = 'hyarihatto';
-      var aktif_submenu = 'hyariform';
-      if(typeof(Storage) != "undefined") {
-          sessionStorage.setItem('sesi_buka_menu', buka_menu);
-          sessionStorage.setItem('sesi_aktif_submenu', aktif_submenu);
 
-          $('#'+sessionStorage.getItem('sesi_aktif_submenu')).addClass('active');
-          $('#'+sessionStorage.getItem('sesi_aktif_submenu')).addClass('active');
-      } else {
-        console.log("Sorry, your browser does not support web storage...");
-      }
-  // })
-</script>

@@ -20,7 +20,7 @@ if(isset($_GET['pilih_sect'])!=""){
         <!-- <option id="all_grp" value="" class="d-none" disabled selected>All</option> -->
 
         <?php 
-            $query_grp = mysqli_query($link_osp,"SELECT * FROM bais_id_group WHERE id_section = '$pilih_sect'") or die(mysqli_error($link_osp));
+            $query_grp = mysqli_query($link_osp,"SELECT * FROM groupfrm WHERE id_section = '$pilih_sect'") or die(mysqli_error($link_osp));
             if (mysqli_num_rows( $query_grp)>0){
                 while($rows_grp = mysqli_fetch_assoc( $query_grp)){
                     echo '<option class="callback_grp" value="'.$rows_grp['id_group'].'">'.$rows_grp['nama_group'].'</option>'; 
@@ -32,12 +32,6 @@ if(isset($_GET['pilih_sect'])!=""){
 <?php
 } //Isset
 ?>
-
-
-
-
-            
-
 
 
 

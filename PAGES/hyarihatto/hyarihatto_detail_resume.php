@@ -23,12 +23,6 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
         <div class="card-body col-md-12">
             <canvas id="chart_hyari_bulanan" style="width:100%;height:300px;"></canvas>
         </div>
-        <!-- <div class="card-body col-md-6">
-            <canvas id="chart_hyari_perjalur" style="width:100%;height:300px;"></canvas>
-        </div>                              -->
-        <!-- <div class="card-body col-md-4">
-            <canvas id="myChart99" style="width:100%;height:300px;"></canvas>
-        </div> -->
     </div>
 
 
@@ -41,13 +35,16 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
     $selesai = strtotime(date('Y-m-d', strtotime($_GET['end'])));
 
 
-
-    if($_GET['pilih_type']=="dept_account"){
-        $filter_tabel = "dept_account = '$_GET[pilih_data]'";
-    } else if($_GET['pilih_type']=="sect"){
-        $filter_tabel = "sect = '$_GET[pilih_data]'";
-    } else if($_GET['pilih_type']=="grp"){
-        $filter_tabel = "grp = '$_GET[pilih_data]'";
+    if($_GET['pilih_type']!="npk"){
+        if($_GET['pilih_type']=="dept_account"){
+            $filter_tabel = "id_dept_account = '$_GET[pilih_data]'";
+        } else if($_GET['pilih_type']=="sect"){
+            $filter_tabel = "id_sect = '$_GET[pilih_data]'";
+        } else if($_GET['pilih_type']=="grp"){
+            $filter_tabel = "id_grp = '$_GET[pilih_data]'";
+        }
+    } else {
+        $filter_tabel = "npk = '$_GET[pilih_data]'";
     }
 
 
@@ -55,7 +52,7 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
 
 
     // QUERY HITUNG ALL ROWS KARYAWAN
-   $queryAllKar = "SELECT npk FROM view_sesi WHERE $filter_tabel"; 
+   $queryAllKar = "SELECT npk FROM view_organization WHERE $filter_tabel"; 
    $resultAllKar=mysqli_query($link_osp,$queryAllKar);    
    $total_records=mysqli_num_rows($resultAllKar);
 
@@ -123,20 +120,20 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
                     // NEXT LOOP
                     $mulai = strtotime('+1 month',$mulai);  //  Increment next month 
                 } //while tabel header
-                $json_x_label_bulan = json_encode($array_x_label_bulan); //X axis grafik json  
-                $json_y_total_mp = json_encode($array_y_total_mp); //Y total mp grafik json     
-                $json_y_target_hyari = json_encode($array_y_target_hyari); //Y target persen grafik json
-                $json_y_update_hyari = json_encode($array_y_update_hyari); //Y target persen grafik json 
-                $json_y_update_persen = json_encode($array_y_update_persen); //Y update persen grafik json 
+                $json_x_label_bulan = json_encode($array_x_label_bulan); 
+                $json_y_total_mp = json_encode($array_y_total_mp);     
+                $json_y_target_hyari = json_encode($array_y_target_hyari); 
+                $json_y_update_hyari = json_encode($array_y_update_hyari); 
+                $json_y_update_persen = json_encode($array_y_update_persen); 
                 
-                // print_r($array_y_target_hyari)
+   
                 ?>
             </tr>
         </thead>       
         <tbody>
         <?php
         // QUERY ALL NPK
-        $queryAll = "SELECT * FROM view_sesi WHERE $filter_tabel ORDER BY npk LIMIT $limit_start,$limit  "; 
+        $queryAll = "SELECT * FROM view_organization WHERE $filter_tabel ORDER BY npk LIMIT $limit_start,$limit  "; 
         $resultAll=mysqli_query($link_osp,$queryAll);    
         if ($resultAll->num_rows > 0) {
             while ($rows = mysqli_fetch_assoc($resultAll)){  
@@ -150,9 +147,9 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
                 <td><?php echo $rows['npk'];?></td>
                 <td><?php echo $rows['nama'];?></td>
                 <td><?php echo $rows['jabatan'];?></td>
-                <td><?php echo $rows['nama_grp'];?></td>
-                <td><?php echo $rows['nama_sect'];?></td>
-                <td><?php echo $rows['nama_dept_account'];?></td>
+                <td><?php echo $rows['groupfrm'];?></td>
+                <td><?php echo $rows['section'];?></td>
+                <td><?php echo $rows['dept_account'];?></td>
 
                 <?php                
                 $mulai2 = strtotime($startDate);
@@ -382,7 +379,7 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
 
 
 
-
+<!-- 
 <script>
     // DONUT
     var donatLabel = ["UF", "UR", "UB", "SM", "MB", "SL"];
@@ -408,7 +405,7 @@ if(isset($_GET['start'])!="" && isset($_GET['end'])!="" ){
     });
 
     // myChart88.update();
-</script>
+</script> -->
 
 
 

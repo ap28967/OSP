@@ -1,18 +1,15 @@
 <?php
-$dashboard = "../hyarihatto/hyarihatto_form.php";
+  $dashboard = "../dashboard/dashboard.php";
 
-include("../../CONFIG/config.php"); 
-if (!isset($_SESSION['osp_user'])) {
-    header("Location: ../../AUTH/auth-login.php");
-}
-
+  include("../../CONFIG/config.php"); 
+  if (!isset($_SESSION['osp_user'])) {
+      header("Location: ../../AUTH/auth-login.php");
+  }
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en" id="osp_html">
-
-
 
 
 <head>
@@ -33,7 +30,6 @@ if (!isset($_SESSION['osp_user'])) {
   <link rel="stylesheet" href="../../ASSETS/sweetalert2/dist/sweetalert2.min.css">
   <link rel="stylesheet" href="../../ASSETS/modules/dropzonejs/min/dropzone.min.css">
   <link rel="stylesheet" href="../../ASSETS/morris.js-0.5.1/morris.css">
-
 
   <style>
     /* The container */
@@ -133,228 +129,219 @@ if (!isset($_SESSION['osp_user'])) {
     }
   </style>
 
-
-<style>
-/* Center the loader */
-  #loader {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    z-index: 1;
-    width: 120px;
-    height: 120px;
-    margin: -76px 0 0 -76px;
-    border: 16px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 16px solid #3498db;
-    -webkit-animation: spin 2s linear infinite;
-    animation: spin 2s linear infinite;
-  }
-
-  @-webkit-keyframes spin {
-    0% { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
-  }
-
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-
-  /* Add animation to "page content" */
-  .animate-bottom {
-    position: relative;
-    -webkit-animation-name: animatebottom;
-    -webkit-animation-duration: 1s;
-    animation-name: animatebottom;
-    animation-duration: 1s
-  }
-
-  @-webkit-keyframes animatebottom {
-    from { bottom:-100px; opacity:0 } 
-    to { bottom:0px; opacity:1 }
-  }
-
-  @keyframes animatebottom { 
-    from{ bottom:-100px; opacity:0 } 
-    to{ bottom:0; opacity:1 }
-  }
-
-</style>
-
-
-<style>
-  .card-header-custom{
-    margin-bottom:0px;
-    background: #6777ef;
-    height:50px;
-  }
-  .card-header-custom-icon{
-    font-size:20px;
-    padding:15px;
-    margin-top:-50px;
-    color:white;
-    border-radius: 10%;
-    box-shadow: 3px 3px 0px 0px white;
-  }
-  .card-header-custom-judul{
-    margin-left:60px;
-    font-size:18px;
-    color:white;
-    font-weight:bold;
-    
-  }
-  .bg-merah{
-    background-color: #db2164;
-  }
-  .bg-kuning{
-    background-color: #fc930a ;
-  }
-  .bg-hijau{
-    background-color: #58b05c;
-  }
-  .bg-biru{
-    background-color: #13b9ce ;
-  }
-  .text-merah{
-    color: #db2164;
-  }
-  .text-kuning{
-    color: #fc930a;
-  }
-  .text-hijau{
-    color: #58b05c;
-  }
-  .text-biru{
-    color: #13b9ce;
-  }
-
-  .morris-hover {
-  position:absolute;
-  z-index:1000;
-}
-
-  /* MORRIS RESIZE */
-  .morris-hover.morris-default-style {     
-    border-radius:10px;
-    padding:6px;
-    color:#666;
-    background:rgba(255, 255, 255, 0.8);
-    border:solid 2px rgba(230, 230, 230, 0.8);
-    font-family:sans-serif;
-    font-size:12px;
-    text-align:center;
-  }
-
-  .morris-hover.morris-default-style .morris-hover-row-label {
-    font-weight:bold;
-    margin:0.25em 0;
-  }
-
-  .morris-hover.morris-default-style .morris-hover-point {
-    white-space:nowrap;
-    margin:0.1em 0;
-  }
-
-  svg { width: 100%; }
-</style>
-
-<!-- CUSTOM INPUT FILE IMAGE PREVIEW -->
-<style>
-
-.custom_file_input[type="file"]{
-    display: none;
-}
-.custom_file_label{
-    display: block;
-    padding:6px;
-    text-align:center; 
-    color:white; 
-    height:35px; 
-    border-radius:20px;
-}
-</style>
-
-
-
-
-<!-- General JS Scripts -->
-<script src="../../ASSETS/bootstrap/js/jquery-3.3.1.min.js" ></script>
-
-
-
-<!-- NAV BAR ACTIVE SELECTOR -->
-<script>
-  $(document).ready(function(){
-    // EXPAND COLLAPSE
-    $(document).on('click', '.buka_menu', function(){
-        var buka_menu = $(this).attr('id');
-        if(typeof(Storage) != "undefined") {
-            sessionStorage.setItem('sesi_buka_menu', buka_menu);
-          } else {
-            console.log("Sorry, your browser does not support web storage...");
-          }
-    });
-    $('#'+sessionStorage.getItem('sesi_buka_menu')).addClass('active');
-    // ACTIVE MENU
-    $(document).on('click', '.aktif_submenu', function(){
-        var aktif_submenu = $(this).attr('id');
-        if(typeof(Storage) != "undefined") {
-            sessionStorage.setItem('sesi_aktif_submenu', $(this).attr('id'));
-          } else {
-            console.log("Sorry, your browser does not support web storage...");
-          }
-    });
-  $('#'+sessionStorage.getItem('sesi_aktif_submenu')).addClass('active');
-     });
-</script>
-
-
-
-<!-- FULLSCREEN BUTTON ON NAVBAR -->
-<script>
-  var elem = document.documentElement;
-  function openFullscreen() {  
-    if (elem.requestFullscreen) {
-      elem.requestFullscreen();
-    } else if (elem.webkitRequestFullscreen) { /* Safari */
-      elem.webkitRequestFullscreen();
-    } else if (elem.msRequestFullscreen) { /* IE11 */
-      elem.msRequestFullscreen();
+  <style>
+  /* Center the loader */
+    #loader {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 1;
+      width: 120px;
+      height: 120px;
+      margin: -76px 0 0 -76px;
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #3498db;
+      -webkit-animation: spin 2s linear infinite;
+      animation: spin 2s linear infinite;
     }
-    $('#fullscreen_on').addClass('d-none');
-    $('#fullscreen_off').removeClass('d-none');
-    sessionStorage.setItem('screen', 'fullscreen_on');
-  }
-  function closeFullscreen() {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.webkitExitFullscreen) { /* Safari */
-      document.webkitExitFullscreen();
-    } else if (document.msExitFullscreen) { /* IE11 */
-      document.msExitFullscreen();
-    }
-    $('#fullscreen_off').addClass('d-none');
-    $('#fullscreen_on').removeClass('d-none');
-    sessionStorage.setItem('screen', 'fullscreen_off');
-  }
-</script>
 
-<!-- JAM PADA NAVBAR ##################################################################################-->
-<script>
-$(document).ready(function(){
-  if(window.screen.availWidth>=1024){
-    $('#jam_a').removeClass('d-none');    
-  }
-})
-window.setTimeout("waktu()", 1000); 
-function waktu() {
-  var currentdate = new Date();
-  setTimeout("waktu()", 1000);
-  var current = currentdate.toLocaleTimeString();     
-  document.getElementById("jam").innerHTML = current;
-}
-</script>
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Add animation to "page content" */
+    .animate-bottom {
+      position: relative;
+      -webkit-animation-name: animatebottom;
+      -webkit-animation-duration: 1s;
+      animation-name: animatebottom;
+      animation-duration: 1s
+    }
+
+    @-webkit-keyframes animatebottom {
+      from { bottom:-100px; opacity:0 } 
+      to { bottom:0px; opacity:1 }
+    }
+
+    @keyframes animatebottom { 
+      from{ bottom:-100px; opacity:0 } 
+      to{ bottom:0; opacity:1 }
+    }
+
+  </style>
+
+
+  <style>
+    .card-header-custom{
+      margin-bottom:0px;
+      background: #6777ef;
+      height:50px;
+    }
+    .card-header-custom-icon{
+      font-size:20px;
+      padding:15px;
+      margin-top:-50px;
+      color:white;
+      border-radius: 10%;
+      box-shadow: 3px 3px 0px 0px white;
+    }
+    .card-header-custom-judul{
+      margin-left:60px;
+      font-size:18px;
+      color:white;
+      font-weight:bold;
+      
+    }
+    .bg-merah{
+      background-color: #db2164;
+    }
+    .bg-kuning{
+      background-color: #fc930a ;
+    }
+    .bg-hijau{
+      background-color: #58b05c;
+    }
+    .bg-biru{
+      background-color: #13b9ce ;
+    }
+    .text-merah{
+      color: #db2164;
+    }
+    .text-kuning{
+      color: #fc930a;
+    }
+    .text-hijau{
+      color: #58b05c;
+    }
+    .text-biru{
+      color: #13b9ce;
+    }
+
+    .morris-hover {
+    position:absolute;
+    z-index:1000;
+    }
+
+    /* MORRIS RESIZE */
+    .morris-hover.morris-default-style {     
+      border-radius:10px;
+      padding:6px;
+      color:#666;
+      background:rgba(255, 255, 255, 0.8);
+      border:solid 2px rgba(230, 230, 230, 0.8);
+      font-family:sans-serif;
+      font-size:12px;
+      text-align:center;
+    }
+
+    .morris-hover.morris-default-style .morris-hover-row-label {
+      font-weight:bold;
+      margin:0.25em 0;
+    }
+
+    .morris-hover.morris-default-style .morris-hover-point {
+      white-space:nowrap;
+      margin:0.1em 0;
+    }
+
+    svg { width: 100%; }
+  </style>
+
+  <!-- CUSTOM INPUT FILE IMAGE PREVIEW -->
+  <style>
+    .custom_file_input[type="file"]{
+        display: none;
+    }
+    .custom_file_label{
+        display: block;
+        padding:6px;
+        text-align:center; 
+        color:white; 
+        height:35px; 
+        border-radius:20px;
+    }
+  </style>
+
+  <!-- General JS Scripts -->
+  <script src="../../ASSETS/bootstrap/js/jquery-3.3.1.min.js" ></script>
+
+  <!-- NAV BAR ACTIVE SELECTOR -->
+  <script>
+    $(document).ready(function(){
+      // EXPAND COLLAPSE
+      $(document).on('click', '.buka_menu', function(){
+          var buka_menu = $(this).attr('id');
+          if(typeof(Storage) != "undefined") {
+              sessionStorage.setItem('sesi_buka_menu', buka_menu);
+            } else {
+              console.log("Sorry, your browser does not support web storage...");
+            }
+      });
+      $('#'+sessionStorage.getItem('sesi_buka_menu')).addClass('active');
+      // ACTIVE MENU
+      $(document).on('click', '.aktif_submenu', function(){
+          var aktif_submenu = $(this).attr('id');
+          if(typeof(Storage) != "undefined") {
+              sessionStorage.setItem('sesi_aktif_submenu', $(this).attr('id'));
+            } else {
+              console.log("Sorry, your browser does not support web storage...");
+            }
+      });
+    $('#'+sessionStorage.getItem('sesi_aktif_submenu')).addClass('active');
+      });
+  </script>
+
+  <!-- FULLSCREEN BUTTON ON NAVBAR -->
+  <script>
+    var elem = document.documentElement;
+    function openFullscreen() {  
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.webkitRequestFullscreen) { /* Safari */
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) { /* IE11 */
+        elem.msRequestFullscreen();
+      }
+      $('#fullscreen_on').addClass('d-none');
+      $('#fullscreen_off').removeClass('d-none');
+      sessionStorage.setItem('screen', 'fullscreen_on');
+    }
+    function closeFullscreen() {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) { /* Safari */
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) { /* IE11 */
+        document.msExitFullscreen();
+      }
+      $('#fullscreen_off').addClass('d-none');
+      $('#fullscreen_on').removeClass('d-none');
+      sessionStorage.setItem('screen', 'fullscreen_off');
+    }
+  </script>
+
+  <!-- JAM PADA NAVBAR ##################################################################################-->
+  <script>
+    $(document).ready(function(){
+      if(window.screen.availWidth>=1024){
+        $('#jam_a').removeClass('d-none');    
+      }
+    })
+    window.setTimeout("waktu()", 1000); 
+    function waktu() {
+      var currentdate = new Date();
+      setTimeout("waktu()", 1000);
+      var current = currentdate.toLocaleTimeString();     
+      document.getElementById("jam").innerHTML = current;
+    }
+  </script>
 
 </head>
 
@@ -365,7 +352,7 @@ function waktu() {
       <nav class="navbar navbar-expand-lg main-navbar"  style="background-color:white; padding-left:0px; padding-right:0px;">
         <form class="form-inline mr-auto" >
           <ul class="navbar-nav mr-3">
-            <li id="button_sidebar_left"><a  href="#" data-toggle="sidebar" class="nav-link nav-link-lg"  onclick="panah_kiri()"><i class="fa-solid fa-bars" style="color: grey; font-size:25px; vertical-align:middle;"></i><span style="color: black; font-size:19px; font-family:'Arial', 'Arial Narrow', 'Arial Narrow', 'Arial Narrow'; vertical-align:middle; margin-left:15px;"><?php echo $name_page; ?></span></a></li>  
+            <li id="button_sidebar_left"><a  href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fa-solid fa-bars" style="color: grey; font-size:25px; vertical-align:middle;"></i><span style="color: black; font-size:19px; font-family:'Arial', 'Arial Narrow', 'Arial Narrow', 'Arial Narrow'; vertical-align:middle; margin-left:15px;"><?php echo $name_page; ?></span></a></li>  
           </ul>
         </form>
          
@@ -374,7 +361,7 @@ function waktu() {
         <!-- ####################### NAVBAR TOPBAR ####################################-->        
         <ul class="navbar-nav navbar-right" >
           <!-- JAM -->
-          <a id="jam_a" class="d-none" style="font-size:15px; margin-right:7px;"><i class="fa fa-clock"  style="vertical-align:middle; margin-right:3px;"></i><span id="jam" style="vertical-align:middle; color:grey; margin-right:15px; font-family:'Arial', 'Arial Narrow', 'Arial Narrow', 'Arial Narrow';"></span></a>
+          <a id="jam_a" class="d-none" style="font-size:15px; margin-right:5px;"><i class="fa fa-clock"  style="vertical-align:middle; margin-right:3px;"></i><span id="jam" style="vertical-align:middle; color:grey; margin-right:15px; font-family:'Arial', 'Arial Narrow', 'Arial Narrow', 'Arial Narrow';"></span></a>
 
           <!-- FULL SCREEN TOGGLE -->
           <li><a style="padding:5px;"><i class="fa-solid fa-expand" id="fullscreen_on" style="vertical-align:middle; font-size:15px; font-weight:bold; color:black;" onclick="openFullscreen()"></i></a></li>
@@ -396,7 +383,7 @@ function waktu() {
                   </div>
                   <div class="dropdown-item-desc text-bold">
                       Reminder Pembuatan Hyarihatto bulan ini
-                    <div class="time text-bold"><?php echo $thn."-".$bln; ?></div>
+                    <div class="time text-bold"><?php echo $thn."-".$bln."-01"; ?></div>
                   </div>
                 </a>
                 <!-- <a href="#" class="dropdown-item dropdown-item-unread">
@@ -420,13 +407,13 @@ function waktu() {
 
           <!-- ####################### NAVBAR PROFIL ####################################-->
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown nav-link-lg nav-link-user">   
-            <img alt=""  src="../../ASSETS/img/avatar/avatar-5.png" class="rounded-circle mr-1" style="width:35px; height:35px;">
+            <img alt=""  src="../../ASSETS/img/avatar/avatar-5.png" class="rounded-circle" style="width:25px; height:25px;">
             
-            <div class="d-sm-none d-lg-inline-block" style="color: black;"> <?php echo "Hi,".$_SESSION['osp_nama_depan']; ?>&nbsp;<i class="fa fa-angle-down" style="color: black; font-size:small"></i></div></a>
+            <div class="d-sm-none d-lg-inline-block" style="color: black;"> <?php echo "Hi, ".$nama_depan; ?>&nbsp;<i class="fa fa-angle-down" style="color: black; font-size:small"></i></div></a>
             
             <div class="dropdown-menu dropdown-menu-right">
-              <div class="dropdown-title"><?="[ ".$_SESSION['osp_level']." ]"?></div>
-              <a href="#" class="dropdown-item has-icon">
+              <div class="dropdown-title" style="font-size: 8px;"><?=$role_name;?></div>
+              <a href="../dashboard/dashboard.php" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
               </a>
               <a href="#" class="dropdown-item has-icon">
@@ -456,25 +443,28 @@ function waktu() {
             <a class="nav-link" href="<?php echo $dashboard; ?>">OSP</a>            
           </div>
 
-          <ul class="sidebar-menu" >            
-              <li class="menu-header"></li>
-              <li class="menu-header"></li>
+          <ul class="sidebar-menu" >   
+                     
+              <!-- <li class="menu-header"></li>
+              <li class="menu-header"></li> -->
+             
 
               <li class="menu-header">PMRs</li>
               <!-- SIDEBAR HYARIHATTO -->
               <li class="nav-item dropdown buka_menu" data-name="hyarihatto" id="hyarihatto">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa fa-car-burst"></i> <span>Hyarihatto</span></a>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-car-burst"></i> <span>Hyarihatto</span></a>
                 <ul class="dropdown-menu">
                   <li class="aktif_submenu" id="hyariform"><a href="../hyarihatto/hyarihatto_form.php">Form Hyarihatto</a></li>
                   <li class="aktif_submenu" id="ach"><a href="../hyarihatto/hyarihatto_list.php">My Hyarihatto</a></li>
-                  <?php if ($_SESSION['osp_code_level']>=3 or $hyarihatto_export == 1){?> 
+                  <?php if ($level>=3 or $hyarihatto_export == 1){?> 
                     <li class="aktif_submenu" id="hyarimtr"><a  href="../hyarihatto/hyarihatto_monitoring.php">Monitor Hyarihatto</a></li>
+                    <li class="aktif_submenu" id="hyaridetail"><a  href="../hyarihatto/hyarihatto_detail.php">Detail Hyarihatto</a></li>
                   <?php } ?>
                 </ul>
               </li>
               <!-- SIDEBAR KY GENBUTSU -->
               <li class="nav-item dropdown buka_menu" data-name="ky_genbutsu" id="ky_genbutsu">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa fa-motorcycle"></i> <span>Ky-Genbutsu</span></a>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-motorcycle"></i> <span>Ky-Genbutsu</span></a>
                 <ul class="dropdown-menu">
                   <li class="aktif_submenu" id="ky_genbutsu_form"><a href="#">Form Ky-Genbutsu</a></li>
                   <li class="aktif_submenu" id="ky_genbutsu_acv"><a href="#">My Ky-Genbutsu</a></li>
@@ -501,21 +491,21 @@ function waktu() {
               </li>
               <!-- Work Observation -->
               <li class="nav-item dropdown buka_menu" data-name="work_ob" id="work_ob">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa-solid fa-helmet-safety"></i><span>Work Obeservation</span></a>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-helmet-safety"></i><span>Work Obeservation</span></a>
                 <ul class="dropdown-menu">
                   <li class="aktif_submenu" id="work_ob_form"><a href="#">Form </a></li>
                     <li class="aktif_submenu" id="work_ob_mtr"><a  href="#">Monitoring</a></li>
                 </ul>
               </li>
               
-              <li class="menu-header">Performance</li>
+              <li class="menu-header">PERFORMANCE</li>
               <!-- SIDEBAR SENAM -->
               <?php
                 // if ($_SESSION['osp_jabatan']=='TL' OR $_SESSION['osp_jabatan']=='ATL' OR $_SESSION['osp_code_level']==3 OR $_SESSION['osp_code_level']==8){
-                  if ($_SESSION['osp_code_level']>=8){
+                  if ($level>=8){
               ?>               
               <li class="nav-item dropdown buka_menu" id="senam">
-                <a href="#" class="nav-link has-dropdown"><i class="fa-solid fa-person-running"></i><span>Senam Pagi</span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-person-running"></i><span>Senam Pagi</span></a>
                 <ul class="dropdown-menu">
                   <li class="aktif_submenu" id="senam_abs"><a class="nav-link" href="../senam/senam_absensi.php">Absensi Senam</a></li>
                   <li class="aktif_submenu" id="senam_mtr"><a class="nav-link" href="../senam/senam_monitoring.php">Monitoring Senam</a></li>                  
@@ -525,7 +515,7 @@ function waktu() {
 
               <!-- GAMIFIKASI -->
               <li class="nav-item dropdown buka_menu" id="gamifikasi">
-                <a href="#" class="nav-link has-dropdown"><i class="fa fa-gamepad"></i><span>Gamifikasi</a>
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-gamepad"></i><span>Gamifikasi</a>
                 <ul class="dropdown-menu">  
                   <li class="aktif_submenu" id="gamifikasi_acv"><a class="nav-link" href="../gamifikasi/gamifikasi.php">Acv Gamifikasi</a></li>
                   <li class="aktif_submenu" id="gamifikasi_judge"><a class="nav-link" href="#">Judge Gamifikasi</a></li>                  
@@ -533,7 +523,7 @@ function waktu() {
               </li>
 
               <!-- PBK -->
-              <?php if ($_SESSION['osp_code_level']>=8){?> 
+              <?php if ($level>=8){?> 
               <li class="nav-item dropdown buka_menu" id="pbk" data-name="pbk" id="pbk" data-target="pbk">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i> <span>PBK</span></a>
                 <ul class="dropdown-menu">
@@ -572,7 +562,7 @@ function waktu() {
               <li class="nav-item dropdown buka_menu" id="admin" data-name="admin" id="admin" data-target="admin">
                 <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Admin</span></a>
                 <ul class="dropdown-menu">
-                  <li class="aktif_submenu" id="usermgt"><a class="nav-link">User Management</a></li>
+                  <li class="aktif_submenu" id="usermgt"><a class="nav-link" href="../user_management/user_management.php">User Management</a></li>
                   <li class="aktif_submenu" id="updatemp"><a class="nav-link">Update MP</a></li>
                   <li class="aktif_submenu" id="setnotif"><a class="nav-link" class="beep beep-sidebar">Notifikasi</a></li>
                 </ul>

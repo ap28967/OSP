@@ -1,5 +1,5 @@
 <?php 
-$dashboard = "Location: ../PAGES/hyarihatto/hyarihatto_form.php";
+$dashboard = "Location: ../PAGES/dashboard/dashboard.php";
 
 include("../CONFIG/config.php"); 
 
@@ -11,27 +11,13 @@ if (isset($_POST['submit'])) {
   $npk = trim(mysqli_real_escape_string($link_osp, $_POST['npk']));
   $password = sha1(trim(mysqli_real_escape_string($link_osp, $_POST['password'])));
 
-  $query_login = mysqli_query($link_osp, "SELECT * FROM view_sesi WHERE npk = '$npk' AND pass = '$password' ") or die (mysqli_error($link_osp));
+  $query_login = mysqli_query($link_osp, "SELECT * FROM view_user WHERE npk = '$npk' AND pass = '$password' ") or die (mysqli_error($link_osp));
   if ($query_login->num_rows > 0) {
       $result_login = mysqli_fetch_assoc($query_login);
 
 
       $_SESSION['osp_user'] =  $npk;
-      $_SESSION['osp_nama'] =  $result_login['nama'];
-      
-      // $_SESSION['level'] = 
-      $_SESSION['osp_nama_depan'] =  $result_login['nama_depan'];
-      $_SESSION['osp_jabatan'] =  $result_login['jabatan'];
-      $_SESSION['osp_level'] =  $result_login['level'];
-      $_SESSION['osp_code_level'] =  $result_login['code_level'];
-      $_SESSION['osp_role_name'] =  $result_login['role_name'];
-      $_SESSION['osp_grp'] =  $result_login['grp'];
-      $_SESSION['osp_sect'] =  $result_login['sect'];
-      $_SESSION['osp_dept_account'] =  $result_login['dept_account'];
-      $_SESSION['osp_divisi'] =  $result_login['divisi'];
-      $_SESSION['osp_nama_grp'] =  $result_login['nama_grp'];
-      $_SESSION['osp_nama_sect'] =  $result_login['nama_sect'];
-      $_SESSION['osp_nama_dept_account'] =  $result_login['nama_dept_account'];
+
 
       mysqli_free_result($query_login);      
 
